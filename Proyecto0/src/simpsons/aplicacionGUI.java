@@ -72,13 +72,14 @@ public class aplicacionGUI extends JFrame {
 
 		
 		
-		JButton btnHablar = new JButton("hablar");
+		JButton btnHablar = new JButton("Click Aquí!!");
 		btnHablar.setFont(new Font("OCR A Extended", Font.PLAIN, 15));
-		btnHablar.setBackground(Color.GRAY);
+		btnHablar.setBackground(Color.yellow);
 		btnHablar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
 				String s="\"Woohoo!\" \n        -Homero.";
+				textArea.setBackground(Color.orange);
 				textArea.setText(s);
 				
 				ImageIcon img=new ImageIcon(this.getClass().getResource("images/woohoo.png"));
