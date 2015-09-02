@@ -1,20 +1,22 @@
 package simpsons;
 
+
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.Image;
 import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
 
-import javax.imageio.ImageIO;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -23,16 +25,17 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.SwingConstants;
 import javax.swing.border.BevelBorder;
+import javax.swing.border.Border;
+
+
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.image.BufferedImage;
 
 public class aplicacionGUI extends JFrame {
 
 	private JPanel contentPane;
 	private JLabel label;
 	JTextArea textArea;
-	private JLabel thumb;
 	
 	/**
 	 * Launch the application.
@@ -56,13 +59,13 @@ public class aplicacionGUI extends JFrame {
 	public aplicacionGUI() {
 		setTitle("App");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 500, 300);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(new BevelBorder(BevelBorder.LOWERED, SystemColor.activeCaptionBorder, SystemColor.activeCaptionBorder, SystemColor.activeCaptionBorder, SystemColor.activeCaptionBorder));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		setSize(750, 500);
+
 
 
 		JButton btnHablar = new JButton("hablar");
@@ -70,25 +73,28 @@ public class aplicacionGUI extends JFrame {
 		btnHablar.setBackground(Color.GRAY);
 		btnHablar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				
 				String s="\"Woohoo!\" \n        -Homero.";
 				textArea.setText(s);
 				
+				ImageIcon img=new ImageIcon(this.getClass().getResource("images/woohoo.jpg"));
+				label.setIcon(new ImageIcon(img.getImage().getScaledInstance(257,225,Image.SCALE_SMOOTH)));	
+				Border border = BorderFactory.createLineBorder(Color.GREEN, 1);
+				label.setBorder(border);
 				
-				String soundName = "Woohoo!.wav";    
+   
 				AudioInputStream audioInputStream;
 				try {
-					audioInputStream = AudioSystem.getAudioInputStream(new File(soundName).getAbsoluteFile());
-				
-				Clip clip = AudioSystem.getClip();
-				clip.open(audioInputStream);
-				clip.start();
-				} catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
-					// TODO Auto-generated catch block
+					audioInputStream = AudioSystem.getAudioInputStream(this.getClass().getResource("sounds/Woohoo!.wav"));
+					Clip clip = AudioSystem.getClip();
+					clip.open(audioInputStream);
+					clip.start();
+					} catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
 					e.printStackTrace();
-				}
+						}
 				
 			
-				 label.setVisible(true);				
+				label.setVisible(true);				
 				
 				
 			}
@@ -103,16 +109,23 @@ public class aplicacionGUI extends JFrame {
 				
 				
 				if(label.isVisible()){
-					String soundName = "doh.wav";    
+					String s="\"DOH!\" \n        -Homero.";
+					textArea.setText(s);
+					
+					Border border = BorderFactory.createLineBorder(Color.RED, 1);
+					label.setBorder(border);
+					
+					ImageIcon img=new ImageIcon(this.getClass().getResource("images/hdoh.png"));
+					label.setIcon(new ImageIcon(img.getImage().getScaledInstance(257,225,Image.SCALE_SMOOTH)));
+					
+
 					AudioInputStream audioInputStream;
 					try {
-						audioInputStream = AudioSystem.getAudioInputStream(new File(soundName).getAbsoluteFile());
-				
+						audioInputStream = AudioSystem.getAudioInputStream(this.getClass().getResource("sounds/doh.wav"));
 						Clip clip = AudioSystem.getClip();
 						clip.open(audioInputStream);
 						clip.start();
 					} catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 				}
@@ -125,16 +138,19 @@ public class aplicacionGUI extends JFrame {
 				
 				
 				if(label.isVisible()){
-					String soundName = "doh.wav";    
+					String s="\"DOH!\" \n        -Homero.";
+					textArea.setText(s);
+					
+					ImageIcon img=new ImageIcon(this.getClass().getResource("images/hdohh.png"));
+					label.setIcon(new ImageIcon(img.getImage().getScaledInstance(257,225,Image.SCALE_SMOOTH)));
+					
 					AudioInputStream audioInputStream;
 					try {
-						audioInputStream = AudioSystem.getAudioInputStream(new File(soundName).getAbsoluteFile());
-				
+						audioInputStream = AudioSystem.getAudioInputStream(this.getClass().getResource("sounds/doh.wav"));
 						Clip clip = AudioSystem.getClip();
 						clip.open(audioInputStream);
 						clip.start();
 					} catch (UnsupportedAudioFileException | IOException | LineUnavailableException ee) {
-						// TODO Auto-generated catch block
 						ee.printStackTrace();
 					}
 				}
@@ -146,7 +162,7 @@ public class aplicacionGUI extends JFrame {
 		});
 		
 		
-		label.setIcon(new ImageIcon("C:\\Users\\Mica\\git\\Proyecto0\\Proyecto0\\woohoo.jpg"));
+		label.setIcon(new ImageIcon("C:\\Users\\Mica\\git\\Proyecto0\\Proyecto0\\src\\simpsons\\images\\woohoo.jpg"));
 		label.setVerticalAlignment(SwingConstants.TOP);
 		label.setBounds(5, 5, 257, 225);
 		label.setVisible(false);
