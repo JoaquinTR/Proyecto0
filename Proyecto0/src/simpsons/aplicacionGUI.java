@@ -8,7 +8,6 @@ import java.awt.Image;
 import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
 import java.io.IOException;
 
 import javax.sound.sampled.AudioInputStream;
@@ -21,7 +20,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.SwingConstants;
 import javax.swing.border.BevelBorder;
@@ -33,9 +31,11 @@ import java.awt.event.MouseEvent;
 
 public class aplicacionGUI extends JFrame {
 
-	private JPanel contentPane;
+	private JLabel contentPane;
 	private JLabel label;
 	JTextArea textArea;
+	
+	
 	
 	/**
 	 * Launch the application.
@@ -58,16 +58,20 @@ public class aplicacionGUI extends JFrame {
 	 */
 	public aplicacionGUI() {
 		setTitle("App");
+		this.setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 500, 300);
-		contentPane = new JPanel();
+		setBounds(100, 100, 540, 380);
+	
+		contentPane = new JLabel();
+		ImageIcon imga=new ImageIcon(this.getClass().getResource("images/simp.jpg"));
+		contentPane.setIcon(new ImageIcon(imga.getImage().getScaledInstance(getWidth(), getHeight(),Image.SCALE_SMOOTH)));	
 		contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(new BevelBorder(BevelBorder.LOWERED, SystemColor.activeCaptionBorder, SystemColor.activeCaptionBorder, SystemColor.activeCaptionBorder, SystemColor.activeCaptionBorder));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
-
-
+		
+		
 		JButton btnHablar = new JButton("hablar");
 		btnHablar.setFont(new Font("OCR A Extended", Font.PLAIN, 15));
 		btnHablar.setBackground(Color.GRAY);
@@ -77,10 +81,8 @@ public class aplicacionGUI extends JFrame {
 				String s="\"Woohoo!\" \n        -Homero.";
 				textArea.setText(s);
 				
-				ImageIcon img=new ImageIcon(this.getClass().getResource("images/woohoo.jpg"));
-				label.setIcon(new ImageIcon(img.getImage().getScaledInstance(257,225,Image.SCALE_SMOOTH)));	
-				Border border = BorderFactory.createLineBorder(Color.GREEN, 1);
-				label.setBorder(border);
+				ImageIcon img=new ImageIcon(this.getClass().getResource("images/woohoo.png"));
+				label.setIcon(new ImageIcon(img.getImage().getScaledInstance(257,225,Image.SCALE_SMOOTH)));
 				
    
 				AudioInputStream audioInputStream;
@@ -112,8 +114,6 @@ public class aplicacionGUI extends JFrame {
 					String s="\"DOH!\" \n        -Homero.";
 					textArea.setText(s);
 					
-					Border border = BorderFactory.createLineBorder(Color.RED, 1);
-					label.setBorder(border);
 					
 					ImageIcon img=new ImageIcon(this.getClass().getResource("images/hdoh.png"));
 					label.setIcon(new ImageIcon(img.getImage().getScaledInstance(257,225,Image.SCALE_SMOOTH)));
