@@ -72,14 +72,16 @@ public class aplicacionGUI extends JFrame {
 
 		
 		
-		JButton btnHablar = new JButton("Click Aquí!!");
-		btnHablar.setFont(new Font("OCR A Extended", Font.PLAIN, 15));
+		JButton btnHablar = new JButton("Click...");
+		btnHablar.setFont(new Font("OCR A Extended", Font.BOLD, 16));
 		btnHablar.setBackground(Color.yellow);
 		btnHablar.addActionListener(new ActionListener() {
+			
 			public void actionPerformed(ActionEvent arg0) {
 				
 				String s="\"Woohoo!\" \n        -Homero.";
 				textArea.setBackground(Color.orange);
+				textArea.setFont(new Font("OCR A Extended", Font.BOLD, 18));
 				textArea.setText(s);
 				
 				ImageIcon img=new ImageIcon(this.getClass().getResource("images/woohoo.png"));
@@ -141,6 +143,7 @@ public class aplicacionGUI extends JFrame {
 				if(label.isVisible()){
 					String s="\"DOH!\" \n        -Homero.";
 					textArea.setText(s);
+					
 					
 					ImageIcon img=new ImageIcon(this.getClass().getResource("images/hdohh.png"));
 					label.setIcon(new ImageIcon(img.getImage().getScaledInstance(257,225,Image.SCALE_SMOOTH)));
