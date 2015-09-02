@@ -3,6 +3,14 @@ package simpsons;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
+import java.io.File;
+import java.io.IOException;
+
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -66,6 +74,21 @@ public class aplicacionGUI extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				String s="\"DOH!\" \n        -Homero.";
 				textArea.setText(s);
+				
+				
+				String soundName = "doh.wav";    
+				AudioInputStream audioInputStream;
+				try {
+					audioInputStream = AudioSystem.getAudioInputStream(new File(soundName).getAbsoluteFile());
+				
+				Clip clip = AudioSystem.getClip();
+				clip.open(audioInputStream);
+				clip.start();
+				} catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
 			}
 		});
 		btnHablar.setBounds(222, 34, 89, 23);
