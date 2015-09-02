@@ -32,6 +32,7 @@ public class aplicacionGUI extends JFrame {
 	private JPanel contentPane;
 	private JLabel label;
 	JTextArea textArea;
+	private JLabel thumb;
 	
 	/**
 	 * Launch the application.
@@ -61,7 +62,9 @@ public class aplicacionGUI extends JFrame {
 		contentPane.setBorder(new BevelBorder(BevelBorder.LOWERED, SystemColor.activeCaptionBorder, SystemColor.activeCaptionBorder, SystemColor.activeCaptionBorder, SystemColor.activeCaptionBorder));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+		setSize(750, 500);
+
+
 		JButton btnHablar = new JButton("hablar");
 		btnHablar.setFont(new Font("OCR A Extended", Font.PLAIN, 15));
 		btnHablar.setBackground(Color.GRAY);
@@ -156,6 +159,9 @@ public class aplicacionGUI extends JFrame {
 		textArea.setEditable(false);
 		textArea.setBounds(272, 65, 184, 51);
 		contentPane.add(textArea);
+		
+		
+		
+		
 	}
-	
 }
