@@ -77,7 +77,7 @@ public class aplicacionGUI extends JFrame {
 		btnHablar.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent arg0) {
-				
+				textArea.setVisible(true);
 				String s="\"Woohoo!\" \n        -Homero.";
 				textArea.setBackground(Color.orange);
 				textArea.setFont(new Font("OCR A Extended", Font.BOLD, 18));
@@ -113,6 +113,7 @@ public class aplicacionGUI extends JFrame {
 				
 				
 				if(label.isVisible()){
+					textArea.setBackground(Color.RED);
 					String s="\"DOH!\" \n        -Homero.";
 					textArea.setText(s);
 					
@@ -140,6 +141,7 @@ public class aplicacionGUI extends JFrame {
 				
 				
 				if(label.isVisible()){
+					textArea.setBackground(Color.blue);
 					String s="\"DOH!\" \n        -Homero.";
 					textArea.setText(s);
 					
@@ -172,7 +174,8 @@ public class aplicacionGUI extends JFrame {
 		contentPane.add(label);
 		
 		textArea = new JTextArea();
-		textArea.setBackground(Color.GRAY);
+		textArea.setVisible(false);
+		//textArea.setBackground(Color.grey));
 		textArea.setForeground(Color.BLACK);
 		textArea.setFont(new Font("OCR A Extended", Font.PLAIN, 15));
 		textArea.setEditable(false);
