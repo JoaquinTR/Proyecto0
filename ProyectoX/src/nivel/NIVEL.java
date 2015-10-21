@@ -2,6 +2,7 @@ package nivel;
 
 import java.util.*;
 
+import GUI.GUI;
 import bomba.BOMBA;
 import mapa.CELDA;
 import personajes.BOMBERMAN;
@@ -24,16 +25,27 @@ public class NIVEL {
 
     protected BOMBA MiBomba;
 
-    protected CELDA[] Grilla;
+    protected CELDA[][] Grilla;
 
-    public NIVEL() {
-        //e s o
+    public NIVEL(GUI gui) {
+    	
+    	
+    	Grilla = new CELDA[31][31];
+    	/*
+    	Grilla[1][1]= new CELDA(this,1,1);
+    	Grilla[1][1].select(0);
+    	gui.add(Grilla[1][1].getGrafico());
+    	*/
+    	
+        Creador=new CREADORNIVEL();
+        Creador.crearNivel(Grilla, this, gui);
+        
     }
 
     /**
      * @return
      */
-    public CELDA[] getGrilla() {
+    public CELDA[][] getGrilla() {
         return Grilla;
     }
 

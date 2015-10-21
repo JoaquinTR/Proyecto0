@@ -2,7 +2,11 @@ package mapa;
 
 import java.util.*;
 
+import javax.swing.JLabel;
+
 import bomba.BOMBA;
+import graficos.Grafico;
+import graficos.celdaGrafica;
 import nivel.NIVEL;
 import personajes.PERSONAJE;
 import powerups.POWERUP;
@@ -25,6 +29,8 @@ public class CELDA {
     protected BOMBA Bomba;
 
     protected PERSONAJE Presentes[];
+    
+    protected Grafico grafico;
 
 
     /**
@@ -33,11 +39,17 @@ public class CELDA {
      * @param y
      */
     public CELDA(NIVEL Nivel, int x, int y) {
+    	MiPared=null;
         this.x=x;
         this.y=y;
         this.MiNivel=Nivel;
+        grafico = new celdaGrafica(x,y);
     }
 
+    public void select(int i){
+		grafico.select(i);
+	}
+    
     /**
      * @return
      */
@@ -97,8 +109,12 @@ public class CELDA {
     /**
      *
      */
-    public void crearPared() {
-        this.MiPared = new PARED(this);
+    public void crearPared(boolean DI) {
+        this.MiPared = new PARED(this,DI);
     }
+    
+    public JLabel getGrafico(){
+		return this.grafico.getGrafico();
+	}
 
 }

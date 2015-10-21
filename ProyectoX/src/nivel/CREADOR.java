@@ -1,5 +1,6 @@
 package nivel;
 
+import GUI.GUI;
 import mapa.CELDA;
 
 /**
@@ -20,7 +21,7 @@ public abstract class CREADOR {
      * @param grilla 
      * @param MiNivel
      */
-    public abstract void crearNivel(CELDA[] grilla, NIVEL MiNivel);
+    public abstract void crearNivel(CELDA[][] grilla, NIVEL MiNivel,GUI gui);
 
     /**
      * @param x 

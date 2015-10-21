@@ -6,6 +6,8 @@ package mapa;
  */
 public class PARED {
 
+	boolean destructible;
+	
     /**
      * 
      */
@@ -17,8 +19,13 @@ public class PARED {
     /**
      * @param celda 
      */
-    public PARED(CELDA celda) {
+    public PARED(CELDA celda,boolean destructible) {
+    	this.destructible=destructible;
         this.celda = celda;
+    }
+    
+    public boolean getDestructible(){
+    	return destructible;
     }
 
 }
