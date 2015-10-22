@@ -5,6 +5,7 @@ import java.awt.Point;
 import javax.swing.Icon;
 import javax.swing.JLabel;
 
+
 public abstract class Grafico {
 	//objeto grafico en el frame.
 	protected JLabel grafico;
@@ -15,8 +16,7 @@ public abstract class Grafico {
 	protected final int height = 44;
 	
 	protected Point pos;//posicion del grafico en el frame.
-	
-	
+		
 	protected Grafico(int x, int y){
 		//seteo las posiciones del label.
 		pos=new Point(x*height,135+(y*width));
@@ -25,7 +25,6 @@ public abstract class Grafico {
 		
 		this.grafico = new JLabel();
 		this.grafico.setBounds(this.pos.x, this.pos.y, width, height);
-		
 		
 	}
 	
@@ -46,35 +45,34 @@ public abstract class Grafico {
 		return this.grafico;
 	}
 	
-	public void moverArriba(){
-		select(4);
-		pos.setLocation(grafico.getX(),grafico.getY()-20);
-		grafico.setLocation(grafico.getX(),grafico.getY()-20);
-		grafico.setVisible(true);
-		//hacer la transicion y poner select(3);
-	}
 	
-	public void moverAbajo(){
-		select(1);
-		pos.setLocation(grafico.getX(),grafico.getY()+20);
-		grafico.setLocation(grafico.getX(),grafico.getY()+20);
-		grafico.setVisible(true);
-		//hacer la transicion y poner select(3);
-	}
 	
-	public void moverDerecha(){
-		select(10);
-		pos.setLocation(grafico.getX()+20,grafico.getY());
-		grafico.setLocation(grafico.getX()+20,grafico.getY());
-		grafico.setVisible(true);
-		//hacer la transicion y poner select(3);
-	}
-	
-	public void moverIzquierda(){
-		select(7);
-		pos.setLocation(grafico.getX()-20,grafico.getY());
-		grafico.setLocation(grafico.getX()-20,grafico.getY());
-		grafico.setVisible(true);
-		//hacer la transicion y poner select(3);
+	public void mover(int dir){
+		switch(dir){
+			case 0:
+				select(1);
+				pos.setLocation(grafico.getX(),grafico.getY()+11);
+				grafico.setLocation(grafico.getX(),grafico.getY()+11);
+				grafico.setVisible(true);
+				break;
+			case 1:
+				select(4);
+				pos.setLocation(grafico.getX(),grafico.getY()-11);
+				grafico.setLocation(grafico.getX(),grafico.getY()-11);
+				grafico.setVisible(true);
+				break;
+			case 2:
+				select(7);
+				pos.setLocation(grafico.getX()-11,grafico.getY());
+				grafico.setLocation(grafico.getX()-11,grafico.getY());
+				grafico.setVisible(true);
+				break;
+			case 3:
+				select(10);
+				pos.setLocation(grafico.getX()+11,grafico.getY());
+				grafico.setLocation(grafico.getX()+11,grafico.getY());
+				grafico.setVisible(true);
+				break;
+		}
 	}
 }

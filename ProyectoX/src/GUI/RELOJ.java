@@ -7,7 +7,7 @@ import nivel.NIVEL;
 /**
  * 
  */
-public class RELOJ {
+public class RELOJ extends Thread{
     
 	private NIVEL MiNivel;
 	

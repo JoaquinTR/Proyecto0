@@ -1,5 +1,9 @@
 package personajes;
 
+import java.awt.event.KeyEvent;
+import java.util.Random;
+
+import graficos.jugadorGrafico;
 import nivel.NIVEL;
 
 /**
@@ -15,12 +19,17 @@ public class RUGULOS extends ENEMIGOS {
      */
     public RUGULOS(NIVEL MiNivel, int x, int y) {
         super(MiNivel,x,y,1);
+        this.grafico = new jugadorGrafico(x,y);
     }
 
     /**
      * 
      */
     public void avanzar() {
-        // TODO implement here
+    	Random rnd = new Random();
+		int dir = rnd.nextInt(4);
+		
+		grafico.mover(dir);
+		
     }
 }

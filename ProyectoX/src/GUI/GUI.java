@@ -21,6 +21,7 @@ public class GUI extends JFrame {
 	private NIVEL MiNivel;
 	
 	private JLabel test;
+	private boolean lock = false;
 	
 	//constructor
 	public GUI(){
@@ -85,27 +86,39 @@ public class GUI extends JFrame {
 		});
 	 }
 	
-	 public void mover(KeyEvent arg0){
+	 	public void mover(KeyEvent arg0){
 		   
-		   int dir= arg0.getKeyCode();
+		   if(!lock){
+			System.out.println("1");   
+	 		int dir= arg0.getKeyCode();
 			switch (dir){
 			case KeyEvent.VK_UP : //Arriba
-				MiNivel.getBomberman().moverArriba();
+				MiNivel.mover(1);
 				
 				break;
 			case KeyEvent.VK_DOWN : //Abajo
-				MiNivel.getBomberman().moverAbajo();	
+				MiNivel.mover(0);	
 			
 				break;
 			case KeyEvent.VK_LEFT : //Izquierda
-				MiNivel.getBomberman().moverIzquierda();	
+				MiNivel.mover(2);	
 				
 				break;
 			case KeyEvent.VK_RIGHT : //Derecha
-				MiNivel.getBomberman().moverDerecha();	
+				MiNivel.mover(3);	
 				break;
 			}
+		   }
+		   
+		   //lock=true;
 		}
 	
+	 	public boolean getLock(){
+			return this.lock;
+		}
+		
+		public void toggleLock(){
+			this.lock = !this.lock;
+		}
 	
 }

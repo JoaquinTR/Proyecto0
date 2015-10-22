@@ -7,6 +7,9 @@ import bomba.BOMBA;
 import mapa.CELDA;
 import personajes.BOMBERMAN;
 import personajes.ENEMIGOS;
+import personajes.RUGULOS;
+import personajes.bombermanThread;
+import personajes.rugulosThread;
 
 /**
  * 
@@ -26,6 +29,10 @@ public class NIVEL {
     protected BOMBA MiBomba;
 
     protected CELDA[][] Grilla;
+    
+    protected rugulosThread r;
+    
+    protected bombermanThread b;
 
     public NIVEL(GUI gui) {
     	
@@ -36,12 +43,22 @@ public class NIVEL {
     	Grilla[1][1].select(0);
     	gui.add(Grilla[1][1].getGrafico());
     	*/
-    	
-        Creador=new CREADORNIVEL();
-        Creador.crearNivel(Grilla, this, gui);
-        
+    	Enemigos= new ENEMIGOS[10];
+    	Creador=new CREADORNIVEL();
+		RUGULOS u= new RUGULOS(this,20,1); 
+		Enemigos[0]=  u;
+		Enemigos[0].select(1);
+		r =new rugulosThread(u);
+		gui.add(Enemigos[0].getGrafico());
+		Creador.crearNivel(Grilla, this, gui);
+		b= new bombermanThread(Bomberman);
+		r.start();
+		b.start();
     }
-
+    
+    public rugulosThread r(){
+    	return r;
+    }
     /**
      * @return
      */
@@ -97,5 +114,10 @@ public class NIVEL {
     public void decPDR(int n) {
     	ParedesDestructiblesRestantes -= n;
     }
-
+    
+    public void mover(int dir){
+    	b.setDir(dir);
+    	b.iniciar();
+    	
+    }
 }

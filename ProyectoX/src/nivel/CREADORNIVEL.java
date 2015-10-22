@@ -8,6 +8,9 @@ import javax.swing.JLabel;
 import GUI.GUI;
 import mapa.CELDA;
 import personajes.BOMBERMAN;
+import personajes.ENEMIGOS;
+import personajes.RUGULOS;
+import personajes.rugulosThread;
 
 /**
  * 
@@ -34,6 +37,8 @@ public class CREADORNIVEL extends CREADOR{
 		MiNivel.Bomberman.select(0);
 		gui.add(MiNivel.Bomberman.getGrafico());
         
+		
+		
         for(i=0;i<outer;i++){
         	grilla[i][0] = new CELDA(MiNivel,i,0);  
         	grilla[i][0].crearPared(false);

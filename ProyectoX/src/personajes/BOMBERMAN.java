@@ -19,6 +19,8 @@ public class BOMBERMAN extends PERSONAJE {
      * 
      */
     private int CantBombas;
+    
+
 
 
 
@@ -35,35 +37,11 @@ public class BOMBERMAN extends PERSONAJE {
         this.grafico = new jugadorGrafico(x,y);
     }
 
-    /**
-     * 
-     */
-    public void moverDerecha() {
-        grafico.moverDerecha();
-    }
-
-    /**
-     * 
-     */
-    public void moverIzquierda() {
-        grafico.moverIzquierda();
-    }
-
-    /**
-     * 
-     */
-    public void moverAbajo() {
-        grafico.moverAbajo();
-    }
-
-    /**
-     * 
-     */
-    public void moverArriba() {
-        grafico.moverArriba();
-    }
     
-    
+    //Para usar en el bombermanThread
+    public void mover(int dir){
+    	grafico.mover(dir);
+    }
     
 
     /**
@@ -95,8 +73,9 @@ public class BOMBERMAN extends PERSONAJE {
      * 
      */
     public void setMasacre() {
-        
     	Masacre=!Masacre;
     }
+    
+    
+    }
 
-}
