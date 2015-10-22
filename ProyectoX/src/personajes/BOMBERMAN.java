@@ -2,6 +2,7 @@ package personajes;
 
 import java.util.*;
 
+import graficos.jugadorGrafico;
 import nivel.NIVEL;
 
 /**
@@ -30,35 +31,40 @@ public class BOMBERMAN extends PERSONAJE {
      */
     public BOMBERMAN(NIVEL MiNivel, int x, int y) {
         super(MiNivel,x,y,3);
+        
+        this.grafico = new jugadorGrafico(x,y);
     }
 
     /**
      * 
      */
     public void moverDerecha() {
-        // TODO implement here
+        grafico.moverDerecha();
     }
 
     /**
      * 
      */
     public void moverIzquierda() {
-        // TODO implement here
+        grafico.moverIzquierda();
     }
 
     /**
      * 
      */
     public void moverAbajo() {
-        // TODO implement here
+        grafico.moverAbajo();
     }
 
     /**
      * 
      */
     public void moverArriba() {
-        // TODO implement here
+        grafico.moverArriba();
     }
+    
+    
+    
 
     /**
      * 
@@ -71,21 +77,26 @@ public class BOMBERMAN extends PERSONAJE {
      * 
      */
     public void aumentarVelocidad() {
-        // TODO implement here
+        velocidad*=2;
     }
 
     /**
      * 
      */
     public void aumentarCantBombas() {
-        // TODO implement here
+        CantBombas++;
     }
 
+    public void decCantBombas(){
+    	CantBombas--;
+    }
+    
     /**
      * 
      */
     public void setMasacre() {
-        // TODO implement here
+        
+    	Masacre=!Masacre;
     }
 
 }

@@ -1,7 +1,13 @@
 package nivel;
 
+import java.awt.Image;
+
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+
 import GUI.GUI;
 import mapa.CELDA;
+import personajes.BOMBERMAN;
 
 /**
  * 
@@ -22,6 +28,11 @@ public class CREADORNIVEL extends CREADOR{
     public void crearNivel(CELDA[][] grilla, NIVEL MiNivel,GUI gui) {
         int i =0;
         int outer= 31;
+        int outer2=13;
+
+		MiNivel.Bomberman=new BOMBERMAN(MiNivel,1,1);
+		MiNivel.Bomberman.select(0);
+		gui.add(MiNivel.Bomberman.getGrafico());
         
         for(i=0;i<outer;i++){
         	grilla[i][0] = new CELDA(MiNivel,i,0);  
@@ -29,14 +40,14 @@ public class CREADORNIVEL extends CREADOR{
         	grilla[i][0].select(5);
         	gui.add(grilla[i][0].getGrafico());
         	
-        	grilla[i][30] = new CELDA(MiNivel,i,30);  
-        	grilla[i][30].crearPared(false);
-        	grilla[i][30].select(5);
-        	gui.add(grilla[i][30].getGrafico());
+        	grilla[i][12] = new CELDA(MiNivel,i,12);  
+        	grilla[i][12].crearPared(false);
+        	grilla[i][12].select(5);
+        	gui.add(grilla[i][12].getGrafico());
         	
         }
         
-        for(i=1;i<outer;i++){
+        for(i=1;i<outer2;i++){
         	grilla[0][i] = new CELDA(MiNivel,0,i);
         	grilla[0][i].crearPared(false);
         	grilla[0][i].select(5);
@@ -49,7 +60,7 @@ public class CREADORNIVEL extends CREADOR{
         }
         int j=1;
         for(i=1;i<31;i++){
-        	for(j=1;j<31;j++){
+        	for(j=1;j<13;j++){
         		if((i%2==0)&&(j%2==0)){
         			grilla[i][j]=new CELDA(MiNivel,i,j);
         			grilla[i][j].crearPared(false);
@@ -64,6 +75,10 @@ public class CREADORNIVEL extends CREADOR{
         	
         	}	
         }
+        
+        
+        grilla[1][1].agregarPersonaje(MiNivel.Bomberman);
+        
         
     }
 

@@ -30,7 +30,7 @@ public class NIVEL {
     public NIVEL(GUI gui) {
     	
     	
-    	Grilla = new CELDA[31][31];
+    	Grilla = new CELDA[31][13];
     	/*
     	Grilla[1][1]= new CELDA(this,1,1);
     	Grilla[1][1].select(0);

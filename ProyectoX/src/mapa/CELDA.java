@@ -44,6 +44,7 @@ public class CELDA {
         this.y=y;
         this.MiNivel=Nivel;
         grafico = new celdaGrafica(x,y);
+        Presentes=new PERSONAJE[10];
     }
 
     public void select(int i){
@@ -116,5 +117,26 @@ public class CELDA {
     public JLabel getGrafico(){
 		return this.grafico.getGrafico();
 	}
+    
+    public void agregarPersonaje(PERSONAJE p){
+    	int i =0;
+    	while(Presentes[i]!=null)
+    		i++;
+    	
+    	Presentes[i]=p;
+    }
+    
+    public void quitarPersonaje(PERSONAJE p){
+    	boolean encontre= false;
+    	int i =0;
+    	while((!encontre)&&(i<20)){
+    		if(Presentes[i]==p)
+    			encontre=true;
+    		i++;
+    	}
+    	
+    	Presentes[i]=null;
+    		
+    }
 
 }

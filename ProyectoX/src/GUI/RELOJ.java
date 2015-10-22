@@ -1,17 +1,16 @@
 package GUI;
 
+import java.util.Random;
+
+import nivel.NIVEL;
 
 /**
  * 
  */
 public class RELOJ {
-
-    /**
-     * Default constructor
-     */
-    public RELOJ() {
-    }
-
+    
+	private NIVEL MiNivel;
+	
     /**
      * 
      */
@@ -28,40 +27,57 @@ public class RELOJ {
     private int horas;
 
 
-
-    /**
-     * 
-     */
-    public void RELOJ() {
-        // TODO implement here
+    public RELOJ(NIVEL MiNivel){
+    	segundos=0;
+    	minutos=0;
+    	horas=0;
+    	this.MiNivel= MiNivel;
     }
-
+    
+	
+	public void run() {
+		while(true){
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+			Random r = new Random();
+			int dir=Math.abs(r.nextInt()%3);
+			//MiNivel.moverM(dir);
+		}
+	}
+	
     /**
      * 
      */
     public void aumentar() {
-        // TODO implement here
+        segundos++;
+        if(segundos==60)
+        	minutos++;
+        if(minutos==60)
+        	horas++;
     }
 
     /**
      * 
      */
-    public void getSegundos() {
-        // TODO implement here
+    public int getSegundos() {
+       	return segundos;
     }
 
     /**
      * 
      */
-    public void getMinutos() {
-        // TODO implement here
+    public int getMinutos() {
+        return minutos;
     }
 
     /**
      * 
      */
-    public void getHoras() {
-        // TODO implement here
+    public int getHoras() {
+        return horas;
     }
 
 }

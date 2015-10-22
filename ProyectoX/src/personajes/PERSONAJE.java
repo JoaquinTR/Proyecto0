@@ -1,7 +1,9 @@
 package personajes;
 
-import java.util.*;
 
+import javax.swing.JLabel;
+
+import graficos.Grafico;
 import nivel.NIVEL;
 
 /**
@@ -16,6 +18,8 @@ public abstract class PERSONAJE {
     protected float velocidad;
 
     protected NIVEL MiNivel;
+    
+    protected Grafico grafico;
 
     /**
      * @param MiNivel 
@@ -24,7 +28,12 @@ public abstract class PERSONAJE {
      * @param velocidad
      */
     protected PERSONAJE(NIVEL MiNivel, int x, int y, float velocidad) {
-        // TODO implement here
+        this.MiNivel=MiNivel;
+        this.x=x;
+        this.y=y;
+        this.velocidad=velocidad;
+        
+        
     }
 
     /**
@@ -34,6 +43,10 @@ public abstract class PERSONAJE {
         return x;
     }
 
+    public void select(int i){
+    	grafico.select(i);
+    }
+    
     /**
      * @return
      */
@@ -41,4 +54,12 @@ public abstract class PERSONAJE {
         return y;
     }
 
+    public float getVelocidad(){
+    	return velocidad;
+    }
+    
+    public JLabel getGrafico(){
+		return this.grafico.getGrafico();
+	}
+    
 }
