@@ -8,6 +8,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 import javax.swing.border.EmptyBorder;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -28,6 +29,10 @@ public class GUI extends JFrame {
 	
 	private boolean start=false;
 	
+	private JLabel pos;
+	
+	private JLabel pos2;
+	
 	//constructor
 	public GUI(){
 		//mover personaje
@@ -41,7 +46,8 @@ public class GUI extends JFrame {
 		
 		
 		
-		setSize(698,720);
+		setSize(698,500);
+		
 		
 		
 		contentPane = new JPanel();
@@ -63,6 +69,15 @@ public class GUI extends JFrame {
 		ImageIcon b=new ImageIcon(this.getClass().getResource("/images/logo/logo.gif"));
 		setIconImage(b.getImage());
 		
+		pos=new JLabel();
+		pos.setText("Posicion");
+		pos.setBounds(25, 25, 250, 50);
+		add(pos);
+		
+		pos2=new JLabel();
+		pos2.setText("Posicion grafica");
+		pos2.setBounds(300, 25, 250, 50);
+		add(pos2);
 		
 		setVisible(true);
 		setExtendedState(getExtendedState() | JFrame.MAXIMIZED_BOTH);
@@ -89,10 +104,16 @@ public class GUI extends JFrame {
 	 			
 	 			
 	 		if(!lock){
+	 			System.out.println("entro");
 	 			int dir= arg0.getKeyCode();
 	 			switch (dir){
 				case KeyEvent.VK_UP : //Arriba
 					MiNivel.mover(1);
+					String a="pos matriz: "+MiNivel.getBomberman().getX()+" "+MiNivel.getBomberman().getY();
+					pos.setText(a);
+					a="pos grafica: "+MiNivel.getBomberman().getGrafico().getX()+" "+MiNivel.getBomberman().getGrafico().getY();
+					pos2.setText(a);
+					
 					if(!start){
 						r.start();
 						start=true;
@@ -101,6 +122,11 @@ public class GUI extends JFrame {
 					break;
 				case KeyEvent.VK_DOWN : //Abajo
 					MiNivel.mover(0);	
+					String a1="pos matriz: "+MiNivel.getBomberman().getX()+" "+MiNivel.getBomberman().getY();
+					pos.setText(a1);
+					a1="pos grafica: "+MiNivel.getBomberman().getGrafico().getX()+" "+MiNivel.getBomberman().getGrafico().getY();
+					pos2.setText(a1);
+					
 					if(!start){
 						r.start();
 						start=true;
@@ -108,7 +134,12 @@ public class GUI extends JFrame {
 					
 					break;
 				case KeyEvent.VK_LEFT : //Izquierda
-					MiNivel.mover(2);	
+					MiNivel.mover(2);
+					String a2="pos matriz: "+MiNivel.getBomberman().getX()+" "+MiNivel.getBomberman().getY();
+					pos.setText(a2);
+					a2="pos grafica: "+MiNivel.getBomberman().getGrafico().getX()+" "+MiNivel.getBomberman().getGrafico().getY();
+					pos2.setText(a2);
+					
 					if(!start){
 						r.start();
 						start=true;
@@ -117,6 +148,11 @@ public class GUI extends JFrame {
 					break;
 				case KeyEvent.VK_RIGHT : //Derecha
 					MiNivel.mover(3);	
+					String a3="pos matriz: "+MiNivel.getBomberman().getX()+" "+MiNivel.getBomberman().getY();
+					pos.setText(a3);
+					a3="pos grafica: "+MiNivel.getBomberman().getGrafico().getX()+" "+MiNivel.getBomberman().getGrafico().getY();
+					pos2.setText(a3);
+					
 					if(!start){
 						r.start();
 						start=true;
@@ -126,13 +162,17 @@ public class GUI extends JFrame {
 				}
 
 	 		}
-	 		
-	 			lock=true;
+	 		lock=true;
 
 		}
 	 	
 	 	public void unlock(){
 	 		lock=false;
 	 	}
+	 	
+	 	public void lock(){
+	 		lock=true;
+	 	}
+	 	
 	
 }

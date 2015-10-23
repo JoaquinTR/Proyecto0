@@ -88,6 +88,7 @@ public class BOMBERMAN extends PERSONAJE {
     }
     
     public void avanzarB(int dir){
+    	b.setDir(dir);
     	
     	
     	CELDA actual = MiNivel.getCelda(x, y, -1);
@@ -98,34 +99,39 @@ public class BOMBERMAN extends PERSONAJE {
     		boolean hay=false;
     		hay=next.hayAlguien();
     		
-    		b.setDir(dir);
-    		b.iniciar();
+    		
     		actual.quitarPersonaje(this);
     		next.agregarPersonaje(this);
     		this.x=next.getX();
     		this.y=next.getY();
     		System.out.println("Pos en matriz BOMBERMAN: "+x+"::"+y);
     		System.out.println("Pos en tablero BOMBERMAN: "+grafico.getPos().getX()+"::"+grafico.getPos().getY());
+    		b.iniciar();
+    		
     		if(hay){
     			destruirme();
     		}
     		
     	}
     	else{
-    		unlock();
+    		b.setDir(-3);
+    		b.iniciar();
     		select(dir+4);
     	}
-    	
+ 
     	
     	
 
     }
+    
     public void unlock(){
     	MiNivel.unlock();
     }
     
+    
     public void destruirme(){
     	b.setDir(-2);
+    	MiNivel.lock();
     	
     }
 }

@@ -120,6 +120,10 @@ public class NIVEL {
     	gui.unlock();
     }
     
+    public void lock(){
+    	gui.lock();
+    }
+    
     public CELDA getCelda(int x, int y,int dir){
     	CELDA next = null;
     	switch(dir){

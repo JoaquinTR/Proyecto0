@@ -33,26 +33,6 @@ public class RUGULOS extends ENEMIGOS {
     public void avanzar() {
     	Random rnd = new Random();
 		int dir = rnd.nextInt(4);
-		System.out.println("asd "+ dir);
-
-		/*
-		CELDA[][] g = MiNivel.getGrilla();
-    	CELDA next = null;
-    	switch(dir){
-    		case 0:
-    			next= g[x][y+1];
-    			break;
-    		case 1:
-    			next = g[x][y-1];
-    			break;
-    		case 2:
-    			next = g[x-1][y];
-    			break;
-    		case 3:
-    			next = g[x+1][y];
-    			break;
-    	}
-    	*/
     	
 		CELDA actual = MiNivel.getCelda(x, y, -1);
     	CELDA next= MiNivel.getCelda(x, y, dir);

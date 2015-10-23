@@ -18,14 +18,13 @@ public class bombermanThread extends Thread{
 			
 			@Override
 			public void run() {
-				//mDetener=false;
-				// Ejecuto indefinidamente hasta que el flag sea verdadero.
-				//Cambiar if por while y sacar el detener
+				
 				while(true){
 					if((!this.mDetener)&&(dir!=-2)){
 						// Duermo el hilo 1 segundo.
 						// De esta manera cada turno se ejecuta cada 1 segundo.
 						try {
+							
 							// Realizo el movimiento
 							Thread.sleep(125);
 							this.mLogica.mover(dir);
@@ -39,10 +38,19 @@ public class bombermanThread extends Thread{
 							this.mLogica.select(dir+4);
 							
 							mLogica.unlock();
+							detener();
 							
 						} catch (InterruptedException e) { }
 						
+					} else if((!this.mDetener)&&(dir==-3)){
+						try {
+							Thread.sleep(200);
+							} catch (InterruptedException e1) {}
+						mLogica.unlock();
+						detener();
+						
 					}
+					
 					//direccion -2 indica la transicion de la muerte.
 					if(dir==-2){
 						mLogica.select(12);
@@ -51,12 +59,12 @@ public class bombermanThread extends Thread{
 						} catch (InterruptedException e) {}
 						interrupt();
 						mLogica.getGrafico().setVisible(false);
+						detener();
 					}
 						
-					detener();
 				}
 				
-				//
+				
 			}
 			
 			public void detener() {

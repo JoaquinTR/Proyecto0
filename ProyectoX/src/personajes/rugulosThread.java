@@ -47,8 +47,6 @@ public class rugulosThread extends Thread{
 		}
 		
 		public void detener() {
-			// Interrumpo el hilo para que no continue con su ejecución.
-			//this.interrupt(); 
 			
 			// Seteamos el flag para detener su ejecución.
 			this.mDetener = true;

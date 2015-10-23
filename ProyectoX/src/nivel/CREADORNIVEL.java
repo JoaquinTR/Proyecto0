@@ -41,6 +41,10 @@ public class CREADORNIVEL extends CREADOR{
 		Enemigos[0].select(1);
 		gui.add(Enemigos[0].getGrafico());
 		
+		//Enemigos[1] = new RUGULOS(MiNivel,1,5); 
+		//Enemigos[1].select(1);
+		//gui.add(Enemigos[1].getGrafico());
+		
 		
         for(i=0;i<outer;i++){
         	grilla[i][0] = new CELDA(MiNivel,i,0);  
@@ -85,6 +89,7 @@ public class CREADORNIVEL extends CREADOR{
         }
         
         grilla[3][1].agregarPersonaje(Enemigos[0]);
+        grilla[1][5].agregarPersonaje(Enemigos[1]);
         grilla[1][1].agregarPersonaje(MiNivel.Bomberman);
         
         
