@@ -57,5 +57,9 @@ public class SIRIUS extends ENEMIGOS {
     private void Rastrear() {
         // TODO implement here
     }
+    
+    public void destruirme(){
+    	
+    }
 
 }

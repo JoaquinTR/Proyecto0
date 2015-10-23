@@ -69,7 +69,7 @@ public class CELDA {
     /**
      * @return
      */
-    public boolean puedoEntrar() {
+    public boolean puedoEntrar() { //controlarlo afuera con getPared()
         return this.MiPared==null;
     }
 

@@ -68,6 +68,10 @@ public class BOMBERMAN extends PERSONAJE {
     public void aumentarVelocidad() {
         velocidad*=2;
     }
+    
+    public void decrementarVelocidad(){
+    	velocidad/=2;
+    }
 
     /**
      * 

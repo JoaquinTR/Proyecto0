@@ -62,4 +62,5 @@ public abstract class PERSONAJE {
 		return this.grafico.getGrafico();
 	}
     
+    public abstract void destruirme();
 }

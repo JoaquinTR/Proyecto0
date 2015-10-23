@@ -23,6 +23,9 @@ public class ALTAIR extends ENEMIGOS {
      */
     public void avanzar() {
     }
-
+    
+    public void destruirme(){
+    	
+    }
 
 }

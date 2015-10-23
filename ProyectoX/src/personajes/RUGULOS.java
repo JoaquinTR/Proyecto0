@@ -57,4 +57,8 @@ public class RUGULOS extends ENEMIGOS {
     	grafico.select(dir);
 		grafico.mover(dir);
     }
+    
+    public void destruirme(){
+    	
+    }
 }
