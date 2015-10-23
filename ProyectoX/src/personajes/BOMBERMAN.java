@@ -98,7 +98,7 @@ public class BOMBERMAN extends PERSONAJE {
     	if(next.puedoEntrar()){
     		boolean hay=false;
     		hay=next.hayAlguien();
-    		
+
     		
     		actual.quitarPersonaje(this);
     		next.agregarPersonaje(this);

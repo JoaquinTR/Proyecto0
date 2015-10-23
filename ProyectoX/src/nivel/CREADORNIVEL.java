@@ -71,8 +71,8 @@ public class CREADORNIVEL extends CREADOR{
         	gui.add(grilla[30][i].getGrafico());
         }
         int j=1;
-        for(i=1;i<31;i++){
-        	for(j=1;j<13;j++){
+        for(i=1;i<30;i++){
+        	for(j=1;j<12;j++){
         		if((i%2==0)&&(j%2==0)){
         			grilla[i][j]=new CELDA(MiNivel,i,j);
         			grilla[i][j].crearPared(false);
