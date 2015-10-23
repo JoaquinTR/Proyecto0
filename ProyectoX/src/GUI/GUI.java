@@ -104,7 +104,7 @@ public class GUI extends JFrame {
 	 			
 	 			
 	 		if(!lock){
-	 			System.out.println("entro");
+	 			
 	 			int dir= arg0.getKeyCode();
 	 			switch (dir){
 				case KeyEvent.VK_UP : //Arriba

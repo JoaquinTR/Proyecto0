@@ -37,8 +37,9 @@ public class RUGULOS extends ENEMIGOS {
 		CELDA actual = MiNivel.getCelda(x, y, -1);
     	CELDA next= MiNivel.getCelda(x, y, dir);
     	
+    	boolean puedo=next.getPared()==null;
     	
-    	if(next.puedoEntrar()){
+    	if(puedo){
     		T.setDir(dir);
     		T.iniciar();
     		actual.quitarPersonaje(this);

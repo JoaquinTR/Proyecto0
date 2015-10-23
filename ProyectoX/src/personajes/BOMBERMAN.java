@@ -98,8 +98,9 @@ public class BOMBERMAN extends PERSONAJE {
     	CELDA actual = MiNivel.getCelda(x, y, -1);
     	CELDA next= MiNivel.getCelda(x, y, dir);
     		
+    	boolean puedo=next.getPared()==null;
     	
-    	if(next.puedoEntrar()){
+    	if(puedo){
     		boolean hay=false;
     		hay=next.hayAlguien();
 
@@ -108,8 +109,7 @@ public class BOMBERMAN extends PERSONAJE {
     		next.agregarPersonaje(this);
     		this.x=next.getX();
     		this.y=next.getY();
-    		System.out.println("Pos en matriz BOMBERMAN: "+x+"::"+y);
-    		System.out.println("Pos en tablero BOMBERMAN: "+grafico.getPos().getX()+"::"+grafico.getPos().getY());
+
     		b.iniciar();
     		
     		if(hay){
