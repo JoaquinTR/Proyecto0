@@ -1,9 +1,10 @@
 package personajes;
 
-import java.awt.event.KeyEvent;
 import java.util.Random;
 
-import graficos.jugadorGrafico;
+
+import graficos.ruguloGrafico;
+import mapa.CELDA;
 import nivel.NIVEL;
 
 /**
@@ -11,6 +12,8 @@ import nivel.NIVEL;
  */
 public class RUGULOS extends ENEMIGOS {
 
+	
+	private rugulosThread T;
 
     /**
      * @param MiNivel 
@@ -19,7 +22,9 @@ public class RUGULOS extends ENEMIGOS {
      */
     public RUGULOS(NIVEL MiNivel, int x, int y) {
         super(MiNivel,x,y,1);
-        this.grafico = new jugadorGrafico(x,y);
+        this.grafico = new ruguloGrafico(x,y);
+        T=new rugulosThread(this);
+        T.start();
     }
 
     /**
@@ -28,8 +33,50 @@ public class RUGULOS extends ENEMIGOS {
     public void avanzar() {
     	Random rnd = new Random();
 		int dir = rnd.nextInt(4);
+		System.out.println("asd "+ dir);
+
+		/*
+		CELDA[][] g = MiNivel.getGrilla();
+    	CELDA next = null;
+    	switch(dir){
+    		case 0:
+    			next= g[x][y+1];
+    			break;
+    		case 1:
+    			next = g[x][y-1];
+    			break;
+    		case 2:
+    			next = g[x-1][y];
+    			break;
+    		case 3:
+    			next = g[x+1][y];
+    			break;
+    	}
+    	*/
+    	
+		CELDA actual = MiNivel.getCelda(x, y, -1);
+    	CELDA next= MiNivel.getCelda(x, y, dir);
+    	
+    	
+    	if(next.puedoEntrar()){
+    		T.setDir(dir);
+    		T.iniciar();
+    		actual.quitarPersonaje(this);
+    		next.agregarPersonaje(this);
+    		this.x=next.getX();
+    		this.y=next.getY();
+    		System.out.println("Pos en matriz Enemigo: "+x+"::"+y);
+    		System.out.println("Pos en tablero Enemigo: "+grafico.getPos().getX()+"::"+grafico.getPos().getY());
+    	}
+    	if((next.getX()==MiNivel.getBomberman().getX())&&(next.getY()==MiNivel.getBomberman().getY())){
+    		MiNivel.getBomberman().select(12);//afecto al bomberman
+    		MiNivel.getBomberman().destruirme();
+    	}
 		
+		
+    }
+    public void mover(int dir){
+    	grafico.select(dir);
 		grafico.mover(dir);
-		
     }
 }

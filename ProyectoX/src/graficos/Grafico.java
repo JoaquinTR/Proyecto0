@@ -39,7 +39,7 @@ public abstract class Grafico {
 	public JLabel getGrafico(){
 		if(this.grafico == null){
 			this.grafico = new JLabel(images[0]);
-			this.grafico.setBounds(this.pos.x, this.pos.y, width, height);
+			this.grafico.setBounds(this.pos.x, 135+ this.pos.y, width, height);
 		}
 		
 		return this.grafico;
@@ -49,29 +49,30 @@ public abstract class Grafico {
 	
 	public void mover(int dir){
 		switch(dir){
-			case 0:
-				select(1);
-				pos.setLocation(grafico.getX(),grafico.getY()+11);
+			case 0: //abajo
+				
 				grafico.setLocation(grafico.getX(),grafico.getY()+11);
-				grafico.setVisible(true);
+				pos.x=grafico.getX();
+				pos.y=grafico.getY();
+
 				break;
-			case 1:
-				select(4);
-				pos.setLocation(grafico.getX(),grafico.getY()-11);
+			case 1://arriba
+				
 				grafico.setLocation(grafico.getX(),grafico.getY()-11);
-				grafico.setVisible(true);
+				pos.x=grafico.getX();
+				pos.y=grafico.getY();
 				break;
-			case 2:
-				select(7);
-				pos.setLocation(grafico.getX()-11,grafico.getY());
+			case 2://izquierda
+				
 				grafico.setLocation(grafico.getX()-11,grafico.getY());
-				grafico.setVisible(true);
+				pos.x=grafico.getX();
+				pos.y=grafico.getY();
 				break;
-			case 3:
-				select(10);
-				pos.setLocation(grafico.getX()+11,grafico.getY());
+			case 3://derecha
+				
 				grafico.setLocation(grafico.getX()+11,grafico.getY());
-				grafico.setVisible(true);
+				pos.x=grafico.getX();
+				pos.y=grafico.getY();
 				break;
 		}
 	}

@@ -25,6 +25,8 @@ public class RELOJ extends Thread{
      * 
      */
     private int horas;
+    
+    private GUI gui;
 
 
     public RELOJ(NIVEL MiNivel){
@@ -38,13 +40,13 @@ public class RELOJ extends Thread{
 	public void run() {
 		while(true){
 			try {
-				Thread.sleep(1000);
+				Thread.sleep(1500);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
 			Random r = new Random();
 			int dir=Math.abs(r.nextInt()%3);
-			//MiNivel.moverM(dir);
+			MiNivel.moverM();
 		}
 	}
 	

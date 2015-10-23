@@ -21,7 +21,12 @@ public class GUI extends JFrame {
 	private NIVEL MiNivel;
 	
 	private JLabel test;
-	private boolean lock = false;
+	
+	private RELOJ r;
+	
+	private boolean lock=false;
+	
+	private boolean start=false;
 	
 	//constructor
 	public GUI(){
@@ -33,6 +38,9 @@ public class GUI extends JFrame {
 			}
 		});
 		
+		
+		
+		
 		setSize(698,720);
 		
 		
@@ -43,29 +51,19 @@ public class GUI extends JFrame {
 		setTitle("Supers-Bomberman®");
 		getContentPane().setLayout(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		/*
-		//SACAR
-		ImageIcon a=new ImageIcon(this.getClass().getResource("/images/bomberman/Cap/CapAbajoQ.gif"));
-		a = new ImageIcon(a.getImage().getScaledInstance(44, 44, Image.SCALE_DEFAULT));
 		
-		test = new JLabel(a);
-		test.setBounds(44,179,44,44);
-		add(test);
-		//SACAR
-		*/
+		
 		MiNivel=new NIVEL(this);
 		
-		
+		r=new RELOJ(MiNivel);
+		//r.start();
 		
 		contentPane.setVisible(true);
 		
-		
-		//Image icon = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/images/logo/logo.gif"));
-		//setIconImage(icon);
 		ImageIcon b=new ImageIcon(this.getClass().getResource("/images/logo/logo.gif"));
 		setIconImage(b.getImage());
 		
-		pack();
+		
 		setVisible(true);
 		setExtendedState(getExtendedState() | JFrame.MAXIMIZED_BOTH);
 	}
@@ -87,38 +85,54 @@ public class GUI extends JFrame {
 	 }
 	
 	 	public void mover(KeyEvent arg0){
-		   
-		   if(!lock){
-			System.out.println("1");   
-	 		int dir= arg0.getKeyCode();
-			switch (dir){
-			case KeyEvent.VK_UP : //Arriba
-				MiNivel.mover(1);
+	 		
+	 			
+	 			
+	 		if(!lock){
+	 			int dir= arg0.getKeyCode();
+	 			switch (dir){
+				case KeyEvent.VK_UP : //Arriba
+					MiNivel.mover(1);
+					if(!start){
+						r.start();
+						start=true;
+					}
 				
-				break;
-			case KeyEvent.VK_DOWN : //Abajo
-				MiNivel.mover(0);	
-			
-				break;
-			case KeyEvent.VK_LEFT : //Izquierda
-				MiNivel.mover(2);	
+					break;
+				case KeyEvent.VK_DOWN : //Abajo
+					MiNivel.mover(0);	
+					if(!start){
+						r.start();
+						start=true;
+					}
+					
+					break;
+				case KeyEvent.VK_LEFT : //Izquierda
+					MiNivel.mover(2);	
+					if(!start){
+						r.start();
+						start=true;
+					}
 				
-				break;
-			case KeyEvent.VK_RIGHT : //Derecha
-				MiNivel.mover(3);	
-				break;
-			}
-		   }
-		   
-		   //lock=true;
+					break;
+				case KeyEvent.VK_RIGHT : //Derecha
+					MiNivel.mover(3);	
+					if(!start){
+						r.start();
+						start=true;
+					}
+					
+					break;
+				}
+
+	 		}
+	 		
+	 			lock=true;
+
 		}
-	
-	 	public boolean getLock(){
-			return this.lock;
-		}
-		
-		public void toggleLock(){
-			this.lock = !this.lock;
-		}
+	 	
+	 	public void unlock(){
+	 		lock=false;
+	 	}
 	
 }

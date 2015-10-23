@@ -30,35 +30,21 @@ public class NIVEL {
 
     protected CELDA[][] Grilla;
     
-    protected rugulosThread r;
     
-    protected bombermanThread b;
+    private GUI gui;
 
     public NIVEL(GUI gui) {
-    	
+    	this.gui=gui;
     	
     	Grilla = new CELDA[31][13];
-    	/*
-    	Grilla[1][1]= new CELDA(this,1,1);
-    	Grilla[1][1].select(0);
-    	gui.add(Grilla[1][1].getGrafico());
-    	*/
     	Enemigos= new ENEMIGOS[10];
     	Creador=new CREADORNIVEL();
-		RUGULOS u= new RUGULOS(this,20,1); 
-		Enemigos[0]=  u;
-		Enemigos[0].select(1);
-		r =new rugulosThread(u);
-		gui.add(Enemigos[0].getGrafico());
-		Creador.crearNivel(Grilla, this, gui);
-		b= new bombermanThread(Bomberman);
-		r.start();
-		b.start();
+    	
+		Creador.crearNivel(Grilla, this, gui,Enemigos);
+		
+		Bomberman.start();//inicio el thread, no iniciaba nunca en el constructor de bomberman.
     }
     
-    public rugulosThread r(){
-    	return r;
-    }
     /**
      * @return
      */
@@ -116,8 +102,46 @@ public class NIVEL {
     }
     
     public void mover(int dir){
-    	b.setDir(dir);
-    	b.iniciar();
+    	Bomberman.select(dir);
+    	Bomberman.avanzarB(dir);
+    }
+    
+    public void moverM(){
+    	for(int i=0;i<Enemigos.length;i++){
+    		if(Enemigos[i]!=null){
+    			Enemigos[i].avanzar();
+    		}
+    	}
+
     	
     }
+    
+    public void unlock(){
+    	gui.unlock();
+    }
+    
+    public CELDA getCelda(int x, int y,int dir){
+    	CELDA next = null;
+    	switch(dir){
+    		case 0:
+    			next= Grilla[x][y+1];
+    			break;
+    		case 1:
+    			next = Grilla[x][y-1];
+    			break;
+    		case 2:
+    			next = Grilla[x-1][y];
+    			break;
+    		case 3:
+    			next = Grilla[x+1][y];
+    			break;
+    		case -1:
+    			next=Grilla[x][y];
+    			break;
+    	}
+    	return next;
+    }
+    
+    
+    
 }

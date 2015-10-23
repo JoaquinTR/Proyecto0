@@ -8,6 +8,7 @@ import bomba.BOMBA;
 import graficos.Grafico;
 import graficos.celdaGrafica;
 import nivel.NIVEL;
+import personajes.ENEMIGOS;
 import personajes.PERSONAJE;
 import powerups.POWERUP;
 
@@ -44,7 +45,7 @@ public class CELDA {
         this.y=y;
         this.MiNivel=Nivel;
         grafico = new celdaGrafica(x,y);
-        Presentes=new PERSONAJE[10];
+        Presentes=new PERSONAJE[11];
     }
 
     public void select(int i){
@@ -85,6 +86,22 @@ public class CELDA {
     public PERSONAJE[] getPresentes() {
         return this.Presentes;
     }
+    
+    
+    //recorro preguntando si hay alguien.
+    public boolean hayAlguien(){
+    	boolean p=false;
+    	int i=0;
+    	
+    	while((i<Presentes.length)&&(!p)){
+    		if(Presentes[i]!=null)
+    			p=true;
+    		else
+    			i++;
+    	}
+    	
+    	return p;
+    }
 
     /**
      * @return
@@ -120,7 +137,7 @@ public class CELDA {
     
     public void agregarPersonaje(PERSONAJE p){
     	int i =0;
-    	while(Presentes[i]!=null)
+    	while((i<Presentes.length)&&(Presentes[i]!=null))
     		i++;
     	
     	Presentes[i]=p;
@@ -129,14 +146,16 @@ public class CELDA {
     public void quitarPersonaje(PERSONAJE p){
     	boolean encontre= false;
     	int i =0;
-    	while((!encontre)&&(i<20)){
+    	while((i<Presentes.length-1)&&(!encontre)){
     		if(Presentes[i]==p)
     			encontre=true;
-    		i++;
+    		else
+    			i++;
     	}
     	
     	Presentes[i]=null;
     		
     }
+    
 
 }
