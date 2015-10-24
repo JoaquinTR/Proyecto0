@@ -1,28 +1,49 @@
 package personajes;
 
+
+/**
+ * Clase que modela el Thread del bomberman.
+ * 
+ * Tecnología de Programacion 2015.
+ * 
+ * @author Román, Ezequiel Jorge. LU: 97316
+ * @author Waigel, Micaela Anahí. LU: 99558
+ * @author Tricerri, Joaquín. LU:100236
+ */
 public class bombermanThread extends Thread{
 
-	// Logica que implementa al malo.
+			/**
+			 * logica del Thread.
+			 */
 			private BOMBERMAN mLogica;
 			
 			private int dir;
 			
-			// Flag que indica cuando debe detenerse la ejecución del hilo.
-			// Es volatile porque es accedida desde concurrentemente desde diferentes threads.
+			/**
+			 * Control de detencion del Thread.
+			 */
 			private volatile boolean mDetener;
 			
+			
+			/**
+			 * Constructor del Thread.
+			 * @param logica Logica del Thread.
+			 */
 			public bombermanThread(BOMBERMAN logica) {
 				this.mLogica  = logica;
 				this.mDetener = true;
 			}
 			
+			/**
+			 * Metodo encargado de la ejecucion temporal del Thread.
+			 */
 			@Override
 			public void run() {
 				
 				while(true){
 					if((!this.mDetener)&&(dir!=-2)){
-						// Duermo el hilo 1 segundo.
-						// De esta manera cada turno se ejecuta cada 1 segundo.
+						//duermo el hilo 4 veces, en total medio segundo
+						//entre medio se mueve el bomberman generando una transicion.
 						try {
 							
 							// Realizo el movimiento
@@ -42,7 +63,7 @@ public class bombermanThread extends Thread{
 							
 						} catch (InterruptedException e) { }
 						
-					} else if((!this.mDetener)&&(dir==-3)){
+					} else if((!this.mDetener)&&(dir==-3)){ //se trago una pared.
 						try {
 							Thread.sleep(200);
 							} catch (InterruptedException e1) {}
@@ -67,25 +88,36 @@ public class bombermanThread extends Thread{
 				
 			}
 			
+			/**
+			 * detiene este Thread.
+			 */
 			public void detener() {
 				this.mDetener = true;
 				
 				
 			}
 			
+			/**
+			 * inicia este Thread.
+			 */
 			public void iniciar(){
 				this.mDetener = false;
 			}
 			
+			/**
+			 * Carga la direccion del movimiento del bomberman.
+			 * @param dir direccion del movimiento siguiente.
+			 */
 			public void setDir(int dir){
 				this.dir=dir;
 			}
 			
+			/**
+			 * destruye este hilo.
+			 */
 			public void destruir() {
-				// Detengo la ejecucion del hilo.
 				this.detener();
 				
-				// Notificamos a la logica que este hilo se destruyo.
-				//this.mLogica.destruir();
+				//aca se notifica que el hilo se destruye deberia interrumpirse la ejecucion.
 			}
 }

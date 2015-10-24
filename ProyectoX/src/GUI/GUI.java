@@ -15,27 +15,60 @@ import java.awt.event.KeyEvent;
 
 import nivel.NIVEL;
 
+
+/**
+ * Clase que modela la Interfaz Gráfica.
+ * 
+ * Tecnología de Programacion 2015.
+ * 
+ * @author Román, Ezequiel Jorge. LU: 97316
+ * @author Waigel, Micaela Anahí. LU: 99558
+ * @author Tricerri, Joaquín. LU:100236
+ */
 public class GUI extends JFrame {
 	private static final long serialVersionUID = 1L;
 	
+	/**
+	 * Panel contenedor.
+	 */
 	private JPanel contentPane;
+	
+	/**
+	 * Nivel.
+	 */
 	private NIVEL MiNivel;
 	
-	private JLabel test;
-	
+	/**
+	 * Variable Reloj que produce el clock del nivel.
+	 */
 	private RELOJ r;
 	
+	/**
+	 * Blockeo de teclado.
+	 */
 	private boolean lock=false;
 	
+	/**
+	 * Flag de inicio del nivel.
+	 */
 	private boolean start=false;
 	
+	// -- ACLARACION -- 
+	// ****************
+	// ****************
+	//los 4 label siguientes son de testeo, no van a estar en el proyectoX final.
 	private JLabel pos;
 	
 	private JLabel pos2;
+
 	
-	//constructor
+	/**
+	 * Constructor de la gui. Inicializa todo lo necesario para que la gui funcione
+	 * y crea un nivel con sus elementos.
+	 */
 	public GUI(){
-		//mover personaje
+		
+		//direccion de movimiento del bomberman.
 		addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyReleased(KeyEvent arg0) {
@@ -43,13 +76,10 @@ public class GUI extends JFrame {
 			}
 		});
 		
-		
-		
-		
+		//tamaño no maximizado de la gui.
 		setSize(698,500);
 		
-		
-		
+		//creacion y seteo del panel.
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -57,18 +87,18 @@ public class GUI extends JFrame {
 		setTitle("Supers-Bomberman®");
 		getContentPane().setLayout(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
-		
-		MiNivel=new NIVEL(this);
-		
-		r=new RELOJ(MiNivel);
-		//r.start();
-		
-		contentPane.setVisible(true);
-		
 		ImageIcon b=new ImageIcon(this.getClass().getResource("/images/logo/logo.gif"));
 		setIconImage(b.getImage());
+		contentPane.setVisible(true);
 		
+		//Creacion del nivel.
+		MiNivel=new NIVEL(this);
+		
+		//Creacion del reloj.
+		r=new RELOJ(MiNivel);
+		
+		//AUXILIARES NO VAN A ESTAR EN EL PROYECTO FINAL. 
+		//AYUDAN A SEGUIR LAS ACTUALIZACIONES DE MOVIMIENTO DEL BOMBERMAN.
 		pos=new JLabel();
 		pos.setText("Posicion");
 		pos.setBounds(25, 25, 250, 50);
@@ -79,12 +109,17 @@ public class GUI extends JFrame {
 		pos2.setBounds(300, 25, 250, 50);
 		add(pos2);
 		
+		
+		//adicionales a la gui.
 		setVisible(true);
 		setExtendedState(getExtendedState() | JFrame.MAXIMIZED_BOTH);
 	}
 	
 	
-	
+	/**
+	 * metodo main, crea una nueva gui (esta clase).
+	 * 
+	 */
 	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -99,7 +134,12 @@ public class GUI extends JFrame {
 		});
 	 }
 	
-	 	public void mover(KeyEvent arg0){
+	/**
+	 * toma el teclado y manda el mensaje mover al nivel con la direccion
+	 * a la que se tiene que mover el bomberman. adicionalmente, el primer
+	 * movimiento inicia el reloj, y con esto el movimiento de los enemigos.
+	 */
+	 public void mover(KeyEvent arg0){
 	 		
 	 			
 	 			
@@ -166,10 +206,16 @@ public class GUI extends JFrame {
 
 		}
 	 	
+	 	/**
+	 	 * destraba el teclado.
+	 	 */
 	 	public void unlock(){
 	 		lock=false;
 	 	}
 	 	
+	 	/**
+	 	 * traba el teclado manualmente (se usa cuando se muere el bomberman.
+	 	 */
 	 	public void lock(){
 	 		lock=true;
 	 	}

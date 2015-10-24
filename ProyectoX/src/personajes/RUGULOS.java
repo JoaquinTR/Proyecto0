@@ -8,17 +8,26 @@ import mapa.CELDA;
 import nivel.NIVEL;
 
 /**
+ * Clase que modela un rugulo.
  * 
+ * Tecnología de Programacion 2015.
+ * 
+ * @author Román, Ezequiel Jorge. LU: 97316
+ * @author Waigel, Micaela Anahí. LU: 99558
+ * @author Tricerri, Joaquín. LU:100236
  */
 public class RUGULOS extends ENEMIGOS {
 
-	
+	/**
+	 * variable Thread que controla la transicion del rugulo.
+	 */
 	private rugulosThread T;
 
     /**
-     * @param MiNivel 
-     * @param x 
-     * @param y
+     * constructor.
+     * @param MiNivel nivel al que pertenece
+     * @param x posicion x en la matriz
+     * @param y posicion y en la matriz.
      */
     public RUGULOS(NIVEL MiNivel, int x, int y) {
         super(MiNivel,x,y,1);
@@ -28,11 +37,13 @@ public class RUGULOS extends ENEMIGOS {
     }
 
     /**
-     * 
+     * Avance propio de un Rugulo.
      */
     public void avanzar() {
     	Random rnd = new Random();
 		int dir = rnd.nextInt(4);
+		
+    	T.setDir(dir);
     	
 		CELDA actual = MiNivel.getCelda(x, y, -1);
     	CELDA next= MiNivel.getCelda(x, y, dir);
@@ -40,12 +51,13 @@ public class RUGULOS extends ENEMIGOS {
     	boolean puedo=next.getPared()==null;
     	
     	if(puedo){
-    		T.setDir(dir);
-    		T.iniciar();
+    		
+    		
     		actual.quitarPersonaje(this);
     		next.agregarPersonaje(this);
     		this.x=next.getX();
     		this.y=next.getY();
+    		T.iniciar();
     	}
     	if((next.getX()==MiNivel.getBomberman().getX())&&(next.getY()==MiNivel.getBomberman().getY())){
     		MiNivel.getBomberman().select(12);//afecto al bomberman
@@ -54,12 +66,21 @@ public class RUGULOS extends ENEMIGOS {
 		
 		
     }
+    
+    /**
+     * Movimiento grafico de los Rugulos.
+     * @param dir direccion ordenada.
+     */
     public void mover(int dir){
     	grafico.select(dir);
 		grafico.mover(dir);
     }
     
+    /**
+     * metodo de destruccion de los Rugulos.
+     */
     public void destruirme(){
-    	
+    	//experimental falta borrar el malo.
+    	MiNivel.setPuntaje(15);
     }
 }

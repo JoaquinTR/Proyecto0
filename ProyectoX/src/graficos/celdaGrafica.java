@@ -5,8 +5,24 @@ import java.awt.Image;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
+
+/**
+ * Clase que modela una celda gráficamente.
+ * 
+ * Tecnología de Programacion 2015.
+ * 
+ * @author Román, Ezequiel Jorge. LU: 97316
+ * @author Waigel, Micaela Anahí. LU: 99558
+ * @author Tricerri, Joaquín. LU:100236
+ */
 public class celdaGrafica extends Grafico {
 
+    /**
+     * constructor.
+     * 
+     * @param x posicion x en la matriz.
+     * @param y posicion y en la matriz.
+     */
 	public celdaGrafica(int x, int y) {
 		super(x, y);
 		ImageIcon a=new ImageIcon(this.getClass().getResource("/images/mapa/pasto.gif"));

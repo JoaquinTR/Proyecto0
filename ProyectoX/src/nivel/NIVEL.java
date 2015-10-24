@@ -12,27 +12,58 @@ import personajes.bombermanThread;
 import personajes.rugulosThread;
 
 /**
+ * Clase que modela la logica de nivel.
  * 
+ * Tecnología de Programacion 2015.
+ * 
+ * @author Román, Ezequiel Jorge. LU: 97316
+ * @author Waigel, Micaela Anahí. LU: 99558
+ * @author Tricerri, Joaquín. LU:100236
  */
 public class NIVEL {
 
+	/**
+	 * Puntaje de la partida.
+	 */
     private int Puntaje;
 
+    /**
+     * Cantidad de paredes destructibles restantes.
+     */
     private int ParedesDestructiblesRestantes;
 
+    /**
+     * Creador del nivel.
+     */
     private CREADOR Creador;
 
+    /**
+     * Bomberman del jugador.
+     */
     protected BOMBERMAN Bomberman;
 
+    /**
+     * enemigos del nivel.
+     */
     protected ENEMIGOS[] Enemigos;
 
-    protected BOMBA MiBomba;
-
+    /**
+     * la grilla del nivel. 
+     */
     protected CELDA[][] Grilla;
     
-    
+    /**
+     * interfaz grafica que se encarga de las interacciones usuario-logica.
+     */
     private GUI gui;
 
+    
+    
+    
+    /**
+     * Constructor del nivel.
+     * @param gui la interfaz grafica del nivel.
+     */
     public NIVEL(GUI gui) {
     	this.gui=gui;
     	
@@ -45,67 +76,67 @@ public class NIVEL {
 		Bomberman.start();//inicio el thread, no iniciaba nunca en el constructor de bomberman.
     }
     
-    /**
-     * @return
-     */
-    public CELDA[][] getGrilla() {
-        return Grilla;
-    }
 
     /**
-     * @return
+     * Retorna el arreglo de enemigos.
+     * @return los enemigos.
      */
     public ENEMIGOS[] getEnemigos() {
         return Enemigos;
     }
 
     /**
-     * @return
+     * Retorna el bomberman.
+     * @return el bomberman.
      */
     public BOMBERMAN getBomberman() {
         return Bomberman;
     }
 
     /**
-     * @return
+     * Retorna el puntaje actual.
+     * @return Puntaje del nivel.
      */
     public int getPuntaje() {
         return Puntaje;
     }
 
     /**
-     * @param p
+     * Aumenta el puntaje p puntos.
+     * @param p cantidad de puntos a aumentar.
      */
     public void setPuntaje(int p) {
     	Puntaje += p;
     }
 
     /**
-     * @return
-     */
-    public BOMBA getBomba() {
-        return MiBomba;
-    }
-
-    /**
-     * @return
+     * Retorna la cantidad de paredes que se no se destruyeron.
+     * @return cantidad de paredes restantes para ser destruidas.
      */
     public int getPDR() {
         return ParedesDestructiblesRestantes;
     }
 
     /**
-     * @param n
+     * decrementa la cantidad de paredes por destruir.
+     * @param n cantidad de paredes destruidas (entre 0 y 3 ).
      */
     public void decPDR(int n) {
     	ParedesDestructiblesRestantes -= n;
     }
     
+    /**
+     * mover al bomberman en la direccion pasada por paramentro
+     * @param dir direccion del movimiento.
+     */
     public void mover(int dir){
     	Bomberman.select(dir);
     	Bomberman.avanzarB(dir);
     }
     
+    /**
+     * mover a todos los enemigos ( en funcion del reloj)
+     */
     public void moverM(){
     	for(int i=0;i<Enemigos.length;i++){
     		if(Enemigos[i]!=null){
@@ -116,14 +147,28 @@ public class NIVEL {
     	
     }
     
+    /**
+     * destraba el teclado.
+     */
     public void unlock(){
     	gui.unlock();
     }
     
+    /**
+     * traba el teclado.
+     */
     public void lock(){
     	gui.lock();
     }
     
+    /**
+     * Obtiene la celda a utilizar y la retorna.
+     * 
+     * @param x posicion en x de la matriz.
+     * @param y posicion en y de la matriz.
+     * @param dir direccion a buscar en la matriz.	
+     * @return la celda dependiendo de la direccion: 0 abajo, 1 arriba, 2 izquierda, 3 derecha, -1 la celda actual.
+     */
     public CELDA getCelda(int x, int y,int dir){
     	CELDA next = null;
     	switch(dir){

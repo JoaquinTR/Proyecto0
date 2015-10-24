@@ -1,19 +1,19 @@
 package nivel;
 
-import java.awt.Image;
-
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
-
 import GUI.GUI;
 import mapa.CELDA;
 import personajes.BOMBERMAN;
 import personajes.ENEMIGOS;
 import personajes.RUGULOS;
-import personajes.rugulosThread;
 
 /**
+ * Clase que modela un creador para el nivel.
  * 
+ * Tecnología de Programacion 2015.
+ * 
+ * @author Román, Ezequiel Jorge. LU: 97316
+ * @author Waigel, Micaela Anahí. LU: 99558
+ * @author Tricerri, Joaquín. LU:100236
  */
 public class CREADORNIVEL extends CREADOR{
 	
@@ -96,98 +96,113 @@ public class CREADORNIVEL extends CREADOR{
     }
 
     /**
-     * @param x 
-     * @param y 
-     * @param MiNivel
+     * Crea un rugulo.
+     * @param x Posicion en x dentro de la matriz.
+     * @param y Posicion en y dentro de la matriz.
+     * @param MiNivel Nivel al que pertenece.
      */
     public void crearRugulos(int x, int y, NIVEL MiNivel) {
-        // TODO implement here
+        
     }
 
     /**
-     * @param x 
-     * @param y 
-     * @param MiNivel
+     * Crea un Altair.
+     * @param x Posicion en x dentro de la matriz.
+     * @param y Posicion en y dentro de la matriz.
+     * @param MiNivel Nivel al que pertenece.
      */
     public void crearAltair(int x, int y, NIVEL MiNivel) {
-        // TODO implement here
+       
     }
 
     /**
-     * @param MiNivel
+     * Crea un Sirius.
+     * @param x Posicion en x dentro de la matriz.
+     * @param y Posicion en y dentro de la matriz.
+     * @param MiNivel Nivel al que pertenece.
      */
     public void crearSirius(NIVEL MiNivel) {
-        // TODO implement here
+        
     }
 
     /**
-     * @param MiNivel
+     * Crea el bomberman.
+     * @param x Posicion en x dentro de la matriz.
+     * @param y Posicion en y dentro de la matriz.
+     * @param MiNivel Nivel al que pertenece.
      */
     public void crearBomberman(NIVEL MiNivel) {
-        // TODO implement here
+        
     }
 
     /**
-     * @param x 
-     * @param y 
-     * @param MiNivel
+     * Crea un Speedup.
+     * @param x Posicion en x dentro de la matriz.
+     * @param y Posicion en y dentro de la matriz.
+     * @param MiNivel Nivel al que pertenece.
      */
     public void crearSpeedup(int x, int y, NIVEL MiNivel) {
-        // TODO implement here
+        
     }
 
     /**
-     * @param x 
-     * @param y 
-     * @param MiNivel
+     * Crea un Fatality.
+     * @param x Posicion en x dentro de la matriz.
+     * @param y Posicion en y dentro de la matriz.
+     * @param MiNivel Nivel al que pertenece.
      */
     public void crearFatality(int x, int y, NIVEL MiNivel) {
-        // TODO implement here
+        
     }
 
     /**
-     * @param x 
-     * @param y 
-     * @param MiNivel
+     * Crea un Bombality.
+     * @param x Posicion en x dentro de la matriz.
+     * @param y Posicion en y dentro de la matriz.
+     * @param MiNivel Nivel al que pertenece.
      */
     public void crearBombality(int x, int y, NIVEL MiNivel) {
-        // TODO implement here
+        
     }
 
     /**
-     * @param x 
-     * @param y 
-     * @param MiNivel
+     * Crea un Masacrality.
+     * @param x Posicion en x dentro de la matriz.
+     * @param y Posicion en y dentro de la matriz.
+     * @param MiNivel Nivel al que pertenece.
      */
     public void crearMasacrality(int x, int y, NIVEL MiNivel) {
-        // TODO implement here
+        
     }
 
     /**
-     * @param x 
-     * @param y 
-     * @param MiNivel
+     * Crea una Celda transitable.
+     * @param x Posicion en x dentro de la matriz.
+     * @param y Posicion en y dentro de la matriz.
+     * @param MiNivel Nivel al que pertenece.
      */
     public void crearCelda(int x, int y, NIVEL MiNivel) {
-        // TODO implement here
+        
     }
 
     /**
-     * @param x 
-     * @param y 
-     * @param MiNivel
+     * Crea una celda con pared destructible.
+     * @param x Posicion en x dentro de la matriz.
+     * @param y Posicion en y dentro de la matriz.
+     * @param MiNivel Nivel al que pertenece.
      */
     public void crearCeldaPD(int x, int y, NIVEL MiNivel) {
-        // TODO implement here
+       
     }
 
     /**
-     * @param x 
-     * @param y 
-     * @param MiNivel
+     * Crea una celda con pared indestructible.
+     * @param x Posicion en x dentro de la matriz.
+     * @param y Posicion en y dentro de la matriz.
+     * @param MiNivel Nivel al que pertenece.
      */
     public void crearCeldaPI(int x, int y, NIVEL MiNivel) {
-        // TODO implement here
+        
     }
 
 }

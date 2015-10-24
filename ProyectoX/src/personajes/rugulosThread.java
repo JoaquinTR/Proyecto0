@@ -1,32 +1,47 @@
 package personajes;
 
-
+/**
+ * Clase que modela el Thread de un rugulo.
+ * 
+ * Tecnología de Programacion 2015.
+ * 
+ * @author Román, Ezequiel Jorge. LU: 97316
+ * @author Waigel, Micaela Anahí. LU: 99558
+ * @author Tricerri, Joaquín. LU:100236
+ */
 public class rugulosThread extends Thread{
-	// Logica que implementa al malo.
+		/**
+		 * Logica del Thread.
+		 */
 		private RUGULOS mLogica;
 		
 		private int dir;
 		
-		// Flag que indica cuando debe detenerse la ejecución del hilo.
-		// Es volatile porque es accedida desde concurrentemente desde diferentes threads.
+		/**
+		 * Bandera de deteccion de este Thread.
+		 */
 		private volatile boolean mDetener;
 		
+		/**
+		 * Rugulo que implementa la logica del Thread.
+		 * @param logica logica utilizada.
+		 */
 		public rugulosThread(RUGULOS logica) {
 			this.mLogica  = logica;
 			this.mDetener = true;
 		}
 		
+		/**
+		 * Metodo de ejecucion de este Thread.
+		 */
 		@Override
 		public void run() {
-			//mDetener=false;
-			// Ejecuto indefinidamente hasta que el flag sea verdadero.
-			//Cambiar if por while y sacar el detener
+			
 			while(true){
 				if(!this.mDetener){
-					// Duermo el hilo 1 segundo.
-					// De esta manera cada turno se ejecuta cada 1 segundo.
+					
 					try {
-						// Realizo el movimiento
+						// movimiento transitivo del rugulo, 0.5 segundos de duracion
 						Thread.sleep(125);
 						this.mLogica.mover(dir);
 						Thread.sleep(125);
@@ -46,24 +61,35 @@ public class rugulosThread extends Thread{
 			//
 		}
 		
+		/**
+		 * Metodo de detencion del hilo.
+		 */
 		public void detener() {
 			
-			// Seteamos el flag para detener su ejecución.
 			this.mDetener = true;
 		}
 		
+		/**
+		 * destruccion del hilo. (rugulo).
+		 */
 		public void destruir() {
-			// Detengo la ejecucion del hilo.
+
 			this.detener();
 			
-			// Notificamos a la logica que este hilo se destruyo.
-			//this.mLogica.destruir();
+			//muerte del rugulo.
 		}
 		
+		/**
+		 * Seteo de la direccion del rugulo.
+		 * @param dir direccion del movimiento.
+		 */
 		public void setDir(int dir){
 			this.dir=dir;
 		}
 		
+		/**
+		 * inicia la transicion del Thread.
+		 */
 		public void iniciar(){
 			this.mDetener = false;
 		}
