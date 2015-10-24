@@ -60,6 +60,10 @@ public class GUI extends JFrame {
 	private JLabel pos;
 	
 	private JLabel pos2;
+	
+	private JLabel pos3;
+	
+	private JLabel pos4;
 
 	
 	/**
@@ -95,7 +99,7 @@ public class GUI extends JFrame {
 		MiNivel=new NIVEL(this);
 		
 		//Creacion del reloj.
-		r=new RELOJ(MiNivel);
+		r=new RELOJ(MiNivel,this);
 		
 		//AUXILIARES NO VAN A ESTAR EN EL PROYECTO FINAL. 
 		//AYUDAN A SEGUIR LAS ACTUALIZACIONES DE MOVIMIENTO DEL BOMBERMAN.
@@ -108,6 +112,16 @@ public class GUI extends JFrame {
 		pos2.setText("Posicion grafica");
 		pos2.setBounds(300, 25, 250, 50);
 		add(pos2);
+		
+		pos3=new JLabel();
+		pos3.setText("Posicion");
+		pos3.setBounds(575, 25, 250, 50);
+		add(pos3);
+		
+		pos4=new JLabel();
+		pos4.setText("Posicion grafica");
+		pos4.setBounds(800, 25, 250, 50);
+		add(pos4);
 		
 		
 		//adicionales a la gui.
@@ -134,18 +148,28 @@ public class GUI extends JFrame {
 		});
 	 }
 	
+	// ---METODO AUXILIAR---
+	// *********************
+	// usado desde el reloj, le indica que hubo un pulso y
+	// se debe actualizar los display de posicion del enemigo0 (el rugulo)
+	public void pulse(){
+		String a="pos matriz: "+MiNivel.getEnemigos()[0].getX()+" "+MiNivel.getEnemigos()[0].getY();
+		pos3.setText(a);
+		a="pos matriz: "+MiNivel.getEnemigos()[0].getGrafico().getX()+" "+MiNivel.getEnemigos()[0].getGrafico().getY();
+		pos4.setText(a);
+	}
+	
 	/**
 	 * toma el teclado y manda el mensaje mover al nivel con la direccion
 	 * a la que se tiene que mover el bomberman. adicionalmente, el primer
 	 * movimiento inicia el reloj, y con esto el movimiento de los enemigos.
 	 */
 	 public void mover(KeyEvent arg0){
-	 		
-	 			
-	 			
+	 		int dir= arg0.getKeyCode();
+
 	 		if(!lock){
 	 			
-	 			int dir= arg0.getKeyCode();
+	 			
 	 			switch (dir){
 				case KeyEvent.VK_UP : //Arriba
 					MiNivel.mover(1);

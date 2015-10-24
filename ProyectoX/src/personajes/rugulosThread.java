@@ -53,6 +53,8 @@ public class rugulosThread extends Thread{
 						
 						this.mLogica.select(dir+4);
 						
+						mLogica.unlock();
+						
 					} catch (InterruptedException e) { }
 				}
 				detener();

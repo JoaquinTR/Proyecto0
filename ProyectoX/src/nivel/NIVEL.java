@@ -141,6 +141,7 @@ public class NIVEL {
     	for(int i=0;i<Enemigos.length;i++){
     		if(Enemigos[i]!=null){
     			Enemigos[i].avanzar();
+    			//Enemigos[i].lock();
     		}
     	}
 

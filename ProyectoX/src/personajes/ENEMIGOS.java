@@ -13,6 +13,13 @@ import nivel.NIVEL;
  */
 public abstract class ENEMIGOS extends PERSONAJE {
 
+	/**
+	 * Traba el movimiento de este enemigo, con el fin de 
+	 * evitar errores propios de la combinacion de los Thread 
+	 * y la logica (traspasaban paredes cuando no debian).
+	 */
+	protected boolean lock;
+	
     /**
      * constructor.
      * @param MiNivel nivel al que pertenece
@@ -22,11 +29,25 @@ public abstract class ENEMIGOS extends PERSONAJE {
      */
     protected ENEMIGOS(NIVEL MiNivel, int x, int y, float vel) {
         super(MiNivel,x,y,vel);
+        lock=false;
     }
 
     /**
      * avance a implementar en las sublclases implementadoras.
      */
     public abstract void avanzar();
+    
+    /**
+     * Traba el movimiento de este personaje.
+     */
+    public void lock(){
+    	lock=true;
+    }
 
+    /**
+     * Destraba el movimiento de este personaje.
+     */
+    public void unlock(){
+    	lock=false;
+    }
 }

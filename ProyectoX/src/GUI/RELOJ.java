@@ -33,27 +33,30 @@ public class RELOJ extends Thread{
      */
     private int horas;
     
+    private GUI gui;
 
     /**
      * constructor.
      * @param MiNivel nivel al que pertenece.
      */
-    public RELOJ(NIVEL MiNivel){
+    public RELOJ(NIVEL MiNivel,GUI gui){
     	segundos=0;
     	minutos=0;
     	horas=0;
     	this.MiNivel= MiNivel;
+    	this.gui=gui;
     }
     
 	
 	public void run() {
 		while(true){
 			try {
-				Thread.sleep(1500);
+				Thread.sleep(1000);
 			} catch (InterruptedException e) {}
 			
 			
 			MiNivel.moverM();
+			gui.pulse();
 		
 		
 		}
