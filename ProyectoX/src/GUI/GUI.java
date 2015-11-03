@@ -46,7 +46,7 @@ public class GUI extends JFrame {
 	/**
 	 * Blockeo de teclado.
 	 */
-	private boolean lock=false;
+	private volatile boolean lock=false;
 	
 	/**
 	 * Flag de inicio del nivel.
@@ -183,6 +183,8 @@ public class GUI extends JFrame {
 						start=true;
 					}
 				
+					lock=true;
+					
 					break;
 				case KeyEvent.VK_DOWN : //Abajo
 					MiNivel.mover(0);	
@@ -196,6 +198,8 @@ public class GUI extends JFrame {
 						start=true;
 					}
 					
+					lock=true;
+					
 					break;
 				case KeyEvent.VK_LEFT : //Izquierda
 					MiNivel.mover(2);
@@ -208,6 +212,8 @@ public class GUI extends JFrame {
 						r.start();
 						start=true;
 					}
+					
+					lock=true;
 				
 					break;
 				case KeyEvent.VK_RIGHT : //Derecha
@@ -222,11 +228,13 @@ public class GUI extends JFrame {
 						start=true;
 					}
 					
+					lock=true;
+					
 					break;
 				}
 
 	 		}
-	 		lock=true;
+	 		
 
 		}
 	 	

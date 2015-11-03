@@ -15,7 +15,7 @@ public class PARED {
 	/**
 	 * Mantiene si la pared es destructible o no.
 	 */
-	boolean destructible;
+	private boolean destructible;
 	
     /**
      * Celda a la que pertenece esta pared.

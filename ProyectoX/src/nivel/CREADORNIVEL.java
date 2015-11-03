@@ -33,9 +33,10 @@ public class CREADORNIVEL extends CREADOR{
         int outer= 31;
         int outer2=13;
 
+        
 		MiNivel.Bomberman=new BOMBERMAN(MiNivel,1,1);
-		MiNivel.Bomberman.select(4);
-		gui.add(MiNivel.Bomberman.getGrafico());
+		MiNivel.getBomberman().select(4);
+		gui.add(MiNivel.getBomberman().getGrafico());
         
 		Enemigos[0] = new RUGULOS(MiNivel,3,1); 
 		Enemigos[0].select(1);
@@ -89,7 +90,7 @@ public class CREADORNIVEL extends CREADOR{
         }
         
         grilla[3][1].agregarPersonaje(Enemigos[0]);
-        grilla[1][5].agregarPersonaje(Enemigos[1]);
+        //grilla[1][5].agregarPersonaje(Enemigos[1]);
         grilla[1][1].agregarPersonaje(MiNivel.Bomberman);
         
         

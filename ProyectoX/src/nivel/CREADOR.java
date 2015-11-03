@@ -2,6 +2,7 @@ package nivel;
 
 import GUI.GUI;
 import mapa.CELDA;
+import personajes.BOMBERMAN;
 import personajes.ENEMIGOS;
 
 /**
