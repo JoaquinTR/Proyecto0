@@ -33,7 +33,6 @@ public class RUGULOS extends ENEMIGOS {
         super(MiNivel,x,y,1);
         this.grafico = new ruguloGrafico(x,y);
         T=new rugulosThread(this);
-        T.start();
     }
 
     /**
@@ -45,20 +44,21 @@ public class RUGULOS extends ENEMIGOS {
 			int dir = rnd.nextInt(4);
 		
     		T.setDir(dir);
-    	
+    		select(dir+4);
 			CELDA actual = MiNivel.getCelda(x, y, -1);
     		CELDA next= MiNivel.getCelda(x, y, dir);
     	
     		boolean puedo=next.getPared()==null;
     	
     		if(puedo){
-    		
-    			T.iniciar();
+    			
+
     			actual.quitarPersonaje(this);
     			next.agregarPersonaje(this);
     			this.x=next.getX();
     			this.y=next.getY();
-    			
+
+    			this.grafico.mover(dir);
     		
     			if((next.getX()==MiNivel.getBomberman().getX())&&(next.getY()==MiNivel.getBomberman().getY())){
     				MiNivel.getBomberman().select(12);//afecto al bomberman
@@ -71,6 +71,7 @@ public class RUGULOS extends ENEMIGOS {
     	}
 		
     }
+    
     
     /**
      * Movimiento grafico de los Rugulos.

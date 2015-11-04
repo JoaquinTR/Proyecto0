@@ -55,7 +55,7 @@ public class RELOJ extends Thread{
 			} catch (InterruptedException e) {}
 			
 			
-			MiNivel.moverM();
+			//MiNivel.moverM();
 			gui.pulse();
 		
 		

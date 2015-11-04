@@ -1,8 +1,11 @@
 package graficos;
 
+import GUI.constantes;
 import java.awt.Point;
 import javax.swing.Icon;
 import javax.swing.JLabel;
+
+import GUI.constantes;
 
 /**
  * Clase que modela un objeto gráfico.
@@ -99,32 +102,42 @@ public abstract class Grafico {
 	 * @param dir direccion del movimiento.
 	 */
 	public void mover(int dir){
+		
+		try {
 		switch(dir){
-			case 0: //abajo
-				
-				grafico.setLocation(grafico.getX(),grafico.getY()+11);
-				pos.x=grafico.getX();
-				pos.y=grafico.getY();
-
+			case constantes.ABAJO: 
+				for(int i=0;i<4;i++){
+					grafico.setLocation(grafico.getX(),grafico.getY()+11);
+					pos.x=grafico.getX();
+					pos.y=grafico.getY();
+					Thread.sleep(125);
+				}
 				break;
-			case 1://arriba
-				
-				grafico.setLocation(grafico.getX(),grafico.getY()-11);
-				pos.x=grafico.getX();
-				pos.y=grafico.getY();
+			case constantes.ARRIBA:
+				for(int i=0;i<4;i++){
+					grafico.setLocation(grafico.getX(),grafico.getY()-11);
+					pos.x=grafico.getX();
+					pos.y=grafico.getY();
+					Thread.sleep(125);
+				}
 				break;
-			case 2://izquierda
-				
-				grafico.setLocation(grafico.getX()-11,grafico.getY());
-				pos.x=grafico.getX();
-				pos.y=grafico.getY();
+			case constantes.IZQUIERDA:
+				for(int i=0;i<4;i++){
+					grafico.setLocation(grafico.getX()-11,grafico.getY());
+					pos.x=grafico.getX();
+					pos.y=grafico.getY();
+					Thread.sleep(125);
+				}
 				break;
-			case 3://derecha
-				
-				grafico.setLocation(grafico.getX()+11,grafico.getY());
-				pos.x=grafico.getX();
-				pos.y=grafico.getY();
+			case constantes.DERECHA:
+				for(int i=0;i<4;i++){
+					grafico.setLocation(grafico.getX()+11,grafico.getY());
+					pos.x=grafico.getX();
+					pos.y=grafico.getY();
+					Thread.sleep(125);
+				}
 				break;
 		}
+		} catch (InterruptedException e) {}
 	}
 }

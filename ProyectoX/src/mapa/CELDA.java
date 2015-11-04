@@ -1,6 +1,8 @@
 package mapa;
 
 
+import java.util.*;
+
 import javax.swing.JLabel;
 
 import bomba.BOMBA;
@@ -54,7 +56,7 @@ public class CELDA {
     /**
      * Los personajes presentes en esta celda, puede no haber.
      */
-    protected PERSONAJE Presentes[];
+    protected LinkedList<PERSONAJE> Presentes;
     
     /**
      * el grafico de esta celda.
@@ -74,7 +76,7 @@ public class CELDA {
         this.y=y;
         this.MiNivel=Nivel;
         grafico = new celdaGrafica(x,y);
-        Presentes=new PERSONAJE[11];
+        Presentes=new LinkedList<PERSONAJE>();
     }
 
     /**
@@ -114,7 +116,7 @@ public class CELDA {
      * Retorna los personajes que contiene esta celda.
      * @return Coleccion de personajes.
      */
-    public PERSONAJE[] getPresentes() {
+    public LinkedList<PERSONAJE> getPresentes() {
         return this.Presentes;
     }
     
@@ -124,17 +126,9 @@ public class CELDA {
      * @return True si hay alguien, falso caso contrario.
      */
     public boolean hayAlguien(){
-    	boolean p=false;
-    	int i=0;
     	
-    	while((i<Presentes.length)&&(!p)){
-    		if(Presentes[i]!=null)
-    			p=true;
-    		else
-    			i++;
-    	}
+    	return !Presentes.isEmpty();
     	
-    	return p;
     }
 
     /**
@@ -181,11 +175,7 @@ public class CELDA {
      * @param p Personaje ingresante.
      */
     public void agregarPersonaje(PERSONAJE p){
-    	int i =0;
-    	while((i<Presentes.length)&&(Presentes[i]!=null))
-    		i++;
-    	
-    	Presentes[i]=p;
+    	Presentes.addLast(p);
     }
     
     /**
@@ -193,16 +183,8 @@ public class CELDA {
      * @param p Personaje saliente.
      */
     public void quitarPersonaje(PERSONAJE p){
-    	boolean encontre= false;
-    	int i =0;
-    	while((i<Presentes.length-1)&&(!encontre)){
-    		if(Presentes[i]==p)
-    			encontre=true;
-    		else
-    			i++;
-    	}
     	
-    	Presentes[i]=null;
+    	Presentes.remove(p);
     		
     }
     

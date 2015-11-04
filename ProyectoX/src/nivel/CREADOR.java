@@ -1,8 +1,9 @@
 package nivel;
 
+import java.util.LinkedList;
+
 import GUI.GUI;
 import mapa.CELDA;
-import personajes.BOMBERMAN;
 import personajes.ENEMIGOS;
 
 /**
@@ -27,7 +28,7 @@ public abstract class CREADOR {
      * @param MiNivel nivel al que pertenece
      * @param y posicion y en la matriz.
      */
-    public abstract void crearNivel(CELDA[][] grilla, NIVEL MiNivel,GUI gui, ENEMIGOS[] e);
+    public abstract void crearNivel(CELDA[][] grilla, NIVEL MiNivel,GUI gui, LinkedList<ENEMIGOS> Enemigos);
 
     /**
      * Crea un rugulo.

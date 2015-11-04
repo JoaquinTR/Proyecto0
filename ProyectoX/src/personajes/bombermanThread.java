@@ -1,5 +1,6 @@
 package personajes;
 
+import GUI.constantes;
 
 /**
  * Clase que modela el Thread del bomberman.
@@ -41,11 +42,11 @@ public class bombermanThread extends Thread{
 			public void run() {
 				
 				while(true){
-					if((!this.mDetener)&&(dir!=-2)){
+					if((!this.mDetener)&&(dir!=constantes.DESTRUCCION)){
 						//duermo el hilo 4 veces, en total medio segundo
 						//entre medio se mueve el bomberman generando una transicion.
-						try {
-							
+						//try {
+							/*
 							// Realizo el movimiento
 							Thread.sleep(125);
 							this.mLogica.mover(dir);
@@ -55,25 +56,28 @@ public class bombermanThread extends Thread{
 							this.mLogica.mover(dir);
 							Thread.sleep(125);
 							this.mLogica.mover(dir);
-							
+							*/
+							this.mLogica.mover(dir);
 							this.mLogica.select(dir+4);
 							
 							mLogica.unlock();
 							detener();
 							
-						} catch (InterruptedException e) { }
+						//} catch (InterruptedException e) { }
 						
-					} else if((!this.mDetener)&&(dir==-3)){ //se trago una pared.
+					} else if((!this.mDetener)&&(dir==constantes.CHOQUE)){ //se trago una pared.
+						
 						try {
 							Thread.sleep(200);
 							} catch (InterruptedException e1) {}
+						
 						mLogica.unlock();
 						detener();
 						
 					}
 					
 					//direccion -2 indica la transicion de la muerte.
-					if(dir==-2){
+					if(dir==constantes.DESTRUCCION){
 						mLogica.select(12);
 						try {
 							Thread.sleep(1000);

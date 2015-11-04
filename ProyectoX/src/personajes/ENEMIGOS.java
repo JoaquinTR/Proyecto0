@@ -18,7 +18,7 @@ public abstract class ENEMIGOS extends PERSONAJE {
 	 * evitar errores propios de la combinacion de los Thread 
 	 * y la logica (traspasaban paredes cuando no debian).
 	 */
-	protected boolean lock;
+	protected volatile boolean lock;
 	
     /**
      * constructor.

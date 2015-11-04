@@ -1,5 +1,6 @@
 package personajes;
 
+import GUI.constantes;
 import graficos.jugadorGrafico;
 import mapa.CELDA;
 import nivel.NIVEL;
@@ -118,12 +119,14 @@ public class BOMBERMAN extends PERSONAJE {
     	b.setDir(dir);
     	
     	
+    	
     	CELDA actual = MiNivel.getCelda(x, y, -1);
     	CELDA next= MiNivel.getCelda(x, y, dir);
     		
     	boolean puedo=next.getPared()==null;
     	
     	if(puedo){
+    		select(dir);
     		boolean hay=false;
     		hay=next.hayAlguien();
 
@@ -141,7 +144,7 @@ public class BOMBERMAN extends PERSONAJE {
     		
     	}
     	else{
-    		b.setDir(-3);
+    		b.setDir(constantes.CHOQUE);
     		b.iniciar();
     		select(dir+4);
     	}
@@ -162,7 +165,7 @@ public class BOMBERMAN extends PERSONAJE {
      * destruye el bomberman y traba el teclado. GAME OVER.
      */
     public void destruirme(){
-    	b.setDir(-2);
+    	b.setDir(constantes.DESTRUCCION);
     	MiNivel.lock();
     	
     }

@@ -1,8 +1,9 @@
 package nivel;
 
+import java.util.*;
+
 import GUI.GUI;
 import mapa.CELDA;
-import personajes.BOMBERMAN;
 import personajes.ENEMIGOS;
 import personajes.RUGULOS;
 
@@ -28,19 +29,18 @@ public class CREADORNIVEL extends CREADOR{
      * @param grilla 
      * @param MiNivel
      */
-    public void crearNivel(CELDA[][] grilla, NIVEL MiNivel,GUI gui,ENEMIGOS[] Enemigos) {
+    public void crearNivel(CELDA[][] grilla, NIVEL MiNivel,GUI gui, LinkedList<ENEMIGOS> Enemigos) {
         int i =0;
         int outer= 31;
         int outer2=13;
 
         
-		MiNivel.Bomberman=new BOMBERMAN(MiNivel,1,1);
 		MiNivel.getBomberman().select(4);
 		gui.add(MiNivel.getBomberman().getGrafico());
         
-		Enemigos[0] = new RUGULOS(MiNivel,3,1); 
-		Enemigos[0].select(1);
-		gui.add(Enemigos[0].getGrafico());
+		Enemigos.addLast(new RUGULOS(MiNivel,3,1));
+		Enemigos.getLast().select(1);
+		gui.add(Enemigos.getLast().getGrafico());
 		
 		//Enemigos[1] = new RUGULOS(MiNivel,1,5); 
 		//Enemigos[1].select(1);
@@ -89,9 +89,9 @@ public class CREADORNIVEL extends CREADOR{
         	}	
         }
         
-        grilla[3][1].agregarPersonaje(Enemigos[0]);
+        grilla[3][1].agregarPersonaje(Enemigos.getFirst());
         //grilla[1][5].agregarPersonaje(Enemigos[1]);
-        grilla[1][1].agregarPersonaje(MiNivel.Bomberman);
+        grilla[1][1].agregarPersonaje(MiNivel.getBomberman());
         
         
     }

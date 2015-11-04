@@ -1,17 +1,15 @@
 package GUI;
 
 import java.awt.EventQueue;
-import java.awt.Image;
-import java.awt.Toolkit;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextArea;
 import javax.swing.border.EmptyBorder;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import GUI.constantes;
 
 import nivel.NIVEL;
 
@@ -153,9 +151,9 @@ public class GUI extends JFrame {
 	// usado desde el reloj, le indica que hubo un pulso y
 	// se debe actualizar los display de posicion del enemigo0 (el rugulo)
 	public void pulse(){
-		String a="pos matriz: "+MiNivel.getEnemigos()[0].getX()+" "+MiNivel.getEnemigos()[0].getY();
+		String a="pos matriz: "+MiNivel.getEnemigos().getFirst().getX()+" "+MiNivel.getEnemigos().getFirst().getY();
 		pos3.setText(a);
-		a="pos matriz: "+MiNivel.getEnemigos()[0].getGrafico().getX()+" "+MiNivel.getEnemigos()[0].getGrafico().getY();
+		a="pos matriz: "+MiNivel.getEnemigos().getFirst().getGrafico().getX()+" "+MiNivel.getEnemigos().getFirst().getGrafico().getY();
 		pos4.setText(a);
 	}
 	
@@ -166,13 +164,16 @@ public class GUI extends JFrame {
 	 */
 	 public void mover(KeyEvent arg0){
 	 		int dir= arg0.getKeyCode();
+	 		
+
 
 	 		if(!lock){
 	 			
 	 			
 	 			switch (dir){
-				case KeyEvent.VK_UP : //Arriba
-					MiNivel.mover(1);
+				case KeyEvent.VK_UP :
+					MiNivel.mover(constantes.ARRIBA);
+					
 					String a="pos matriz: "+MiNivel.getBomberman().getX()+" "+MiNivel.getBomberman().getY();
 					pos.setText(a);
 					a="pos grafica: "+MiNivel.getBomberman().getGrafico().getX()+" "+MiNivel.getBomberman().getGrafico().getY();
@@ -186,8 +187,9 @@ public class GUI extends JFrame {
 					lock=true;
 					
 					break;
-				case KeyEvent.VK_DOWN : //Abajo
-					MiNivel.mover(0);	
+				case KeyEvent.VK_DOWN : 
+					MiNivel.mover(constantes.ABAJO);	
+					
 					String a1="pos matriz: "+MiNivel.getBomberman().getX()+" "+MiNivel.getBomberman().getY();
 					pos.setText(a1);
 					a1="pos grafica: "+MiNivel.getBomberman().getGrafico().getX()+" "+MiNivel.getBomberman().getGrafico().getY();
@@ -201,8 +203,9 @@ public class GUI extends JFrame {
 					lock=true;
 					
 					break;
-				case KeyEvent.VK_LEFT : //Izquierda
-					MiNivel.mover(2);
+				case KeyEvent.VK_LEFT : 
+					MiNivel.mover(constantes.IZQUIERDA);
+					
 					String a2="pos matriz: "+MiNivel.getBomberman().getX()+" "+MiNivel.getBomberman().getY();
 					pos.setText(a2);
 					a2="pos grafica: "+MiNivel.getBomberman().getGrafico().getX()+" "+MiNivel.getBomberman().getGrafico().getY();
@@ -216,8 +219,9 @@ public class GUI extends JFrame {
 					lock=true;
 				
 					break;
-				case KeyEvent.VK_RIGHT : //Derecha
-					MiNivel.mover(3);	
+				case KeyEvent.VK_RIGHT : 
+					MiNivel.mover(constantes.DERECHA);	
+					
 					String a3="pos matriz: "+MiNivel.getBomberman().getX()+" "+MiNivel.getBomberman().getY();
 					pos.setText(a3);
 					a3="pos grafica: "+MiNivel.getBomberman().getGrafico().getX()+" "+MiNivel.getBomberman().getGrafico().getY();

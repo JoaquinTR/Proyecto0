@@ -3,13 +3,10 @@ package nivel;
 import java.util.*;
 
 import GUI.GUI;
-import bomba.BOMBA;
+import GUI.constantes;
 import mapa.CELDA;
 import personajes.BOMBERMAN;
 import personajes.ENEMIGOS;
-import personajes.RUGULOS;
-import personajes.bombermanThread;
-import personajes.rugulosThread;
 
 /**
  * Clase que modela la logica de nivel.
@@ -40,12 +37,12 @@ public class NIVEL {
     /**
      * Bomberman del jugador.
      */
-    protected BOMBERMAN Bomberman;
+    protected static BOMBERMAN Bomberman;
 
     /**
      * enemigos del nivel.
      */
-    protected ENEMIGOS[] Enemigos;
+    protected LinkedList<ENEMIGOS> Enemigos;
 
     /**
      * la grilla del nivel. 
@@ -68,12 +65,15 @@ public class NIVEL {
     	this.gui=gui;
     	
     	Grilla = new CELDA[31][13];
-    	Enemigos= new ENEMIGOS[10];
+    	//Enemigos= new ENEMIGOS[10];
+    	Enemigos =new LinkedList<ENEMIGOS>();
+
     	Creador=new CREADORNIVEL();
     	
 		Creador.crearNivel(Grilla, this, gui,Enemigos);
 		
 		Bomberman.start();//inicio el thread, no iniciaba nunca en el constructor de bomberman.
+		
     }
     
 
@@ -81,7 +81,7 @@ public class NIVEL {
      * Retorna el arreglo de enemigos.
      * @return los enemigos.
      */
-    public ENEMIGOS[] getEnemigos() {
+    public LinkedList<ENEMIGOS> getEnemigos() {
         return Enemigos;
     }
 
@@ -90,6 +90,8 @@ public class NIVEL {
      * @return el bomberman.
      */
     public BOMBERMAN getBomberman() {
+    	if(Bomberman==null)
+    		Bomberman=new BOMBERMAN(this,1,1);
         return Bomberman;
     }
 
@@ -130,7 +132,6 @@ public class NIVEL {
      * @param dir direccion del movimiento.
      */
     public void mover(int dir){
-    	Bomberman.select(dir);
     	Bomberman.avanzarB(dir);
     }
     
@@ -138,13 +139,10 @@ public class NIVEL {
      * mover a todos los enemigos ( en funcion del reloj)
      */
     public void moverM(){
-    	for(int i=0;i<Enemigos.length;i++){
-    		if(Enemigos[i]!=null){
-    			Enemigos[i].avanzar();
-    			//Enemigos[i].lock();
-    		}
+    	
+    	for(ENEMIGOS e:Enemigos){
+    			e.avanzar();
     	}
-
     	
     }
     
@@ -173,19 +171,19 @@ public class NIVEL {
     public CELDA getCelda(int x, int y,int dir){
     	CELDA next = null;
     	switch(dir){
-    		case 0:
+    		case constantes.ABAJO:
     			next= Grilla[x][y+1];
     			break;
-    		case 1:
+    		case constantes.ARRIBA:
     			next = Grilla[x][y-1];
     			break;
-    		case 2:
+    		case constantes.IZQUIERDA:
     			next = Grilla[x-1][y];
     			break;
-    		case 3:
+    		case constantes.DERECHA:
     			next = Grilla[x+1][y];
     			break;
-    		case -1:
+    		case constantes.ACTUAL:
     			next=Grilla[x][y];
     			break;
     	}

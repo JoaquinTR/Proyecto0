@@ -15,6 +15,9 @@ public class rugulosThread extends Thread{
 		 */
 		private RUGULOS mLogica;
 		
+		/**
+		 * direccion de movimiento.
+		 */
 		private int dir;
 		
 		/**
@@ -28,7 +31,9 @@ public class rugulosThread extends Thread{
 		 */
 		public rugulosThread(RUGULOS logica) {
 			this.mLogica  = logica;
-			this.mDetener = true;
+			this.mDetener = false;
+			iniciar();
+			start();
 		}
 		
 		/**
@@ -42,6 +47,11 @@ public class rugulosThread extends Thread{
 					
 					try {
 						// movimiento transitivo del rugulo, 0.5 segundos de duracion
+						Thread.sleep(1000);
+						System.out.println("ASD");
+						/*
+
+						 
 						Thread.sleep(125);
 						this.mLogica.mover(dir);
 						Thread.sleep(125);
@@ -49,18 +59,19 @@ public class rugulosThread extends Thread{
 						Thread.sleep(125);
 						this.mLogica.mover(dir);
 						Thread.sleep(125);
-						this.mLogica.mover(dir);
 						
-						this.mLogica.select(dir+4);
+						*/
+						this.mLogica.avanzar();
+						
 						
 						mLogica.unlock();
 						
 					} catch (InterruptedException e) { }
 				}
-				detener();
+				//detener();
 			}
 			
-			//
+			
 		}
 		
 		/**
