@@ -21,6 +21,7 @@ public class RUGULOS extends ENEMIGOS {
 	/**
 	 * variable Thread que controla la transicion del rugulo.
 	 */
+	@SuppressWarnings("unused")
 	private rugulosThread T;
 
     /**
@@ -43,7 +44,6 @@ public class RUGULOS extends ENEMIGOS {
     		Random rnd = new Random();
 			int dir = rnd.nextInt(4);
 		
-    		T.setDir(dir);
     		select(dir+4);
 			CELDA actual = MiNivel.getCelda(x, y, -1);
     		CELDA next= MiNivel.getCelda(x, y, dir);

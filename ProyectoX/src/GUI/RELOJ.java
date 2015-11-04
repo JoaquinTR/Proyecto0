@@ -1,7 +1,5 @@
 package GUI;
 
-import javax.swing.JLabel;
-
 import nivel.NIVEL;
 
 /**

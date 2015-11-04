@@ -5,8 +5,6 @@ import java.awt.Point;
 import javax.swing.Icon;
 import javax.swing.JLabel;
 
-import GUI.constantes;
-
 /**
  * Clase que modela un objeto gráfico.
  * 

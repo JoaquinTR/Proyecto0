@@ -16,11 +16,6 @@ public class rugulosThread extends Thread{
 		private RUGULOS mLogica;
 		
 		/**
-		 * direccion de movimiento.
-		 */
-		private int dir;
-		
-		/**
 		 * Bandera de deteccion de este Thread.
 		 */
 		private volatile boolean mDetener;
@@ -48,7 +43,6 @@ public class rugulosThread extends Thread{
 					try {
 						// movimiento transitivo del rugulo, 0.5 segundos de duracion
 						Thread.sleep(1000);
-						System.out.println("ASD");
 						/*
 
 						 
@@ -90,14 +84,6 @@ public class rugulosThread extends Thread{
 			this.detener();
 			
 			//muerte del rugulo.
-		}
-		
-		/**
-		 * Seteo de la direccion del rugulo.
-		 * @param dir direccion del movimiento.
-		 */
-		public void setDir(int dir){
-			this.dir=dir;
 		}
 		
 		/**
