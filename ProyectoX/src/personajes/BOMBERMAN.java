@@ -128,8 +128,7 @@ public class BOMBERMAN extends PERSONAJE {
     	CELDA actual = MiNivel.getCelda(x, y, -1);
     	CELDA next= MiNivel.getCelda(x, y, dir);
     		
-    	boolean puedo=(next.getPared()==null);
-    	boolean hayBomba=next.hayBomba();
+    	boolean puedo=(next.getPared()==null)&(!next.hayBomba());
 
     	if(puedo){
     		b.setDir(dir);

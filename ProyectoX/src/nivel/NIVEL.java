@@ -2,6 +2,7 @@ package nivel;
 
 import java.util.*;
 
+import bomba.BOMBA;
 import GUI.GUI;
 import GUI.constantes;
 import mapa.CELDA;
@@ -190,6 +191,16 @@ public class NIVEL {
     	return next;
     }
     
+    //distancia manhattan.
     
-    
+    /**
+     * 
+     */
+    public void ponerBomba(){
+    	BOMBA b= Bomberman.ponerBomba();//el nivel le dice que ponga la bomba
+		
+		if(b!=null){
+			gui.agregarObjeto(b.getGrafico());
+		}
+    }
 }

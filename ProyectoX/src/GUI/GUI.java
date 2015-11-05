@@ -238,16 +238,23 @@ public class GUI extends JFrame {
 				}
 
 	 		}
+	 		
 	 		if(dir== KeyEvent.VK_D){
-	 			BOMBA b= MiNivel.getBomberman().ponerBomba();
 	 			
-	 			if(b!=null){
-	 				add(b.getGrafico());
-	 				contentPane.setComponentZOrder(b.getGrafico(), 1);
-	 			}
+	 			MiNivel.ponerBomba();
+	 		
 	 		}
 
 		}
+	 	
+	 /**
+	  * Agrega un objeto a la gui.
+	  * @param j JLabel a agregar.
+	  */
+	 public void agregarObjeto(JLabel j){
+		 add(j);
+		 contentPane.setComponentZOrder(j, 0);
+	 }
 	 	
 	 	/**
 	 	 * destraba el teclado.

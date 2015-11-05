@@ -40,7 +40,6 @@ public class RUGULOS extends ENEMIGOS {
      * Avance propio de un Rugulo.
      */
     public void avanzar() {
-    	if(!lock){
     		Random rnd = new Random();
 			int dir = rnd.nextInt(4);
 		
@@ -48,7 +47,7 @@ public class RUGULOS extends ENEMIGOS {
 			CELDA actual = MiNivel.getCelda(x, y, -1);
     		CELDA next= MiNivel.getCelda(x, y, dir);
     	
-    		boolean puedo=next.getPared()==null;
+    		boolean puedo=(next.getPared()==null)&(!next.hayBomba());
     	
     		if(puedo){
     			
@@ -69,7 +68,7 @@ public class RUGULOS extends ENEMIGOS {
     		select(dir+4);
     		
     	
-    	}
+    	
 		
     }
     

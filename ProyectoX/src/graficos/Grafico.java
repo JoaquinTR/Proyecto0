@@ -103,7 +103,7 @@ public abstract class Grafico {
 		try {
 		switch(dir){
 			case constantes.ABAJO: 
-				select(0);
+				select(constantes.ABAJO);
 				for(int i=0;i<4;i++){
 					grafico.setLocation(grafico.getX(),grafico.getY()+11);
 					pos.x=grafico.getX();
@@ -112,7 +112,7 @@ public abstract class Grafico {
 				}
 				break;
 			case constantes.ARRIBA:
-				select(1);
+				select(constantes.ARRIBA);
 				for(int i=0;i<4;i++){
 					grafico.setLocation(grafico.getX(),grafico.getY()-11);
 					pos.x=grafico.getX();
@@ -121,7 +121,7 @@ public abstract class Grafico {
 				}
 				break;
 			case constantes.IZQUIERDA:
-				select(2);
+				select(constantes.IZQUIERDA);
 				for(int i=0;i<4;i++){
 					grafico.setLocation(grafico.getX()-11,grafico.getY());
 					pos.x=grafico.getX();
@@ -130,7 +130,7 @@ public abstract class Grafico {
 				}
 				break;
 			case constantes.DERECHA:
-				select(3);
+				select(constantes.DERECHA);
 				for(int i=0;i<4;i++){
 					grafico.setLocation(grafico.getX()+11,grafico.getY());
 					pos.x=grafico.getX();

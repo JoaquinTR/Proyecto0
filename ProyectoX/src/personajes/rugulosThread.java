@@ -46,7 +46,7 @@ public class rugulosThread extends Thread{
 						this.mLogica.avanzar();
 						
 						
-						mLogica.unlock();
+						
 						
 					} catch (InterruptedException e) { }
 				}

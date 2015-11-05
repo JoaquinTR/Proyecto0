@@ -36,16 +36,7 @@ public class CREADORNIVEL extends CREADOR{
         int outer2=13;
 
         
-		MiNivel.getBomberman().select(4);
-		gui.add(MiNivel.getBomberman().getGrafico());
 		
-		Enemigos.addLast(new RUGULOS(MiNivel,3,1));
-		Enemigos.getLast().select(1);
-		gui.add(Enemigos.getLast().getGrafico());
-		
-		//Enemigos[1] = new RUGULOS(MiNivel,1,5); 
-		//Enemigos[1].select(1);
-		//gui.add(Enemigos[1].getGrafico());
 		
 		
         for(i=0;i<outer;i++){
@@ -90,8 +81,20 @@ public class CREADORNIVEL extends CREADOR{
         	}	
         }
         
-        grilla[3][1].agregarPersonaje(Enemigos.getFirst());
-        //grilla[1][5].agregarPersonaje(Enemigos[1]);
+        
+        MiNivel.getBomberman().select(4);
+        gui.agregarObjeto(MiNivel.getBomberman().getGrafico());
+		
+		Enemigos.addLast(new RUGULOS(MiNivel,3,3));
+		Enemigos.getLast().select(1);
+		gui.agregarObjeto(Enemigos.getLast().getGrafico());
+		
+		Enemigos.addLast(new RUGULOS(MiNivel,1,5)); 
+		Enemigos.getLast().select(1);
+		gui.agregarObjeto(Enemigos.getLast().getGrafico());
+		
+        grilla[3][3].agregarPersonaje(Enemigos.getFirst());
+        grilla[1][5].agregarPersonaje(Enemigos.getLast());
         grilla[1][1].agregarPersonaje(MiNivel.getBomberman());
         
         
