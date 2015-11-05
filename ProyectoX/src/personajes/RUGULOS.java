@@ -44,7 +44,7 @@ public class RUGULOS extends ENEMIGOS {
     		Random rnd = new Random();
 			int dir = rnd.nextInt(4);
 		
-    		select(dir+4);
+    		
 			CELDA actual = MiNivel.getCelda(x, y, -1);
     		CELDA next= MiNivel.getCelda(x, y, dir);
     	
@@ -66,6 +66,7 @@ public class RUGULOS extends ENEMIGOS {
     			}
     		
     		}
+    		select(dir+4);
     		
     	
     	}

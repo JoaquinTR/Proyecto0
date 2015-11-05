@@ -10,7 +10,7 @@ import javax.swing.border.EmptyBorder;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import GUI.constantes;
-
+import bomba.BOMBA;
 import nivel.NIVEL;
 
 
@@ -238,7 +238,12 @@ public class GUI extends JFrame {
 				}
 
 	 		}
-	 		
+	 		if(dir== KeyEvent.VK_D){
+	 			BOMBA b= MiNivel.getBomberman().ponerBomba();
+	 			add(b.getGrafico());
+	 			System.out.println("asd");
+	 			//b.explotar();
+	 		}
 
 		}
 	 	

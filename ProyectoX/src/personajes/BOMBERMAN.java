@@ -1,6 +1,7 @@
 package personajes;
 
 import GUI.constantes;
+import bomba.BOMBA;
 import graficos.jugadorGrafico;
 import mapa.CELDA;
 import nivel.NIVEL;
@@ -71,8 +72,13 @@ public class BOMBERMAN extends PERSONAJE {
     /**
      * pone una bomba en la posicion actual del bomberman.
      */
-    public void ponerBomba() {
-    	
+    public BOMBA ponerBomba() {
+    	BOMBA b=new BOMBA(MiNivel,this.x,this.y);
+    	MiNivel.getCelda(x, y, constantes.ACTUAL).setBomba(b);
+    	System.out.println("x "+this.x+" y "+this.y);
+    	//b.start();
+    	//b.explotar();
+    	return b;
     }
 
     /**
@@ -116,17 +122,14 @@ public class BOMBERMAN extends PERSONAJE {
      * @param dir direccion del movimiento a efectura.
      */
     public void avanzarB(int dir){
-    	b.setDir(dir);
-    	
-    	
-    	
+
     	CELDA actual = MiNivel.getCelda(x, y, -1);
     	CELDA next= MiNivel.getCelda(x, y, dir);
     		
     	boolean puedo=next.getPared()==null;
     	
     	if(puedo){
-    		select(dir);
+    		b.setDir(dir);
     		boolean hay=false;
     		hay=next.hayAlguien();
 
@@ -144,9 +147,10 @@ public class BOMBERMAN extends PERSONAJE {
     		
     	}
     	else{
-    		b.setDir(constantes.CHOQUE);
+    		b.setDir(dir+4);
     		b.iniciar();
-    		select(dir+4);
+
+
     	}
  
     	

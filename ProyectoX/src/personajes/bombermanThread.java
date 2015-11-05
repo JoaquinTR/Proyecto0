@@ -18,6 +18,9 @@ public class bombermanThread extends Thread{
 			 */
 			private BOMBERMAN mLogica;
 			
+			/**
+			 * direccion del movimiento.
+			 */
 			private int dir;
 			
 			/**
@@ -42,51 +45,39 @@ public class bombermanThread extends Thread{
 			public void run() {
 				
 				while(true){
-					if((!this.mDetener)&&(dir!=constantes.DESTRUCCION)){
-						//duermo el hilo 4 veces, en total medio segundo
-						//entre medio se mueve el bomberman generando una transicion.
-						//try {
-							/*
-							// Realizo el movimiento
-							Thread.sleep(125);
-							this.mLogica.mover(dir);
-							Thread.sleep(125);
-							this.mLogica.mover(dir);
-							Thread.sleep(125);
-							this.mLogica.mover(dir);
-							Thread.sleep(125);
-							this.mLogica.mover(dir);
-							*/
-							this.mLogica.mover(dir);
-							this.mLogica.select(dir+4);
+					
+					if(!this.mDetener){
+						if(dir!=constantes.DESTRUCCION){
+						
+								this.mLogica.mover(dir);
+								this.mLogica.select(dir+4);
 							
+								mLogica.unlock();
+								detener();
+						
+						
+						} 
+						if(dir>=4){ //se trago una pared.
+						
+							mLogica.select(dir);
 							mLogica.unlock();
 							detener();
-							
-						//} catch (InterruptedException e) { }
 						
-					} else if((!this.mDetener)&&(dir==constantes.CHOQUE)){ //se trago una pared.
-						
-						try {
-							Thread.sleep(200);
-							} catch (InterruptedException e1) {}
-						
-						mLogica.unlock();
-						detener();
-						
-					}
+						}
 					
-					//direccion -2 indica la transicion de la muerte.
-					if(dir==constantes.DESTRUCCION){
-						mLogica.select(12);
-						try {
-							Thread.sleep(1000);
-						} catch (InterruptedException e) {}
-						interrupt();
-						mLogica.getGrafico().setVisible(false);
-						detener();
+						//direccion -2 indica la transicion de la muerte.
+						if(dir==constantes.DESTRUCCION){
+							mLogica.select(12);
+							
+							try {
+								Thread.sleep(1000);
+							} catch (InterruptedException e) {}
+							
+							interrupt();
+							mLogica.getGrafico().setVisible(false);
+							detener();
+						}
 					}
-						
 				}
 				
 				

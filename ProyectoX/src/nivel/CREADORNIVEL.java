@@ -3,6 +3,7 @@ package nivel;
 import java.util.*;
 
 import GUI.GUI;
+import bomba.BOMBA;
 import mapa.CELDA;
 import personajes.ENEMIGOS;
 import personajes.RUGULOS;
@@ -37,7 +38,7 @@ public class CREADORNIVEL extends CREADOR{
         
 		MiNivel.getBomberman().select(4);
 		gui.add(MiNivel.getBomberman().getGrafico());
-        
+		
 		Enemigos.addLast(new RUGULOS(MiNivel,3,1));
 		Enemigos.getLast().select(1);
 		gui.add(Enemigos.getLast().getGrafico());

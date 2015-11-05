@@ -148,6 +148,15 @@ public class CELDA {
     }
 
     /**
+     * Retorna la bomba contenido. Retorna null si no hay.
+     * @return La bomba en cuestion.
+     */
+    public void setBomba(BOMBA b) {
+        Bomba=b;
+        grafico.getGrafico().setVisible(false);
+    }
+    
+    /**
      * Destruye la pared contenida en esta celda.
      */
     public void destruirPared() {

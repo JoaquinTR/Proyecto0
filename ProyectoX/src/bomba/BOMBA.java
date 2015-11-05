@@ -1,6 +1,10 @@
 package bomba;
 
 
+import javax.swing.JLabel;
+
+import graficos.BombaGrafica;
+import graficos.Grafico;
 import nivel.NIVEL;
 
 /**
@@ -12,7 +16,7 @@ import nivel.NIVEL;
  * @author Waigel, Micaela Anahí. LU: 99558
  * @author Tricerri, Joaquín. LU:100236
  */
-public class BOMBA {
+public class BOMBA{
 
     /**
      * Cantidad de celdas adyacentes que afecta esta bomba.
@@ -28,7 +32,15 @@ public class BOMBA {
      * posicion y en la matriz de esta bomba.
      */
     private int y;
+    
+    /**
+     * Grafico (JLabel) al que esta relacionado esta bomba.
+     */
+    protected Grafico grafico;
 
+    /**
+     * Nivel de la bomba.
+     */
     protected NIVEL MiNivel;
 
 
@@ -39,11 +51,13 @@ public class BOMBA {
      * @param y posicion y en la matriz. 
      * @param MiNivel nivel al que pertenece
      */
-    public BOMBA(int x, int y, NIVEL MiNivel) {
+    public BOMBA(NIVEL MiNivel,int x, int y ) {
         this.x=x;
         this.y=y;
         this.MiNivel = MiNivel;
         this.RadioExplosion = 1;
+        grafico = new BombaGrafica(x,y);
+        grafico.select(0);
     }
 
     /**
@@ -57,7 +71,12 @@ public class BOMBA {
      * Inicia el conteo de la explosion de esta bomba.
      */
     public void explotar() {
-        
+        /*
+    	try {
+			sleep(1000);
+		} catch (InterruptedException e) {}
+        */
+        grafico.select(1);
     }
 
     /**
@@ -82,5 +101,13 @@ public class BOMBA {
     public void resetRadio() {
        	this.RadioExplosion =1; 
     }
+    
+    /**
+     * retorna el objeto grafico de esta bomba.
+     * @return el grafico de esta bomba.
+     */
+    public JLabel getGrafico(){
+		return this.grafico.getGrafico();
+	}
 
 }

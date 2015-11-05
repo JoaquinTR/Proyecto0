@@ -41,20 +41,8 @@ public class rugulosThread extends Thread{
 				if(!this.mDetener){
 					
 					try {
-						// movimiento transitivo del rugulo, 0.5 segundos de duracion
 						Thread.sleep(1000);
-						/*
-
-						 
-						Thread.sleep(125);
-						this.mLogica.mover(dir);
-						Thread.sleep(125);
-						this.mLogica.mover(dir);
-						Thread.sleep(125);
-						this.mLogica.mover(dir);
-						Thread.sleep(125);
 						
-						*/
 						this.mLogica.avanzar();
 						
 						
@@ -62,7 +50,7 @@ public class rugulosThread extends Thread{
 						
 					} catch (InterruptedException e) { }
 				}
-				//detener();
+
 			}
 			
 			
