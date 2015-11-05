@@ -3,6 +3,7 @@ package bomba;
 
 import javax.swing.JLabel;
 
+import GUI.constantes;
 import graficos.BombaGrafica;
 import graficos.Grafico;
 import nivel.NIVEL;
@@ -42,6 +43,11 @@ public class BOMBA{
      * Nivel de la bomba.
      */
     protected NIVEL MiNivel;
+    
+    /**
+     * Thread de ejecucion de la bomba.
+     */
+    protected bombaThread T;
 
 
     /**
@@ -58,6 +64,10 @@ public class BOMBA{
         this.RadioExplosion = 1;
         grafico = new BombaGrafica(x,y);
         grafico.select(0);
+        
+        T= new bombaThread(this);
+        T.start();
+        T.iniciar();
     }
 
     /**
@@ -71,12 +81,9 @@ public class BOMBA{
      * Inicia el conteo de la explosion de esta bomba.
      */
     public void explotar() {
-        /*
-    	try {
-			sleep(1000);
-		} catch (InterruptedException e) {}
-        */
+    	MiNivel.getBomberman().aumentarCantBombas();
         grafico.select(1);
+        MiNivel.getCelda(x, y, constantes.ACTUAL).quitarBomba();
     }
 
     /**

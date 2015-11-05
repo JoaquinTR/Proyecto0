@@ -140,11 +140,11 @@ public class CELDA {
     }
 
     /**
-     * Retorna la bomba contenido. Retorna null si no hay.
+     * Quita una bomba en caso que tenga.
      * @return La bomba en cuestion.
      */
-    public BOMBA getBomba() {
-        return Bomba;
+    public void quitarBomba() {
+        Bomba=null;
     }
 
     /**
@@ -153,7 +153,6 @@ public class CELDA {
      */
     public void setBomba(BOMBA b) {
         Bomba=b;
-        grafico.getGrafico().setVisible(false);
     }
     
     /**
@@ -196,6 +195,14 @@ public class CELDA {
     	Presentes.remove(p);
     		
     }
+
+    /**
+     * indica si hay una bomba en esta celda.
+     * @return verdadero si hay una bomba falso caso contrario.
+     */
+	public boolean hayBomba() {
+		return Bomba!=null;
+	}
     
 
 }

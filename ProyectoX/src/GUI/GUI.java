@@ -189,7 +189,7 @@ public class GUI extends JFrame {
 					break;
 				case KeyEvent.VK_DOWN : 
 					MiNivel.mover(constantes.ABAJO);	
-					
+
 					String a1="pos matriz: "+MiNivel.getBomberman().getX()+" "+MiNivel.getBomberman().getY();
 					pos.setText(a1);
 					a1="pos grafica: "+MiNivel.getBomberman().getGrafico().getX()+" "+MiNivel.getBomberman().getGrafico().getY();
@@ -240,9 +240,11 @@ public class GUI extends JFrame {
 	 		}
 	 		if(dir== KeyEvent.VK_D){
 	 			BOMBA b= MiNivel.getBomberman().ponerBomba();
-	 			add(b.getGrafico());
-	 			System.out.println("asd");
-	 			//b.explotar();
+	 			
+	 			if(b!=null){
+	 				add(b.getGrafico());
+	 				contentPane.setComponentZOrder(b.getGrafico(), 1);
+	 			}
 	 		}
 
 		}

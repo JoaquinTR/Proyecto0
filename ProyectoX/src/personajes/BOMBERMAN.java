@@ -47,6 +47,7 @@ public class BOMBERMAN extends PERSONAJE {
         super(MiNivel,x,y,3);
         this.grafico = new jugadorGrafico(x,y);
         b=new bombermanThread(this);
+        CantBombas=1;
         //b.start(); no inicia la gui si esta aca
 
     }
@@ -73,10 +74,12 @@ public class BOMBERMAN extends PERSONAJE {
      * pone una bomba en la posicion actual del bomberman.
      */
     public BOMBA ponerBomba() {
-    	BOMBA b=new BOMBA(MiNivel,this.x,this.y);
-    	MiNivel.getCelda(x, y, constantes.ACTUAL).setBomba(b);
-    	//b.start();
-    	//b.explotar();
+    	BOMBA b=null;
+    	if(CantBombas>=1){
+    		b=new BOMBA(MiNivel,this.x,this.y);
+    		MiNivel.getCelda(x, y, constantes.ACTUAL).setBomba(b);
+    		decCantBombas();
+    	}
     	return b;
     }
 
@@ -102,7 +105,7 @@ public class BOMBERMAN extends PERSONAJE {
     }
 
     /**
-     * Decrementa la cantidad de bmbas que se pueden poner.
+     * Decrementa la cantidad de bombas que se pueden poner.
      */
     public void decCantBombas(){
     	CantBombas--;
@@ -125,8 +128,9 @@ public class BOMBERMAN extends PERSONAJE {
     	CELDA actual = MiNivel.getCelda(x, y, -1);
     	CELDA next= MiNivel.getCelda(x, y, dir);
     		
-    	boolean puedo=next.getPared()==null;
-    	
+    	boolean puedo=(next.getPared()==null);
+    	boolean hayBomba=next.hayBomba();
+
     	if(puedo){
     		b.setDir(dir);
     		boolean hay=false;
@@ -151,6 +155,7 @@ public class BOMBERMAN extends PERSONAJE {
 
 
     	}
+    	
  
     	
     	
