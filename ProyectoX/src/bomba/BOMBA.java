@@ -6,6 +6,7 @@ import javax.swing.JLabel;
 import GUI.constantes;
 import graficos.BombaGrafica;
 import graficos.Grafico;
+import mapa.CELDA;
 import nivel.NIVEL;
 
 /**
@@ -84,6 +85,29 @@ public class BOMBA{
     	MiNivel.getBomberman().aumentarCantBombas();
         grafico.select(1);
         MiNivel.getCelda(x, y, constantes.ACTUAL).quitarBomba();
+        
+        CELDA actual=MiNivel.getCelda(x, y, constantes.ACTUAL);
+        CELDA abajo=MiNivel.getCelda(x, y, constantes.ABAJO);
+        CELDA arriba=MiNivel.getCelda(x, y, constantes.ARRIBA);
+        CELDA izquierda=MiNivel.getCelda(x, y, constantes.IZQUIERDA);
+        CELDA derecha=MiNivel.getCelda(x, y, constantes.DERECHA);
+        
+        
+   		actual.afectar();        
+        abajo.afectar();
+        arriba.afectar();
+        izquierda.afectar();
+        derecha.afectar();
+        
+        try {
+			T.sleep(1000);
+		} catch (InterruptedException e) {}
+        
+        actual.select(0);
+        arriba.select(0);
+        abajo.select(0);
+        izquierda.select(0);
+        derecha.select(0);
     }
 
     /**

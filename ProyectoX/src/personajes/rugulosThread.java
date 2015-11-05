@@ -68,10 +68,8 @@ public class rugulosThread extends Thread{
 		 * destruccion del hilo. (rugulo).
 		 */
 		public void destruir() {
-
+			interrupt();
 			this.detener();
-			
-			//muerte del rugulo.
 		}
 		
 		/**

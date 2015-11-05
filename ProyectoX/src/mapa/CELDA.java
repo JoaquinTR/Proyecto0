@@ -1,8 +1,10 @@
 package mapa;
 
 
+import java.awt.Image;
 import java.util.*;
 
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
 import bomba.BOMBA;
@@ -203,6 +205,24 @@ public class CELDA {
 	public boolean hayBomba() {
 		return Bomba!=null;
 	}
+	
+	/**
+	 * Afecta a todos los personajes dentro de esta celda.
+	 */
+    public void afectar(){
+    	grafico.select(9);
+    	
+    	destruirPared();
+    	
+    	for(PERSONAJE p: Presentes){
+    		p.destruirme();
+    	}
+    }
     
-
+    /**
+	 * Restaurar.
+	 */
+    public void Restaurar(){
+    	grafico.select(0);
+    }
 }

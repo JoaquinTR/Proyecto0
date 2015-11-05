@@ -2,7 +2,7 @@ package personajes;
 
 import java.util.Random;
 
-
+import GUI.constantes;
 import graficos.ruguloGrafico;
 import mapa.CELDA;
 import nivel.NIVEL;
@@ -86,7 +86,9 @@ public class RUGULOS extends ENEMIGOS {
      * metodo de destruccion de los Rugulos.
      */
     public void destruirme(){
-    	//experimental falta borrar el malo.
+    	select(8);
+    	T.destruir();
     	MiNivel.setPuntaje(15);
+    	MiNivel.getCelda(x, y, constantes.ACTUAL).quitarPersonaje(this);
     }
 }

@@ -2,6 +2,8 @@ package nivel;
 
 import java.util.*;
 
+import javax.swing.JLabel;
+
 import bomba.BOMBA;
 import GUI.GUI;
 import GUI.constantes;
@@ -194,13 +196,22 @@ public class NIVEL {
     //distancia manhattan.
     
     /**
-     * 
+     * Indica al bomberman que ponga una bomba en su posicion.
      */
     public void ponerBomba(){
-    	BOMBA b= Bomberman.ponerBomba();//el nivel le dice que ponga la bomba
+    	BOMBA b= Bomberman.ponerBomba();
 		
 		if(b!=null){
 			gui.agregarObjeto(b.getGrafico());
 		}
     }
+    
+    /**
+     * Agrega un JLabel a la gui.
+     * @param j JLabel a agregar.
+     */
+    public void agregarObjeto(JLabel j){
+    	gui.agregarObjeto(j);
+    }
+    
 }

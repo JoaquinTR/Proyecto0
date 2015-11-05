@@ -239,6 +239,7 @@ public class GUI extends JFrame {
 
 	 		}
 	 		
+	 		// Indica al nivel que el bomberman ponga una bomba en su posicion.
 	 		if(dir== KeyEvent.VK_D){
 	 			
 	 			MiNivel.ponerBomba();

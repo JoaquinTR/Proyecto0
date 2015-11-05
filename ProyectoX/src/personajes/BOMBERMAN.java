@@ -174,7 +174,7 @@ public class BOMBERMAN extends PERSONAJE {
     public void destruirme(){
     	b.setDir(constantes.DESTRUCCION);
     	MiNivel.lock();
-    	
+    	select(12);
     }
 }
 
