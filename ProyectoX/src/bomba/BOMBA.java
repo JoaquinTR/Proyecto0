@@ -100,14 +100,19 @@ public class BOMBA{
         derecha.afectar();
         
         try {
-			T.sleep(1000);
+			T.sleep(1650);
 		} catch (InterruptedException e) {}
         
-        actual.select(0);
-        arriba.select(0);
-        abajo.select(0);
-        izquierda.select(0);
-        derecha.select(0);
+        if(actual.getPared()==null)
+        	actual.restaurar();
+        if(abajo.getPared()==null)
+        	abajo.restaurar();
+        if(arriba.getPared()==null)
+        	arriba.restaurar();
+        if(izquierda.getPared()==null)
+        	izquierda.restaurar();
+        if(derecha.getPared()==null)
+        	derecha.restaurar();
     }
 
     /**

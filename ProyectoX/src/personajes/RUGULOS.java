@@ -51,14 +51,16 @@ public class RUGULOS extends ENEMIGOS {
     	
     		if(puedo){
     			
-
+    			//avanzo de celda el personaje a nivel grafica.
+    			this.grafico.mover(dir);
+    			
+    			//avanzo de celda el personaje a nivel logica.
     			actual.quitarPersonaje(this);
     			next.agregarPersonaje(this);
     			this.x=next.getX();
     			this.y=next.getY();
-
-    			this.grafico.mover(dir);
-    		
+    			
+    			//controlo colision con bomberman.
     			if((next.getX()==MiNivel.getBomberman().getX())&&(next.getY()==MiNivel.getBomberman().getY())){
     				MiNivel.getBomberman().select(12);//afecto al bomberman
     				MiNivel.getBomberman().destruirme();
@@ -86,8 +88,8 @@ public class RUGULOS extends ENEMIGOS {
      * metodo de destruccion de los Rugulos.
      */
     public void destruirme(){
-    	select(8);
     	T.destruir();
+    	select(8);
     	MiNivel.setPuntaje(15);
     	MiNivel.getCelda(x, y, constantes.ACTUAL).quitarPersonaje(this);
     }

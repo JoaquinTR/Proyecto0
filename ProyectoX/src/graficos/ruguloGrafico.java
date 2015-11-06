@@ -49,7 +49,7 @@ public class ruguloGrafico extends Grafico {
 		a=new ImageIcon(this.getClass().getResource("/images/enemigos/EncapuchadoOscuro/EncOscuroIzq.gif"));
 		this.images[2] = new ImageIcon(a.getImage().getScaledInstance(this.width, this.height, Image.SCALE_DEFAULT));
 		
-		a=new ImageIcon(this.getClass().getResource("/images/bomberman/Cap/MuerteCap.gif"));
+		a=new ImageIcon(this.getClass().getResource("/images/enemigos/EncapuchadoOscuro/MuerteMalo.gif"));
 		this.images[8] = new ImageIcon(a.getImage().getScaledInstance(this.width, this.height, Image.SCALE_DEFAULT));
 		
 	}

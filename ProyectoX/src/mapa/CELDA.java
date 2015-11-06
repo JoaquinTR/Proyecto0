@@ -170,6 +170,13 @@ public class CELDA {
      */
     public void crearPared(boolean DI) {
         this.MiPared = new PARED(this,DI);
+        
+        if(DI == false){
+        	Random r=new Random();
+        	int R = 5+ r.nextInt(2);
+        	grafico.select(R);
+        }
+        	
     }
     
     /**
@@ -210,19 +217,24 @@ public class CELDA {
 	 * Afecta a todos los personajes dentro de esta celda.
 	 */
     public void afectar(){
-    	grafico.select(9);
     	
-    	destruirPared();
-    	
-    	for(PERSONAJE p: Presentes){
-    		p.destruirme();
+    	if(MiPared==null){
+    		grafico.select(9);
+    		for(PERSONAJE p: Presentes){
+    			p.destruirme();
+    		}
     	}
+    	else 
+    		if(MiPared.getDestructible()){
+    			destruirPared();
+    		}
+    	
     }
     
     /**
 	 * Restaurar.
 	 */
-    public void Restaurar(){
+    public void restaurar(){
     	grafico.select(0);
     }
 }
