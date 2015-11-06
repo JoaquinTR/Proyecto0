@@ -2,6 +2,11 @@ package GUI;
 
 import java.awt.EventQueue;
 
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -9,6 +14,8 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.io.IOException;
+
 import GUI.constantes;
 import bomba.BOMBA;
 import nivel.NIVEL;
@@ -50,6 +57,9 @@ public class GUI extends JFrame {
 	 * Flag de inicio del nivel.
 	 */
 	private boolean start=false;
+	
+	private AudioInputStream audioInputStream;
+	
 	
 	// -- ACLARACION -- 
 	// ****************
@@ -120,6 +130,14 @@ public class GUI extends JFrame {
 		pos4.setText("Posicion grafica");
 		pos4.setBounds(800, 25, 250, 50);
 		add(pos4);
+		
+		//sonidos
+		try {
+			audioInputStream = AudioSystem.getAudioInputStream(this.getClass().getResource("/sounds/fondoJuego/avengers.MID"));
+			Clip clip = AudioSystem.getClip();
+			clip.open(audioInputStream);
+			clip.start();
+			} catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {}
 		
 		
 		//adicionales a la gui.
@@ -241,6 +259,8 @@ public class GUI extends JFrame {
 	 		
 	 		// Indica al nivel que el bomberman ponga una bomba en su posicion.
 	 		if(dir== KeyEvent.VK_D){
+	 			
+	 			
 	 			
 	 			MiNivel.ponerBomba();
 	 		
