@@ -51,14 +51,16 @@ public class RUGULOS extends ENEMIGOS {
     	
     		if(puedo){
     			
-    			//avanzo de celda el personaje a nivel grafica.
-    			this.grafico.mover(dir);
+    			
     			
     			//avanzo de celda el personaje a nivel logica.
     			actual.quitarPersonaje(this);
     			next.agregarPersonaje(this);
     			this.x=next.getX();
     			this.y=next.getY();
+    			
+    			//avanzo de celda el personaje a nivel grafica.
+    			this.grafico.mover(dir);
     			
     			//controlo colision con bomberman.
     			if((next.getX()==MiNivel.getBomberman().getX())&&(next.getY()==MiNivel.getBomberman().getY())){
@@ -92,5 +94,6 @@ public class RUGULOS extends ENEMIGOS {
     	select(8);
     	MiNivel.setPuntaje(15);
     	MiNivel.getCelda(x, y, constantes.ACTUAL).quitarPersonaje(this);
+    	T.stop();// si no hago esto se me consume el cpu.
     }
 }

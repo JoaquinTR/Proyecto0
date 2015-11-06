@@ -2,9 +2,11 @@ package GUI;
 
 import java.awt.EventQueue;
 
+import javax.sound.sampled.AudioFormat;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
+import javax.sound.sampled.DataLine;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.ImageIcon;
@@ -58,7 +60,11 @@ public class GUI extends JFrame {
 	 */
 	private boolean start=false;
 	
-	private AudioInputStream audioInputStream;
+	/**
+	 * sonido de fondo.
+	 */
+	private Clip clip;
+
 	
 	
 	// -- ACLARACION -- 
@@ -131,13 +137,22 @@ public class GUI extends JFrame {
 		pos4.setBounds(800, 25, 250, 50);
 		add(pos4);
 		
+		
+		
+		
 		//sonidos
+		
 		try {
-			audioInputStream = AudioSystem.getAudioInputStream(this.getClass().getResource("/sounds/fondoJuego/avengers.MID"));
-			Clip clip = AudioSystem.getClip();
-			clip.open(audioInputStream);
-			clip.start();
-			} catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {}
+			AudioInputStream musicaFondo = AudioSystem.getAudioInputStream(this.getClass().getResource("/sounds/fondoJuego/avengers.MID"));
+			clip = AudioSystem.getClip();
+			clip.open(musicaFondo);
+			clip.loop(clip.LOOP_CONTINUOUSLY);
+		} catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {}
+		
+
+		 
+		
+		
 		
 		
 		//adicionales a la gui.
@@ -260,9 +275,8 @@ public class GUI extends JFrame {
 	 		// Indica al nivel que el bomberman ponga una bomba en su posicion.
 	 		if(dir== KeyEvent.VK_D){
 	 			
-	 			
-	 			
 	 			MiNivel.ponerBomba();
+
 	 		
 	 		}
 

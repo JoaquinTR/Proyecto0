@@ -67,15 +67,9 @@ public class bombermanThread extends Thread{
 					
 						//direccion -2 indica la transicion de la muerte.
 						if(dir==constantes.DESTRUCCION){
-							mLogica.select(12);
-							
-							try {
-								Thread.sleep(1000);
-							} catch (InterruptedException e) {}
-							
 							interrupt();
-							mLogica.getGrafico().setVisible(false);
 							detener();
+							mLogica.destruirme();
 						}
 					}
 				}

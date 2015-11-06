@@ -79,6 +79,8 @@ public class CELDA {
         this.MiNivel=Nivel;
         grafico = new celdaGrafica(x,y);
         Presentes=new LinkedList<PERSONAJE>();
+        
+        grafico.select(0);
     }
 
     /**
@@ -175,6 +177,9 @@ public class CELDA {
         	Random r=new Random();
         	int R = 5+ r.nextInt(2);
         	grafico.select(R);
+        }
+        else{
+        	grafico.select(1);
         }
         	
     }

@@ -32,65 +32,59 @@ public class CREADORNIVEL extends CREADOR{
      */
     public void crearNivel(CELDA[][] grilla, NIVEL MiNivel,GUI gui, LinkedList<ENEMIGOS> Enemigos) {
         int i =0;
+        int j=1;
         int outer= 31;
         int outer2=13;
 
         
 		
 		
-		
+		//paredes indestructibles superiores e inferiores.
         for(i=0;i<outer;i++){
-        	grilla[i][0] = new CELDA(MiNivel,i,0);  
-        	grilla[i][0].crearPared(false);
+        	crearCeldaPI(i, 0, MiNivel,grilla);
         	gui.add(grilla[i][0].getGrafico());
         	
-        	grilla[i][12] = new CELDA(MiNivel,i,12);  
-        	grilla[i][12].crearPared(false);
+        	crearCeldaPI(i, 12, MiNivel,grilla);
         	gui.add(grilla[i][12].getGrafico());
         	
         }
         
+        //paredes indestructibles laterales.
         for(i=1;i<outer2;i++){
-        	grilla[0][i] = new CELDA(MiNivel,0,i);
-        	grilla[0][i].crearPared(false);
+        	crearCeldaPI(0, i, MiNivel,grilla);
         	gui.add(grilla[0][i].getGrafico());
         	
-        	grilla[30][i] = new CELDA(MiNivel,30,i);
-        	grilla[30][i].crearPared(false);
+        	crearCeldaPI(30, i, MiNivel,grilla);
         	gui.add(grilla[30][i].getGrafico());
         }
-        int j=1;
+        
+        //creo paredes indestructibles centrales y celdas transitables.
         for(i=1;i<30;i++){
         	for(j=1;j<12;j++){
         		if((i%2==0)&&(j%2==0)){
-        			grilla[i][j]=new CELDA(MiNivel,i,j);
-        			grilla[i][j].crearPared(false);
+        			crearCeldaPI(i, j, MiNivel,grilla);
         			gui.add(grilla[i][j].getGrafico());
         		}
         		else{
-        			grilla[i][j]=new CELDA(MiNivel,i,j);
-        			grilla[i][j].select(0);
+        			crearCelda(i, j, MiNivel,grilla);
         			gui.add(grilla[i][j].getGrafico());
         		}
         	
         	}	
         }
         
+        //crear paredes destructibles
+        
         
         MiNivel.getBomberman().select(4);
         gui.agregarObjeto(MiNivel.getBomberman().getGrafico());
+		grilla[1][1].agregarPersonaje(MiNivel.getBomberman());
 		
-		Enemigos.addLast(new RUGULOS(MiNivel,3,3));
-		Enemigos.getLast().select(1);
-		gui.agregarObjeto(Enemigos.getLast().getGrafico());
-		
-		Enemigos.addLast(new RUGULOS(MiNivel,1,5)); 
-		Enemigos.getLast().select(1);
-		gui.agregarObjeto(Enemigos.getLast().getGrafico());
-		
-        grilla[3][3].agregarPersonaje(Enemigos.getFirst());
-        grilla[1][5].agregarPersonaje(Enemigos.getLast());
-        grilla[1][1].agregarPersonaje(MiNivel.getBomberman());
+        //creo 3 rugulos.
+        crearRugulos(3,3,MiNivel,grilla,gui,Enemigos);
+        crearRugulos(1,5,MiNivel,grilla,gui,Enemigos);
+        crearRugulos(10,9,MiNivel,grilla,gui,Enemigos);
+        
         
         
     }
@@ -101,8 +95,13 @@ public class CREADORNIVEL extends CREADOR{
      * @param y Posicion en y dentro de la matriz.
      * @param MiNivel Nivel al que pertenece.
      */
-    public void crearRugulos(int x, int y, NIVEL MiNivel) {
-        
+    public void crearRugulos(int x, int y, NIVEL MiNivel,CELDA[][] grilla,GUI gui, LinkedList<ENEMIGOS> Enemigos) {
+    	
+    	Enemigos.addLast(new RUGULOS(MiNivel,x,y));
+		Enemigos.getLast().select(1);
+		gui.agregarObjeto(Enemigos.getLast().getGrafico());
+		
+		grilla[x][y].agregarPersonaje(Enemigos.getLast());
     }
 
     /**
@@ -111,7 +110,7 @@ public class CREADORNIVEL extends CREADOR{
      * @param y Posicion en y dentro de la matriz.
      * @param MiNivel Nivel al que pertenece.
      */
-    public void crearAltair(int x, int y, NIVEL MiNivel) {
+    public void crearAltair(int x, int y, NIVEL MiNivel,CELDA[][] grilla) {
        
     }
 
@@ -121,7 +120,7 @@ public class CREADORNIVEL extends CREADOR{
      * @param y Posicion en y dentro de la matriz.
      * @param MiNivel Nivel al que pertenece.
      */
-    public void crearSirius(NIVEL MiNivel) {
+    public void crearSirius(NIVEL MiNivel,CELDA[][] grilla) {
         
     }
 
@@ -131,7 +130,7 @@ public class CREADORNIVEL extends CREADOR{
      * @param y Posicion en y dentro de la matriz.
      * @param MiNivel Nivel al que pertenece.
      */
-    public void crearBomberman(NIVEL MiNivel) {
+    public void crearBomberman(NIVEL MiNivel,CELDA[][] grilla) {
         
     }
 
@@ -141,7 +140,7 @@ public class CREADORNIVEL extends CREADOR{
      * @param y Posicion en y dentro de la matriz.
      * @param MiNivel Nivel al que pertenece.
      */
-    public void crearSpeedup(int x, int y, NIVEL MiNivel) {
+    public void crearSpeedup(int x, int y, NIVEL MiNivel,CELDA[][] grilla) {
         
     }
 
@@ -151,7 +150,7 @@ public class CREADORNIVEL extends CREADOR{
      * @param y Posicion en y dentro de la matriz.
      * @param MiNivel Nivel al que pertenece.
      */
-    public void crearFatality(int x, int y, NIVEL MiNivel) {
+    public void crearFatality(int x, int y, NIVEL MiNivel,CELDA[][] grilla) {
         
     }
 
@@ -161,7 +160,7 @@ public class CREADORNIVEL extends CREADOR{
      * @param y Posicion en y dentro de la matriz.
      * @param MiNivel Nivel al que pertenece.
      */
-    public void crearBombality(int x, int y, NIVEL MiNivel) {
+    public void crearBombality(int x, int y, NIVEL MiNivel,CELDA[][] grilla) {
         
     }
 
@@ -171,7 +170,7 @@ public class CREADORNIVEL extends CREADOR{
      * @param y Posicion en y dentro de la matriz.
      * @param MiNivel Nivel al que pertenece.
      */
-    public void crearMasacrality(int x, int y, NIVEL MiNivel) {
+    public void crearMasacrality(int x, int y, NIVEL MiNivel,CELDA[][] grilla) {
         
     }
 
@@ -181,8 +180,8 @@ public class CREADORNIVEL extends CREADOR{
      * @param y Posicion en y dentro de la matriz.
      * @param MiNivel Nivel al que pertenece.
      */
-    public void crearCelda(int x, int y, NIVEL MiNivel) {
-        
+    public void crearCelda(int x, int y, NIVEL MiNivel,CELDA[][] grilla) {
+    	grilla[x][y] = new CELDA(MiNivel,x,y);  
     }
 
     /**
@@ -191,8 +190,9 @@ public class CREADORNIVEL extends CREADOR{
      * @param y Posicion en y dentro de la matriz.
      * @param MiNivel Nivel al que pertenece.
      */
-    public void crearCeldaPD(int x, int y, NIVEL MiNivel) {
-       
+    public void crearCeldaPD(int x, int y, NIVEL MiNivel,CELDA[][] grilla) {
+    	grilla[x][y] = new CELDA(MiNivel,x,y);  
+    	grilla[x][y].crearPared(true);
     }
 
     /**
@@ -201,8 +201,9 @@ public class CREADORNIVEL extends CREADOR{
      * @param y Posicion en y dentro de la matriz.
      * @param MiNivel Nivel al que pertenece.
      */
-    public void crearCeldaPI(int x, int y, NIVEL MiNivel) {
-        
+    public void crearCeldaPI(int x, int y, NIVEL MiNivel, CELDA[][] grilla) {
+    	grilla[x][y] = new CELDA(MiNivel,x,y);  
+    	grilla[x][y].crearPared(false);
     }
 
 }

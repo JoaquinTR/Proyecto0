@@ -36,19 +36,22 @@ public class rugulosThread extends Thread{
 		 */
 		@Override
 		public void run() {
-			
+			try {
+				//espero que se cree el nivel.
+				Thread.sleep(2500);
+			} catch (InterruptedException e1) {}
 			while(true){
+				
 				if(!this.mDetener){
-					
+				
 					try {
+						//duermo el hilo 1 segundo.
 						Thread.sleep(1000);
 						
+						//indico a la logica que se mueva.
 						this.mLogica.avanzar();
 						
-						
-						
-						
-					} catch (InterruptedException e) { }
+					} catch (InterruptedException e) {}
 				}
 
 			}
@@ -67,9 +70,9 @@ public class rugulosThread extends Thread{
 		/**
 		 * destruccion del hilo. (rugulo).
 		 */
-		public void destruir() {
+		public void destruir() {			
 			interrupt();
-			this.detener();
+			detener();
 		}
 		
 		/**

@@ -1,7 +1,13 @@
 package nivel;
 
+import java.io.IOException;
 import java.util.*;
 
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.JLabel;
 
 import bomba.BOMBA;
@@ -202,6 +208,16 @@ public class NIVEL {
     	BOMBA b= Bomberman.ponerBomba();
 		
 		if(b!=null){
+			//Reproduzco el sonido de la bomba.
+			try {
+ 	        	AudioInputStream stream;
+ 				stream = AudioSystem.getAudioInputStream(this.getClass().getResource("/sounds/explosiones/bomb.wav"));
+ 				Clip explosion = AudioSystem.getClip();
+ 				explosion.open(stream);
+ 				explosion.start();
+ 			} catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {}
+			
+			//agrego la bomba a la gui.
 			gui.agregarObjeto(b.getGrafico());
 		}
     }

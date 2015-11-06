@@ -1,6 +1,13 @@
 package bomba;
 
 
+import java.io.IOException;
+
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.JLabel;
 
 import GUI.constantes;
@@ -50,6 +57,7 @@ public class BOMBA{
      */
     protected bombaThread T;
 
+    
 
     /**
      * constructor.
@@ -69,6 +77,10 @@ public class BOMBA{
         T= new bombaThread(this);
         T.start();
         T.iniciar();
+        
+        
+       
+        
     }
 
     /**
@@ -85,6 +97,8 @@ public class BOMBA{
     	MiNivel.getBomberman().aumentarCantBombas();
         grafico.select(1);
         MiNivel.getCelda(x, y, constantes.ACTUAL).quitarBomba();
+        
+
         
         CELDA actual=MiNivel.getCelda(x, y, constantes.ACTUAL);
         CELDA abajo=MiNivel.getCelda(x, y, constantes.ABAJO);
