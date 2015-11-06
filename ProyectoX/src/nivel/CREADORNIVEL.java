@@ -3,7 +3,6 @@ package nivel;
 import java.util.*;
 
 import GUI.GUI;
-import bomba.BOMBA;
 import mapa.CELDA;
 import personajes.ENEMIGOS;
 import personajes.RUGULOS;
@@ -80,11 +79,24 @@ public class CREADORNIVEL extends CREADOR{
         gui.agregarObjeto(MiNivel.getBomberman().getGrafico());
 		grilla[1][1].agregarPersonaje(MiNivel.getBomberman());
 		
-        //creo 3 rugulos.
-        crearRugulos(3,3,MiNivel,grilla,gui,Enemigos);
-        crearRugulos(1,5,MiNivel,grilla,gui,Enemigos);
-        crearRugulos(10,9,MiNivel,grilla,gui,Enemigos);
-        
+        //creo 3 rugulos aleatoriamente.
+		Random Rx=new Random();
+		Random Ry=new Random();
+		int x= 4+ Rx.nextInt(26);
+		int y= 4+ Ry.nextInt(8);
+		
+		for(int r=0;r<3;r++){
+			
+			x= 4+ Rx.nextInt(26);
+			y= 4+ Ry.nextInt(8);
+			
+			//vuelvo a randomizar en caso de que quede en ambos x e y pares.
+			while((x%2!=0)||(y%2!=0)){
+				x= 4+ Rx.nextInt(25);
+				y= 4+ Ry.nextInt(7);
+			}
+			crearRugulos(x,y,MiNivel,grilla,gui,Enemigos);
+		}
         
         
     }

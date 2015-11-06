@@ -76,9 +76,10 @@ public class BOMBERMAN extends PERSONAJE {
     public BOMBA ponerBomba() {
     	BOMBA b=null;
     	if(CantBombas>=1){
+    		decCantBombas();
     		b=new BOMBA(MiNivel,this.x,this.y);
     		MiNivel.getCelda(x, y, constantes.ACTUAL).setBomba(b);
-    		decCantBombas();
+    		
     	}
     	return b;
     }
