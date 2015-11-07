@@ -21,7 +21,6 @@ public class RUGULOS extends ENEMIGOS {
 	/**
 	 * variable Thread que controla la transicion del rugulo.
 	 */
-	@SuppressWarnings("unused")
 	private rugulosThread T;
 
     /**
@@ -63,8 +62,9 @@ public class RUGULOS extends ENEMIGOS {
     			this.grafico.mover(dir);
     			
     			//controlo colision con bomberman.
-    			if((next.getX()==MiNivel.getBomberman().getX())&&(next.getY()==MiNivel.getBomberman().getY())){
-    				MiNivel.getBomberman().select(12);//afecto al bomberman
+    			boolean agarre=(next.getX()==MiNivel.getBomberman().getX())&&(next.getY()==MiNivel.getBomberman().getY());
+    			if(agarre){
+    				//afecto al bomberman
     				MiNivel.getBomberman().destruirme();
     			}
     		

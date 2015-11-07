@@ -22,6 +22,12 @@ import GUI.constantes;
 import bomba.BOMBA;
 import nivel.NIVEL;
 
+/*------ANOTACIONES------
+*	consultar un metodo para iniciar los thread de los enemigos,
+*	cuando se mueva el bomberman se llama a un iniciar en esta gui.
+*/
+
+
 
 /**
  * Clase que modela la Interfaz Gráfica.

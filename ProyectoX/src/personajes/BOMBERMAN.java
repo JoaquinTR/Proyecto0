@@ -48,7 +48,6 @@ public class BOMBERMAN extends PERSONAJE {
         this.grafico = new jugadorGrafico(x,y);
         b=new bombermanThread(this);
         CantBombas=1;
-        //b.start(); no inicia la gui si esta aca
 
     }
 
