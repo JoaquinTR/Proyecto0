@@ -30,6 +30,8 @@ public class BOMBERMAN extends PERSONAJE {
      */
     private int CantBombas;
     
+    private boolean Fatality;
+    
     /**
      * Thread del bomberman.
      */
@@ -48,6 +50,8 @@ public class BOMBERMAN extends PERSONAJE {
         this.grafico = new jugadorGrafico(x,y);
         b=new bombermanThread(this);
         CantBombas=1;
+        Fatality=false;
+        Masacre=false;
 
     }
 
@@ -83,6 +87,13 @@ public class BOMBERMAN extends PERSONAJE {
     	return b;
     }
 
+    public boolean isFatality(){
+    	return Fatality;
+    }
+    
+    public boolean isMasacre(){
+    	return Masacre;
+    }
     /**
      * Aumenta la velocidad del bomberman.
      */
