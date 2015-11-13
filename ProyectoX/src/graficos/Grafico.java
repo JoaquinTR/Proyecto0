@@ -110,6 +110,7 @@ public abstract class Grafico {
 					pos.y=grafico.getY();
 					Thread.sleep(125);
 				}
+				select(constantes.ABAJO+4);
 				break;
 			case constantes.ARRIBA:
 				select(constantes.ARRIBA);
@@ -119,6 +120,7 @@ public abstract class Grafico {
 					pos.y=grafico.getY();
 					Thread.sleep(125);
 				}
+				select(constantes.ARRIBA+4);
 				break;
 			case constantes.IZQUIERDA:
 				select(constantes.IZQUIERDA);
@@ -128,6 +130,7 @@ public abstract class Grafico {
 					pos.y=grafico.getY();
 					Thread.sleep(125);
 				}
+				select(constantes.IZQUIERDA+4);
 				break;
 			case constantes.DERECHA:
 				select(constantes.DERECHA);
@@ -137,6 +140,7 @@ public abstract class Grafico {
 					pos.y=grafico.getY();
 					Thread.sleep(125);
 				}
+				select(constantes.DERECHA+4);
 				break;
 		}
 		} catch (InterruptedException e) {}

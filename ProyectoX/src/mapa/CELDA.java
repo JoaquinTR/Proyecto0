@@ -175,11 +175,14 @@ public class CELDA {
         
         if(DI == false){
         	Random r=new Random();
-        	int R = 5+ r.nextInt(2);
+        	int R = 7+ r.nextInt(2);
         	grafico.select(R);
         }
-        else{
-        	grafico.select(1);
+        
+        if(DI == true){
+        	Random r=new Random();
+        	int R = 1+ r.nextInt(6);
+        	grafico.select(R);
         }
         	
     }
@@ -231,6 +234,7 @@ public class CELDA {
     	}
     	else 
     		if(MiPared.getDestructible()){
+    			grafico.select(9);
     			destruirPared();
     		}
     	

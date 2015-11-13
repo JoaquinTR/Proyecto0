@@ -75,15 +75,6 @@ public abstract class PERSONAJE {
     }
     
     /**
-     * Selecciona la imagen que contiene el objeto grafico de este personaje
-     * (coincide con el estado que se percibe del mismo, quieto, en movimiento, etc...)
-     * @param i indice de las imagenes.
-     */
-    public void select(int i){
-    	grafico.select(i);
-    }
-    
-    /**
      * Retorna la velocidad del personaje.
      * @return velocidad del personaje en cuestion.
      */

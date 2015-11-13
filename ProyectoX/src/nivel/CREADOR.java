@@ -60,7 +60,7 @@ public abstract class CREADOR {
      * @param y Posicion en y dentro de la matriz.
      * @param MiNivel Nivel al que pertenece.
      */
-    public abstract void crearBomberman(NIVEL MiNivel,CELDA[][] grilla);
+    public abstract void crearBomberman(NIVEL MiNivel,CELDA[][] grilla,GUI gui);
 
     /**
      * Crea un Speedup.

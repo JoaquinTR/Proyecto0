@@ -52,7 +52,7 @@ public class BOMBERMAN extends PERSONAJE {
         CantBombas=1;
         Fatality=false;
         Masacre=false;
-
+        grafico.select(4);////
     }
 
     
@@ -155,18 +155,15 @@ public class BOMBERMAN extends PERSONAJE {
     		b.iniciar();
     		
     		if(hay){
-    			destruirme();
+    			b.setDir(constantes.DESTRUCCION);
+    			b.iniciar();
     		}
     		
     	}
     	else{
-    		b.setDir(dir+4);
-    		b.iniciar();
-
-
+    		grafico.select(dir+4);
+    		unlock();
     	}
-    	
- 
     	
     	
 
@@ -185,7 +182,7 @@ public class BOMBERMAN extends PERSONAJE {
     public void destruirme(){
     	b.setDir(constantes.DESTRUCCION);
     	MiNivel.lock();
-    	select(12);
+    	grafico.select(12);
     }
 }
 

@@ -50,21 +50,12 @@ public class bombermanThread extends Thread{
 						if(dir!=constantes.DESTRUCCION){
 						
 								this.mLogica.mover(dir);
-								this.mLogica.select(dir+4);
 							
 								mLogica.unlock();
 								detener();
 						
 						
 						} 
-						if(dir>=4){ //se trago una pared.
-						
-							mLogica.select(dir);
-							mLogica.unlock();
-							detener();
-						
-						}
-					
 						//direccion -2 indica la transicion de la muerte.
 						if(dir==constantes.DESTRUCCION){
 							interrupt();

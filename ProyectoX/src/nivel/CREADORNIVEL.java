@@ -73,27 +73,36 @@ public class CREADORNIVEL extends CREADOR{
         }
         
         //crear paredes destructibles
+        Random px=new Random();
+        Random py=new Random();
         
+        int x=0;
+		int y=0;
+		
+        for(i=0;i<=110;i++){
+        	x= 1+ px.nextInt(29);
+			y= 1+ py.nextInt(11);
+        	while( ((x==1)&(y==1)) | ((x==2)&(y==1)) | ((x==1)&(y==2)) | (grilla[x][y].getPared()!=null)){
+				x= 1+ px.nextInt(29);
+				y= 1+ py.nextInt(11);
+			}
+        	crearCeldaPD(x,y,MiNivel,grilla);
+        }
         
-        MiNivel.getBomberman().select(4);
-        gui.agregarObjeto(MiNivel.getBomberman().getGrafico());
-		grilla[1][1].agregarPersonaje(MiNivel.getBomberman());
+        //creo bomberman
+        crearBomberman(MiNivel,grilla,gui);
 		
-        //creo 3 rugulos aleatoriamente.
-		Random Rx=new Random();
-		Random Ry=new Random();
-		int x= 4+ Rx.nextInt(26);
-		int y= 4+ Ry.nextInt(8);
-		
+        //creo 3 rugulos aleatoriamente. se puede hacer todo dentro de crearRugulos. idem para los otros.
+
 		for(int r=0;r<3;r++){
 			
-			x= 4+ Rx.nextInt(26);
-			y= 4+ Ry.nextInt(8);
+			x= 3+ px.nextInt(27);
+			y= 3+ py.nextInt(9);
 			
 			//vuelvo a randomizar en caso de que quede en ambos x e y pares.
-			while((x%2!=0)||(y%2!=0)){
-				x= 4+ Rx.nextInt(25);
-				y= 4+ Ry.nextInt(7);
+			while( ((x==1)&(y==1)) | ((x==2)&(y==1)) | ((x==1)&(y==2)) | (grilla[x][y].getPared()!=null) ){
+				x= 3+ px.nextInt(27);
+				y= 3+ py.nextInt(9);
 			}
 			crearRugulos(x,y,MiNivel,grilla,gui,Enemigos);
 		}
@@ -110,7 +119,6 @@ public class CREADORNIVEL extends CREADOR{
     public void crearRugulos(int x, int y, NIVEL MiNivel,CELDA[][] grilla,GUI gui, LinkedList<ENEMIGOS> Enemigos) {
     	
     	Enemigos.addLast(new RUGULOS(MiNivel,x,y));
-		Enemigos.getLast().select(1);
 		gui.agregarObjeto(Enemigos.getLast().getGrafico());
 		
 		grilla[x][y].agregarPersonaje(Enemigos.getLast());
@@ -142,8 +150,9 @@ public class CREADORNIVEL extends CREADOR{
      * @param y Posicion en y dentro de la matriz.
      * @param MiNivel Nivel al que pertenece.
      */
-    public void crearBomberman(NIVEL MiNivel,CELDA[][] grilla) {
-        
+    public void crearBomberman(NIVEL MiNivel,CELDA[][] grilla,GUI gui) {
+    	gui.agregarObjeto(MiNivel.getBomberman().getGrafico());
+		grilla[1][1].agregarPersonaje(MiNivel.getBomberman());
     }
 
     /**
@@ -203,7 +212,6 @@ public class CREADORNIVEL extends CREADOR{
      * @param MiNivel Nivel al que pertenece.
      */
     public void crearCeldaPD(int x, int y, NIVEL MiNivel,CELDA[][] grilla) {
-    	grilla[x][y] = new CELDA(MiNivel,x,y);  
     	grilla[x][y].crearPared(true);
     }
 

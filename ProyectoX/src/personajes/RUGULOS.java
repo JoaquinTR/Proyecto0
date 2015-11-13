@@ -33,6 +33,7 @@ public class RUGULOS extends ENEMIGOS {
         super(MiNivel,x,y,1);
         this.grafico = new ruguloGrafico(x,y);
         T=new rugulosThread(this);
+        grafico.select(4);////
     }
 
     /**
@@ -69,7 +70,7 @@ public class RUGULOS extends ENEMIGOS {
     			}
     		
     		}
-    		select(dir+4);
+    		grafico.select(dir+4);
     		
     	
     	
@@ -91,7 +92,7 @@ public class RUGULOS extends ENEMIGOS {
      */
     public void destruirme(){
     	T.destruir();
-    	select(8);
+    	grafico.select(8);
     	MiNivel.setPuntaje(15);
     	MiNivel.getCelda(x, y, constantes.ACTUAL).quitarPersonaje(this);
     	T.stop();// si no hago esto se me consume el cpu.

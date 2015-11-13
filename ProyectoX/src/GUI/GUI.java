@@ -2,11 +2,9 @@ package GUI;
 
 import java.awt.EventQueue;
 
-import javax.sound.sampled.AudioFormat;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
-import javax.sound.sampled.DataLine;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.ImageIcon;
@@ -19,7 +17,6 @@ import java.awt.event.KeyEvent;
 import java.io.IOException;
 
 import GUI.constantes;
-import bomba.BOMBA;
 import nivel.NIVEL;
 
 /*------ANOTACIONES------
@@ -211,6 +208,9 @@ public class GUI extends JFrame {
 	 			
 	 			switch (dir){
 				case KeyEvent.VK_UP :
+					
+					lock=true;
+					
 					MiNivel.mover(constantes.ARRIBA);
 					
 					String a="pos matriz: "+MiNivel.getBomberman().getX()+" "+MiNivel.getBomberman().getY();
@@ -223,10 +223,12 @@ public class GUI extends JFrame {
 						start=true;
 					}
 				
-					lock=true;
 					
 					break;
-				case KeyEvent.VK_DOWN : 
+				case KeyEvent.VK_DOWN :
+					
+					lock=true;
+					
 					MiNivel.mover(constantes.ABAJO);	
 
 					String a1="pos matriz: "+MiNivel.getBomberman().getX()+" "+MiNivel.getBomberman().getY();
@@ -239,10 +241,12 @@ public class GUI extends JFrame {
 						start=true;
 					}
 					
-					lock=true;
 					
 					break;
 				case KeyEvent.VK_LEFT : 
+					
+					lock=true;
+					
 					MiNivel.mover(constantes.IZQUIERDA);
 					
 					String a2="pos matriz: "+MiNivel.getBomberman().getX()+" "+MiNivel.getBomberman().getY();
@@ -255,10 +259,12 @@ public class GUI extends JFrame {
 						start=true;
 					}
 					
-					lock=true;
-				
+					
 					break;
 				case KeyEvent.VK_RIGHT : 
+					
+					lock=true;
+					
 					MiNivel.mover(constantes.DERECHA);	
 					
 					String a3="pos matriz: "+MiNivel.getBomberman().getX()+" "+MiNivel.getBomberman().getY();
@@ -271,7 +277,6 @@ public class GUI extends JFrame {
 						start=true;
 					}
 					
-					lock=true;
 					
 					break;
 				}
