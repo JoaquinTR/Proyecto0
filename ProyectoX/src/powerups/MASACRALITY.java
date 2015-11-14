@@ -14,6 +14,11 @@ import nivel.NIVEL;
 public class MASACRALITY extends POWERUP {
 
 	/**
+	 * timer de powerup.
+	 */
+	private masacralityThread m;
+	
+	/**
      * constructor.
      * 
      * @param x posicion x en la matriz
@@ -23,6 +28,8 @@ public class MASACRALITY extends POWERUP {
     public MASACRALITY(int x, int y, NIVEL MiNivel) {
     	super(x,y,MiNivel);
     	grafico.select(2);
+    	m=new masacralityThread(this);
+    	
     }
 
     /**
@@ -31,8 +38,16 @@ public class MASACRALITY extends POWERUP {
      */
     public void ejecutar() {
         MiNivel.getBomberman().setMasacre();
-      //controlar efectos graficos.
         grafico.getGrafico().setVisible(false);
+        m.start();
+    	m.iniciar();
     }
-
+    
+    /**
+     * Revierte el efecto de este powerup.
+     */
+    public void restaurar() {
+        MiNivel.getBomberman().setMasacre();
+        m.stop();
+    }
 }

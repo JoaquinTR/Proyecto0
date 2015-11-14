@@ -192,6 +192,10 @@ public class CREADORNIVEL extends CREADOR{
 		
 		
     }
+    
+    
+    
+    
 
     /**
      * Crea un rugulo.
@@ -248,7 +252,7 @@ public class CREADORNIVEL extends CREADOR{
     	SPEEDUP pu=new SPEEDUP(x,y,MiNivel);
         grilla[x][y].setPowerup(pu);
         gui.agregarObjeto(pu.getGrafico());
-        //pu.getGrafico().setVisible(false); //POR RAZONES DE TESTEO.
+        pu.getGrafico().setVisible(false);
     }
 
     /**
@@ -261,7 +265,7 @@ public class CREADORNIVEL extends CREADOR{
     	FATALITY pu=new FATALITY(x,y,MiNivel);
         grilla[x][y].setPowerup(pu);
         gui.agregarObjeto(pu.getGrafico());
-        //pu.getGrafico().setVisible(false); //POR RAZONES DE TESTEO.
+        pu.getGrafico().setVisible(false);
     }
 
     /**
@@ -274,7 +278,7 @@ public class CREADORNIVEL extends CREADOR{
     	BOMBALITY pu=new BOMBALITY(x,y,MiNivel);
         grilla[x][y].setPowerup(pu);
         gui.agregarObjeto(pu.getGrafico());
-        //pu.getGrafico().setVisible(false); //POR RAZONES DE TESTEO.
+        pu.getGrafico().setVisible(false);
     }
 
     /**
@@ -287,7 +291,7 @@ public class CREADORNIVEL extends CREADOR{
     	MASACRALITY pu=new MASACRALITY(x,y,MiNivel);
         grilla[x][y].setPowerup(pu);
         gui.agregarObjeto(pu.getGrafico());
-        //pu.getGrafico().setVisible(false); //POR RAZONES DE TESTEO.
+        pu.getGrafico().setVisible(false); 
     }
 
     /**

@@ -81,8 +81,6 @@ public class NIVEL {
     	
 		Creador.crearNivel(Grilla, this, gui,Enemigos);
 		
-		Bomberman.start();//inicio el thread, no iniciaba nunca en el constructor de bomberman.
-		
 		ParedesDestructiblesRestantes = 110;
     }
     

@@ -53,6 +53,7 @@ public class BOMBERMAN extends PERSONAJE {
         radioBombas=1; //test
         Masacre=false;
         grafico.select(4);
+        b.start();
     }
 
     
@@ -64,13 +65,6 @@ public class BOMBERMAN extends PERSONAJE {
     	
     	grafico.mover(dir,this.velocidad);
     	
-    }
-    
-    /**
-     * inicia el thread del bomberman.
-     */
-    public void start(){
-    	b.start();
     }
 
     /**
