@@ -29,7 +29,7 @@ public class FATALITY extends POWERUP {
      * Afectar al bomberman. Aumenta el radio de las explosiones en 1.
      */
     public void ejecutar() {
-        MiNivel.getBomberman().setFatality();
+        MiNivel.getBomberman().aumentarRadioBombas();
         //controlar efectos graficos.
         grafico.getGrafico().setVisible(false);
     }

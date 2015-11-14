@@ -30,7 +30,7 @@ public class BOMBERMAN extends PERSONAJE {
      */
     private int CantBombas;
     
-    private boolean Fatality;
+    private int radioBombas;
     
     /**
      * Thread del bomberman.
@@ -50,7 +50,7 @@ public class BOMBERMAN extends PERSONAJE {
         this.grafico = new jugadorGrafico(x,y);
         b=new bombermanThread(this);
         CantBombas=1;
-        Fatality=false;
+        radioBombas=1;
         Masacre=false;
         grafico.select(4);////
     }
@@ -88,10 +88,10 @@ public class BOMBERMAN extends PERSONAJE {
     }
 
     /**
-     * Indica si el power up fatality esta activo.
+     * Aumenta el radio de explosion de las bombas.
      */
-    public boolean isFatality(){
-    	return Fatality;
+    public void aumentarRadioBombas(){
+    	radioBombas++;
     }
     
     /**
@@ -138,12 +138,6 @@ public class BOMBERMAN extends PERSONAJE {
     	Masacre=!Masacre;
     }
     
-    /**
-     * Intercambia los estados de fatality.
-     */
-    public void setFatality() {
-    	Masacre=!Masacre;
-    }
     
     
     /**
