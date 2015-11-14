@@ -2,6 +2,7 @@ package bomba;
 
 
 import java.io.IOException;
+import java.util.LinkedList;
 
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
@@ -98,35 +99,68 @@ public class BOMBA{
         grafico.select(1);
         MiNivel.getCelda(x, y, constantes.ACTUAL).quitarBomba();
         
-
+        int radio = MiNivel.getBomberman().getRadioBombas();
         
-        CELDA actual=MiNivel.getCelda(x, y, constantes.ACTUAL);
-        CELDA abajo=MiNivel.getCelda(x, y, constantes.ABAJO);
-        CELDA arriba=MiNivel.getCelda(x, y, constantes.ARRIBA);
-        CELDA izquierda=MiNivel.getCelda(x, y, constantes.IZQUIERDA);
-        CELDA derecha=MiNivel.getCelda(x, y, constantes.DERECHA);
+        int offset = 0;
+        
+        LinkedList<CELDA> celdasAfectadas=new LinkedList<CELDA>();
+        
+        boolean stopab=false;
+        boolean stopar=false;
+        boolean stopi=false;
+        boolean stopd=false;
+        
+        CELDA actual=null;
+        CELDA abajo=null;
+        CELDA arriba=null;
+        CELDA izquierda=null;
+        CELDA derecha=null;
+        
+        actual=MiNivel.getCelda(x, y, constantes.ACTUAL);
+        
+        celdasAfectadas.addLast(actual);
+        
+        do{
+        	
+        
+        //si no indicaron que frene de pedir una direccion pido las celdas.
+        //el pedido retorna null si se va del mapa.
+        if(!stopab)abajo=MiNivel.getCelda(x, y + offset, constantes.ABAJO);
+        if(!stopar)arriba=MiNivel.getCelda(x, y - offset, constantes.ARRIBA);
+        if(!stopi)izquierda=MiNivel.getCelda(x - offset, y, constantes.IZQUIERDA);
+        if(!stopd)derecha=MiNivel.getCelda(x+ offset, y, constantes.DERECHA);
         
         
-   		actual.afectar();        
-        abajo.afectar();
-        arriba.afectar();
-        izquierda.afectar();
-        derecha.afectar();
+   		//si me fui del mapa indico que pare de pedir esas celdas ("stopx" flags).         
+        if(abajo!=null) celdasAfectadas.addLast(abajo); else stopab=true;
+        if(arriba!=null) celdasAfectadas.addLast(arriba); else stopar=true;
+        if(izquierda!=null) celdasAfectadas.addLast(izquierda); else stopi=true;
+        if(derecha!=null) celdasAfectadas.addLast(derecha); else stopd=true;
+        
+        //si me encuentro con una pared pongo en verdadero el flag correspondiente.
+        if(abajo.getPared()!=null) stopab=true;
+        if(arriba.getPared()!=null)  stopar=true;
+        if(izquierda.getPared()!=null)  stopi=true;
+        if(derecha.getPared()!=null) stopd=true;
+        
+        radio--;
+        
+        offset++;
+        }while(radio!=0);
+        
+        for(CELDA C: celdasAfectadas){
+        	C.afectar();
+        }
         
         try {
 			T.sleep(1650);
 		} catch (InterruptedException e) {}
         
-        if(actual.getPared()==null)
-        	actual.restaurar();
-        if(abajo.getPared()==null)
-        	abajo.restaurar();
-        if(arriba.getPared()==null)
-        	arriba.restaurar();
-        if(izquierda.getPared()==null)
-        	izquierda.restaurar();
-        if(derecha.getPared()==null)
-        	derecha.restaurar();
+        for(CELDA C: celdasAfectadas){
+        	if(C.getPared()==null)
+            	C.restaurar();
+        }
+        	
     }
 
     /**

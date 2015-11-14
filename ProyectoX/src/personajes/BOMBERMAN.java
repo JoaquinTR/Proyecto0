@@ -50,9 +50,9 @@ public class BOMBERMAN extends PERSONAJE {
         this.grafico = new jugadorGrafico(x,y);
         b=new bombermanThread(this);
         CantBombas=1;
-        radioBombas=1;
+        radioBombas=1; //test
         Masacre=false;
-        grafico.select(4);////
+        grafico.select(4);
     }
 
     
@@ -77,8 +77,9 @@ public class BOMBERMAN extends PERSONAJE {
      * pone una bomba en la posicion actual del bomberman.
      */
     public BOMBA ponerBomba() {
+    	
     	BOMBA b=null;
-    	if(CantBombas>=1){
+    	if( (CantBombas > 0)| ( Masacre ) ){//cant bombas se va a negativo en masacre.
     		decCantBombas();
     		b=new BOMBA(MiNivel,this.x,this.y);
     		MiNivel.getCelda(x, y, constantes.ACTUAL).setBomba(b);
@@ -92,6 +93,14 @@ public class BOMBERMAN extends PERSONAJE {
      */
     public void aumentarRadioBombas(){
     	radioBombas++;
+    }
+    
+    /**
+     * Obtiene el radio de explosion de las bombas.
+     * @return Radio de explosion.
+     */
+    public int getRadioBombas(){
+    	return radioBombas;
     }
     
     /**
@@ -149,8 +158,11 @@ public class BOMBERMAN extends PERSONAJE {
     	CELDA actual = MiNivel.getCelda(x, y, -1);
     	CELDA next= MiNivel.getCelda(x, y, dir);
     		
-    	boolean puedo=(next.getPared()==null)&(!next.hayBomba());
-
+    	boolean puedo=(next.getPared()==null);
+    	puedo= (puedo | Masacre ) & (!next.hayBomba());
+    	if(next.getPared()!=null)
+    		puedo=puedo & next.getPared().getDestructible();
+    	
     	if(puedo){
     		b.setDir(dir);
     		boolean hay=false;
@@ -168,7 +180,7 @@ public class BOMBERMAN extends PERSONAJE {
     			b.setDir(constantes.DESTRUCCION);
     			b.iniciar();
     		}
-    		if(next.getPowerup()!=null){
+    		if((next.getPowerup()!=null) &(next.getPared()==null)){
     			next.getPowerup().ejecutar();
     			next.quitarPowerup();
     		}

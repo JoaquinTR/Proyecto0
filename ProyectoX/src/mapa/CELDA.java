@@ -184,6 +184,7 @@ public class CELDA {
     		
     	
     	this.MiPared=null;
+    	MiNivel.decPDR();
     }
 
     /**

@@ -83,6 +83,7 @@ public class NIVEL {
 		
 		Bomberman.start();//inicio el thread, no iniciaba nunca en el constructor de bomberman.
 		
+		ParedesDestructiblesRestantes = 110;
     }
     
 
@@ -130,10 +131,9 @@ public class NIVEL {
 
     /**
      * decrementa la cantidad de paredes por destruir.
-     * @param n cantidad de paredes destruidas (entre 0 y 3 ).
      */
-    public void decPDR(int n) {
-    	ParedesDestructiblesRestantes -= n;
+    public void decPDR() {
+    	ParedesDestructiblesRestantes --;
     }
     
     /**
@@ -178,23 +178,32 @@ public class NIVEL {
      * @return la celda dependiendo de la direccion: 0 abajo, 1 arriba, 2 izquierda, 3 derecha, -1 la celda actual.
      */
     public CELDA getCelda(int x, int y,int dir){
+    	
     	CELDA next = null;
-    	switch(dir){
-    		case constantes.ABAJO:
-    			next= Grilla[x][y+1];
-    			break;
-    		case constantes.ARRIBA:
-    			next = Grilla[x][y-1];
-    			break;
-    		case constantes.IZQUIERDA:
-    			next = Grilla[x-1][y];
-    			break;
-    		case constantes.DERECHA:
-    			next = Grilla[x+1][y];
-    			break;
-    		case constantes.ACTUAL:
-    			next=Grilla[x][y];
-    			break;
+    	
+    	try{
+    		
+    		
+    		switch(dir){
+    			case constantes.ABAJO:
+    				next= Grilla[x][y+1];
+    				break;
+    			case constantes.ARRIBA:
+    				next = Grilla[x][y-1];
+    				break;
+    			case constantes.IZQUIERDA:
+    				next = Grilla[x-1][y];
+    				break;
+    			case constantes.DERECHA:
+    				next = Grilla[x+1][y];
+    				break;
+    			case constantes.ACTUAL:
+    				next=Grilla[x][y];
+    				break;
+    				
+    	}
+    	}catch(ArrayIndexOutOfBoundsException e){
+    		return null;
     	}
     	return next;
     }
