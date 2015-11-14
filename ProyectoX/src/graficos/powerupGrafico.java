@@ -4,6 +4,16 @@ import java.awt.Image;
 
 import javax.swing.ImageIcon;
 
+
+/**
+ * Clase que modela los power-up gráficamente.
+ * 
+ * Tecnología de Programacion 2015.
+ * 
+ * @author Román, Ezequiel Jorge. LU: 97316
+ * @author Waigel, Micaela Anahí. LU: 99558
+ * @author Tricerri, Joaquín. LU:100236
+ */
 public class powerupGrafico extends Grafico{
 
 	public powerupGrafico(int x, int y) {

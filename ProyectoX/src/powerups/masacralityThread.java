@@ -1,7 +1,5 @@
 package powerups;
 
-import bomba.BOMBA;
-
 public class masacralityThread extends Thread {
 	/**
 	 * Logica del Thread.

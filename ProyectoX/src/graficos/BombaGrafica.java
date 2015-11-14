@@ -6,7 +6,7 @@ import javax.swing.ImageIcon;
 
 
 /**
- * Clase que modela una celda gráficamente.
+ * Clase que modela una bomba gráficamente.
  * 
  * Tecnología de Programacion 2015.
  * 

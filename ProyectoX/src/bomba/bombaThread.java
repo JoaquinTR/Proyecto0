@@ -1,7 +1,5 @@
 package bomba;
 
-import personajes.RUGULOS;
-
 /**
  * Clase que modela el Thread de un rugulo.
  * 
