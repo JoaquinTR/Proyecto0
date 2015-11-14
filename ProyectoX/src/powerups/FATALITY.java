@@ -31,6 +31,7 @@ public class FATALITY extends POWERUP {
     public void ejecutar() {
         MiNivel.getBomberman().setFatality();
         //controlar efectos graficos.
+        grafico.getGrafico().setVisible(false);
     }
 
 

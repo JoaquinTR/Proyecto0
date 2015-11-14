@@ -105,14 +105,16 @@ public class BOMBERMAN extends PERSONAJE {
      * Aumenta la velocidad del bomberman.
      */
     public void aumentarVelocidad() {
-        velocidad*=2;
+        //velocidad*=2;
+    	velocidad++;
     }
     
     /**
      * Decrementa la velocidad del bomberman.
      */
     public void decrementarVelocidad(){
-    	velocidad/=2;
+    	//velocidad/=2;
+    	velocidad--;
     }
 
     /**
@@ -172,7 +174,10 @@ public class BOMBERMAN extends PERSONAJE {
     			b.setDir(constantes.DESTRUCCION);
     			b.iniciar();
     		}
-    		
+    		if(next.getPowerup()!=null){
+    			next.getPowerup().ejecutar();
+    			next.quitarPowerup();
+    		}
     	}
     	else{
     		grafico.select(dir+4);

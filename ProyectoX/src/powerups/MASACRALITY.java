@@ -32,6 +32,7 @@ public class MASACRALITY extends POWERUP {
     public void ejecutar() {
         MiNivel.getBomberman().setMasacre();
       //controlar efectos graficos.
+        grafico.getGrafico().setVisible(false);
     }
 
 }

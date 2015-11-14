@@ -32,6 +32,7 @@ public class BOMBALITY extends POWERUP {
     public void ejecutar() {
     	MiNivel.getBomberman().aumentarCantBombas();
     	//controlar efectos graficos.
+    	grafico.getGrafico().setVisible(false);
     }
 
 }

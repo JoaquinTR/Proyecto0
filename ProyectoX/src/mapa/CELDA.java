@@ -152,8 +152,14 @@ public class CELDA {
     }
     
     /**
+     * Quita un powerup en caso que tenga.
+     */
+    public void quitarPowerup() {
+        Powerup=null;
+    }
+    
+    /**
      * Quita una bomba en caso que tenga.
-     * @return La bomba en cuestion.
      */
     public void quitarBomba() {
         Bomba=null;
@@ -171,6 +177,12 @@ public class CELDA {
      * Destruye la pared contenida en esta celda.
      */
     public void destruirPared() {
+    	//hago aparecer el powerup.
+    	if( (MiPared!=null) & (Powerup!=null) ){
+    		Powerup.getGrafico().setVisible(true);
+    	}
+    		
+    	
     	this.MiPared=null;
     }
 

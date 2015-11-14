@@ -31,6 +31,7 @@ public class SPEEDUP extends POWERUP {
     public void ejecutar() {
         MiNivel.getBomberman().aumentarVelocidad();
         //controlar efectos graficos.
+        grafico.getGrafico().setVisible(false);
     }
 
 
