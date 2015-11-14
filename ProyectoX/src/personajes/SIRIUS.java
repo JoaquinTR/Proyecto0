@@ -69,7 +69,7 @@ public class SIRIUS extends ENEMIGOS {
      * Destruccion del sirius.
      */
     public void destruirme(){
-    	
+    	MiNivel.setPuntaje(50);
     }
 
 }

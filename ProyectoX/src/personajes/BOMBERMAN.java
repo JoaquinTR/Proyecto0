@@ -73,7 +73,7 @@ public class BOMBERMAN extends PERSONAJE {
     public BOMBA ponerBomba() {
     	
     	BOMBA b=null;
-    	if( (CantBombas > 0)| ( Masacre ) ){//cant bombas se va a negativo en masacre.
+    	if( ( (CantBombas > 0) | ( Masacre ) ) & (!MiNivel.getCelda(x,y,constantes.ACTUAL).hayBomba()) ){//cant bombas se va a negativo en masacre.
     		decCantBombas();
     		b=new BOMBA(MiNivel,this.x,this.y);
     		MiNivel.getCelda(x, y, constantes.ACTUAL).setBomba(b);
@@ -199,9 +199,11 @@ public class BOMBERMAN extends PERSONAJE {
      * destruye el bomberman y traba el teclado. GAME OVER.
      */
     public void destruirme(){
-    	b.setDir(constantes.DESTRUCCION);
-    	MiNivel.lock();
-    	grafico.select(12);
+    	if(!Masacre){
+    		b.setDir(constantes.DESTRUCCION);
+    		MiNivel.lock();
+    		grafico.select(12);
+    	}
     }
 }
 

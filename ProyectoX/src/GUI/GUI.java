@@ -192,9 +192,9 @@ public class GUI extends JFrame {
 	// usado desde el reloj, le indica que hubo un pulso y
 	// se debe actualizar los display de posicion del enemigo0 (el rugulo)
 	public void pulse(){
-		String a="pos matriz: "+MiNivel.getEnemigos().getFirst().getX()+" "+MiNivel.getEnemigos().getFirst().getY();
+		String a="Puntaje: "+MiNivel.getPuntaje();
 		pos3.setText(a);
-		a="pos matriz: "+MiNivel.getEnemigos().getFirst().getGrafico().getX()+" "+MiNivel.getEnemigos().getFirst().getGrafico().getY();
+		a="Tiempo: "+r.getHoras()+":"+r.getMinutos()+":"+r.getSegundos();
 		pos4.setText(a);
 	}
 	

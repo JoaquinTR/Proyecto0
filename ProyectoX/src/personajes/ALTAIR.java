@@ -33,6 +33,7 @@ public class ALTAIR extends ENEMIGOS {
      * destruccion del altair.
      */
     public void destruirme(){
+    	MiNivel.setPuntaje(20);
     	
     }
 

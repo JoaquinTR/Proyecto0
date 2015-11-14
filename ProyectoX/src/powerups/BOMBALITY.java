@@ -30,6 +30,7 @@ public class BOMBALITY extends POWERUP {
      * afectar al bomberman. aumenta la cant de bombas para poner en 1.
      */
     public void ejecutar() {
+    	MiNivel.setPuntaje(35);
     	MiNivel.getBomberman().aumentarCantBombas();
     	//controlar efectos graficos.
     	grafico.getGrafico().setVisible(false);
