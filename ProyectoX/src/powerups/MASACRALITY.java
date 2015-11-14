@@ -22,6 +22,7 @@ public class MASACRALITY extends POWERUP {
      */
     public MASACRALITY(int x, int y, NIVEL MiNivel) {
     	super(x,y,MiNivel);
+    	grafico.select(2);
     }
 
     /**
@@ -29,7 +30,8 @@ public class MASACRALITY extends POWERUP {
      * atravezar paredes destructibles.
      */
     public void ejecutar() {
-        
+        MiNivel.getBomberman().setMasacre();
+      //controlar efectos graficos.
     }
 
 }

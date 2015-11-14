@@ -173,8 +173,13 @@ public class GUI extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
+					
+					
 					GUI frame = new GUI();
 					frame.setVisible(true);
+					//menu Menu=new menu();
+					//Menu.setVisible(true);
+					
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

@@ -22,13 +22,16 @@ public class BOMBALITY extends POWERUP {
      */
     public BOMBALITY(int x, int y, NIVEL MiNivel) {
     	super(x,y,MiNivel);
+    	grafico.select(0);
+  
     }
 
     /**
      * afectar al bomberman. aumenta la cant de bombas para poner en 1.
      */
     public void ejecutar() {
-        
+    	MiNivel.getBomberman().aumentarCantBombas();
+    	//controlar efectos graficos.
     }
 
 }

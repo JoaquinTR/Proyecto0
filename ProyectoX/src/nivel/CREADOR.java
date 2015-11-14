@@ -44,7 +44,7 @@ public abstract class CREADOR {
      * @param y Posicion en y dentro de la matriz.
      * @param MiNivel Nivel al que pertenece.
      */
-    public abstract void crearAltair(int x, int y, NIVEL MiNivel,CELDA[][] grilla);
+    public abstract void crearAltair(int x, int y, NIVEL MiNivel,CELDA[][] grilla,GUI gui);
 
     /**
      * Crea un Sirius.
@@ -52,7 +52,7 @@ public abstract class CREADOR {
      * @param y Posicion en y dentro de la matriz.
      * @param MiNivel Nivel al que pertenece.
      */
-    public abstract void crearSirius(NIVEL MiNivel,CELDA[][] grilla);
+    public abstract void crearSirius(NIVEL MiNivel,CELDA[][] grilla,GUI gui);
 
     /**
      * Crea el bomberman.
@@ -68,7 +68,7 @@ public abstract class CREADOR {
      * @param y Posicion en y dentro de la matriz.
      * @param MiNivel Nivel al que pertenece.
      */
-    public abstract void crearSpeedup(int x, int y, NIVEL MiNivel,CELDA[][] grilla);
+    public abstract void crearSpeedup(int x, int y, NIVEL MiNivel,CELDA[][] grilla,GUI gui);
 
     /**
      * Crea un Fatality.
@@ -76,7 +76,7 @@ public abstract class CREADOR {
      * @param y Posicion en y dentro de la matriz.
      * @param MiNivel Nivel al que pertenece.
      */
-    public abstract void crearFatality(int x, int y, NIVEL MiNivel,CELDA[][] grilla);
+    public abstract void crearFatality(int x, int y, NIVEL MiNivel,CELDA[][] grilla,GUI gui);
 
     /**
      * Crea un Bombality.
@@ -84,7 +84,7 @@ public abstract class CREADOR {
      * @param y Posicion en y dentro de la matriz.
      * @param MiNivel Nivel al que pertenece.
      */
-    public abstract void crearBombality(int x, int y, NIVEL MiNivel,CELDA[][] grilla);
+    public abstract void crearBombality(int x, int y, NIVEL MiNivel,CELDA[][] grilla,GUI gui);
 
     /**
      * Crea un Masacrality.
@@ -92,7 +92,7 @@ public abstract class CREADOR {
      * @param y Posicion en y dentro de la matriz.
      * @param MiNivel Nivel al que pertenece.
      */
-    public abstract void crearMasacrality(int x, int y, NIVEL MiNivel,CELDA[][] grilla);
+    public abstract void crearMasacrality(int x, int y, NIVEL MiNivel,CELDA[][] grilla,GUI gui);
 
     /**
      * Crea una Celda transitable.

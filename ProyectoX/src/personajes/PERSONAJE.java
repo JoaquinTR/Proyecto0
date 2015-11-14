@@ -30,7 +30,7 @@ public abstract class PERSONAJE {
     /**
      * velocidad de avance del personaje.
      */
-    protected float velocidad;
+    protected int velocidad;
 
     /**
      * el nivel al que pertenece el personaje.
@@ -49,7 +49,7 @@ public abstract class PERSONAJE {
      * @param y posicion y en la matriz.
      * @param vel velocidad del personaje.
      */
-    protected PERSONAJE(NIVEL MiNivel, int x, int y, float velocidad) {
+    protected PERSONAJE(NIVEL MiNivel, int x, int y, int velocidad) {
         this.MiNivel=MiNivel;
         this.x=x;
         this.y=y;

@@ -46,7 +46,7 @@ public class BOMBERMAN extends PERSONAJE {
      * @param y posicion y en la matriz.
      */
     public BOMBERMAN(NIVEL MiNivel, int x, int y) {
-        super(MiNivel,x,y,3);
+        super(MiNivel,x,y,2);
         this.grafico = new jugadorGrafico(x,y);
         b=new bombermanThread(this);
         CantBombas=1;
@@ -62,7 +62,7 @@ public class BOMBERMAN extends PERSONAJE {
      */
     public void mover(int dir){
     	
-    	grafico.mover(dir);
+    	grafico.mover(dir,this.velocidad);
     	
     }
     
@@ -87,13 +87,20 @@ public class BOMBERMAN extends PERSONAJE {
     	return b;
     }
 
+    /**
+     * Indica si el power up fatality esta activo.
+     */
     public boolean isFatality(){
     	return Fatality;
     }
     
+    /**
+     * Indica si el power up masacre esta activo.
+     */
     public boolean isMasacre(){
     	return Masacre;
     }
+    
     /**
      * Aumenta la velocidad del bomberman.
      */
@@ -126,6 +133,13 @@ public class BOMBERMAN extends PERSONAJE {
      * Intercambia los estados de masacre.
      */
     public void setMasacre() {
+    	Masacre=!Masacre;
+    }
+    
+    /**
+     * Intercambia los estados de fatality.
+     */
+    public void setFatality() {
     	Masacre=!Masacre;
     }
     

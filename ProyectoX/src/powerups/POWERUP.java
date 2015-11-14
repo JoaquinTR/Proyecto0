@@ -1,5 +1,9 @@
 package powerups;
 
+import javax.swing.JLabel;
+
+import graficos.Grafico;
+import graficos.powerupGrafico;
 import nivel.NIVEL;
 
 /**
@@ -27,6 +31,11 @@ public abstract class POWERUP {
      * Nivel al que pertenece el power-up.
      */
     protected NIVEL MiNivel;
+    
+    /**
+     * Grafico de este powerup.
+     */
+    protected Grafico grafico;
 
     
     /**
@@ -40,8 +49,17 @@ public abstract class POWERUP {
     	this.x=x;
     	this.y=y;
     	this.MiNivel=MiNivel;
+    	this.grafico=new powerupGrafico(x,y);
     	
     }
+    
+    /**
+     * Retorna el JLabel de esta celda.
+     * @return JLabel en cuestion.
+     */
+    public JLabel getGrafico(){
+		return this.grafico.getGrafico();
+	}
     
     /**
      * La posicion x en la matriz del Power-up.

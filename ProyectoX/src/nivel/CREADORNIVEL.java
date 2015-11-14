@@ -6,6 +6,10 @@ import GUI.GUI;
 import mapa.CELDA;
 import personajes.ENEMIGOS;
 import personajes.RUGULOS;
+import powerups.BOMBALITY;
+import powerups.FATALITY;
+import powerups.MASACRALITY;
+import powerups.SPEEDUP;
 
 /**
  * Clase que modela un creador para el nivel.
@@ -106,8 +110,87 @@ public class CREADORNIVEL extends CREADOR{
 			}
 			crearRugulos(x,y,MiNivel,grilla,gui,Enemigos);
 		}
-        
-        
+		
+		
+		// ---CREACION POWER-UPS---
+		
+		//---SPEEDUP---
+		for(int r=0;r<4;r++){
+			
+			x= 3+ px.nextInt(27);
+			y= 3+ py.nextInt(9);
+			boolean is=false;
+			//rerandomizado.
+			
+				while( ((x==1)&(y==1)) | ((x==2)&(y==1)) | ((x==1)&(y==2)) | (!is) ){
+					x= 3+ px.nextInt(27);
+					y= 3+ py.nextInt(9);
+					if(grilla[x][y].getPared()!=null)
+						if( (grilla[x][y].getPared().getDestructible()) & (grilla[x][y].getPowerup()==null) )
+							is=true;
+				}
+			crearSpeedup(x,y,MiNivel,grilla,gui);
+	        
+		}
+		
+		//---FATALITY---
+		for(int r=0;r<3;r++){
+					
+			x= 3+ px.nextInt(27);
+			y= 3+ py.nextInt(9);
+			boolean is=false;
+			//rerandomizado.
+					
+			while( ((x==1)&(y==1)) | ((x==2)&(y==1)) | ((x==1)&(y==2)) | (!is) ){
+				x= 3+ px.nextInt(27);
+				y= 3+ py.nextInt(9);
+				if(grilla[x][y].getPared()!=null)
+					if( (grilla[x][y].getPared().getDestructible()) & (grilla[x][y].getPowerup()==null) )
+						is=true;
+			}
+			crearFatality(x,y,MiNivel,grilla,gui);
+			        
+		}
+		
+		//---BOMBALITY---
+		for(int r=0;r<3;r++){
+							
+			x= 3+ px.nextInt(27);
+			y= 3+ py.nextInt(9);
+			boolean is=false;
+			//rerandomizado.
+							
+			while( ((x==1)&(y==1)) | ((x==2)&(y==1)) | ((x==1)&(y==2)) | (!is) ){
+				x= 3+ px.nextInt(27);
+				y= 3+ py.nextInt(9);
+				if(grilla[x][y].getPared()!=null)
+					if( (grilla[x][y].getPared().getDestructible()) & (grilla[x][y].getPowerup()==null) )
+						is=true;
+			}
+			crearBombality(x,y,MiNivel,grilla,gui);
+					        
+		}
+		
+		//---MASACRALITY---
+
+									
+		x= 3+ px.nextInt(27);
+		y= 3+ py.nextInt(9);
+		boolean is=false;
+		//rerandomizado.
+									
+		while( ((x==1)&(y==1)) | ((x==2)&(y==1)) | ((x==1)&(y==2)) | (!is) ){
+			x= 3+ px.nextInt(27);
+			y= 3+ py.nextInt(9);
+			if(grilla[x][y].getPared()!=null)
+				if( (grilla[x][y].getPared().getDestructible()) & (grilla[x][y].getPowerup()==null) )
+					is=true;
+		}
+		crearMasacrality(x,y,MiNivel,grilla,gui);
+							        
+				
+		
+		
     }
 
     /**
@@ -130,7 +213,7 @@ public class CREADORNIVEL extends CREADOR{
      * @param y Posicion en y dentro de la matriz.
      * @param MiNivel Nivel al que pertenece.
      */
-    public void crearAltair(int x, int y, NIVEL MiNivel,CELDA[][] grilla) {
+    public void crearAltair(int x, int y, NIVEL MiNivel,CELDA[][] grilla,GUI gui) {
        
     }
 
@@ -140,7 +223,7 @@ public class CREADORNIVEL extends CREADOR{
      * @param y Posicion en y dentro de la matriz.
      * @param MiNivel Nivel al que pertenece.
      */
-    public void crearSirius(NIVEL MiNivel,CELDA[][] grilla) {
+    public void crearSirius(NIVEL MiNivel,CELDA[][] grilla,GUI gui) {
         
     }
 
@@ -161,8 +244,11 @@ public class CREADORNIVEL extends CREADOR{
      * @param y Posicion en y dentro de la matriz.
      * @param MiNivel Nivel al que pertenece.
      */
-    public void crearSpeedup(int x, int y, NIVEL MiNivel,CELDA[][] grilla) {
-        
+    public void crearSpeedup(int x, int y, NIVEL MiNivel,CELDA[][] grilla,GUI gui) {
+    	SPEEDUP pu=new SPEEDUP(x,y,MiNivel);
+        grilla[x][y].setPowerup(pu);
+        gui.agregarObjeto(pu.getGrafico());
+        //pu.getGrafico().setVisible(false); //POR RAZONES DE TESTEO.
     }
 
     /**
@@ -171,8 +257,11 @@ public class CREADORNIVEL extends CREADOR{
      * @param y Posicion en y dentro de la matriz.
      * @param MiNivel Nivel al que pertenece.
      */
-    public void crearFatality(int x, int y, NIVEL MiNivel,CELDA[][] grilla) {
-        
+    public void crearFatality(int x, int y, NIVEL MiNivel,CELDA[][] grilla,GUI gui) {
+    	FATALITY pu=new FATALITY(x,y,MiNivel);
+        grilla[x][y].setPowerup(pu);
+        gui.agregarObjeto(pu.getGrafico());
+        //pu.getGrafico().setVisible(false); //POR RAZONES DE TESTEO.
     }
 
     /**
@@ -181,8 +270,11 @@ public class CREADORNIVEL extends CREADOR{
      * @param y Posicion en y dentro de la matriz.
      * @param MiNivel Nivel al que pertenece.
      */
-    public void crearBombality(int x, int y, NIVEL MiNivel,CELDA[][] grilla) {
-        
+    public void crearBombality(int x, int y, NIVEL MiNivel,CELDA[][] grilla,GUI gui) {
+    	BOMBALITY pu=new BOMBALITY(x,y,MiNivel);
+        grilla[x][y].setPowerup(pu);
+        gui.agregarObjeto(pu.getGrafico());
+        //pu.getGrafico().setVisible(false); //POR RAZONES DE TESTEO.
     }
 
     /**
@@ -191,8 +283,11 @@ public class CREADORNIVEL extends CREADOR{
      * @param y Posicion en y dentro de la matriz.
      * @param MiNivel Nivel al que pertenece.
      */
-    public void crearMasacrality(int x, int y, NIVEL MiNivel,CELDA[][] grilla) {
-        
+    public void crearMasacrality(int x, int y, NIVEL MiNivel,CELDA[][] grilla,GUI gui) {
+    	MASACRALITY pu=new MASACRALITY(x,y,MiNivel);
+        grilla[x][y].setPowerup(pu);
+        gui.agregarObjeto(pu.getGrafico());
+        //pu.getGrafico().setVisible(false); //POR RAZONES DE TESTEO.
     }
 
     /**

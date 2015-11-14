@@ -98,7 +98,10 @@ public abstract class Grafico {
 	 * 3 derecha
 	 * @param dir direccion del movimiento.
 	 */
-	public void mover(int dir){
+	public void mover(int dir,int velocidad){
+		
+		//control de velocidad de transicion.
+		int speed= 145 - velocidad*20;
 		
 		try {
 		switch(dir){
@@ -108,7 +111,7 @@ public abstract class Grafico {
 					grafico.setLocation(grafico.getX(),grafico.getY()+11);
 					pos.x=grafico.getX();
 					pos.y=grafico.getY();
-					Thread.sleep(125);
+					Thread.sleep(speed);
 				}
 				select(constantes.ABAJO+4);
 				break;
@@ -118,7 +121,7 @@ public abstract class Grafico {
 					grafico.setLocation(grafico.getX(),grafico.getY()-11);
 					pos.x=grafico.getX();
 					pos.y=grafico.getY();
-					Thread.sleep(125);
+					Thread.sleep(speed);
 				}
 				select(constantes.ARRIBA+4);
 				break;
@@ -128,7 +131,7 @@ public abstract class Grafico {
 					grafico.setLocation(grafico.getX()-11,grafico.getY());
 					pos.x=grafico.getX();
 					pos.y=grafico.getY();
-					Thread.sleep(125);
+					Thread.sleep(speed);
 				}
 				select(constantes.IZQUIERDA+4);
 				break;
@@ -138,7 +141,7 @@ public abstract class Grafico {
 					grafico.setLocation(grafico.getX()+11,grafico.getY());
 					pos.x=grafico.getX();
 					pos.y=grafico.getY();
-					Thread.sleep(125);
+					Thread.sleep(speed);
 				}
 				select(constantes.DERECHA+4);
 				break;

@@ -27,7 +27,7 @@ public abstract class ENEMIGOS extends PERSONAJE {
      * @param y posicion y en la matriz.
      * @param vel velocidad del enemigo.
      */
-    protected ENEMIGOS(NIVEL MiNivel, int x, int y, float vel) {
+    protected ENEMIGOS(NIVEL MiNivel, int x, int y, int vel) {
         super(MiNivel,x,y,vel);
         lock=false;
     }

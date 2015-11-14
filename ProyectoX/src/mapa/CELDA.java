@@ -1,10 +1,9 @@
 package mapa;
 
 
-import java.awt.Image;
+
 import java.util.*;
 
-import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
 import bomba.BOMBA;
@@ -143,6 +142,15 @@ public class CELDA {
         return this.Powerup;
     }
 
+    /**
+     * Setea un power up para esta celda.
+     * @param p El power-up en cuestion.
+     */
+    public void setPowerup(POWERUP p) {
+        if(this.Powerup==null)
+        	this.Powerup = p;
+    }
+    
     /**
      * Quita una bomba en caso que tenga.
      * @return La bomba en cuestion.

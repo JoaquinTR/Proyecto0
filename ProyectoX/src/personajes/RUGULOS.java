@@ -60,7 +60,7 @@ public class RUGULOS extends ENEMIGOS {
     			this.y=next.getY();
     			
     			//avanzo de celda el personaje a nivel grafica.
-    			this.grafico.mover(dir);
+    			this.grafico.mover(dir,this.velocidad);
     			
     			//controlo colision con bomberman.
     			boolean agarre=(next.getX()==MiNivel.getBomberman().getX())&&(next.getY()==MiNivel.getBomberman().getY());
@@ -77,15 +77,6 @@ public class RUGULOS extends ENEMIGOS {
 		
     }
     
-    
-    /**
-     * Movimiento grafico de los Rugulos.
-     * @param dir direccion ordenada.
-     */
-    public void mover(int dir){
-    	grafico.select(dir);
-		grafico.mover(dir);
-    }
     
     /**
      * metodo de destruccion de los Rugulos.

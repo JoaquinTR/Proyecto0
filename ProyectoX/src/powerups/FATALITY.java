@@ -22,13 +22,15 @@ public class FATALITY extends POWERUP {
      */
     public FATALITY(int x, int y, NIVEL MiNivel) {
     	super(x,y,MiNivel);
+    	grafico.select(1);
     }
 
     /**
      * Afectar al bomberman. Aumenta el radio de las explosiones en 1.
      */
     public void ejecutar() {
-        
+        MiNivel.getBomberman().setFatality();
+        //controlar efectos graficos.
     }
 
 

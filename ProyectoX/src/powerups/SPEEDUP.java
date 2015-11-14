@@ -22,13 +22,15 @@ public class SPEEDUP extends POWERUP {
      */
     public SPEEDUP(int x, int y, NIVEL MiNivel) {
     	super(x,y,MiNivel);
+    	grafico.select(3);
     }
 
     /**
      * Afectar al bomberman. Duplica su velocidad.
      */
     public void ejecutar() {
-        
+        MiNivel.getBomberman().aumentarVelocidad();
+        //controlar efectos graficos.
     }
 
 
