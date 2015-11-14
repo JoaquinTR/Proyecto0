@@ -185,6 +185,7 @@ public class CELDA {
     	
     	this.MiPared=null;
     	MiNivel.decPDR();
+    	MiNivel.setPuntaje(10);
     }
 
     /**
