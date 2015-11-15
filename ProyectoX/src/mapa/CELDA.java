@@ -258,6 +258,9 @@ public class CELDA {
     		if(MiPared.getDestructible()){
     			grafico.select(9);
     			destruirPared();
+    			for(PERSONAJE p: Presentes){
+        			p.destruirme();
+        		}
     		}
     	
     }

@@ -44,7 +44,7 @@ public abstract class CREADOR {
      * @param y Posicion en y dentro de la matriz.
      * @param MiNivel Nivel al que pertenece.
      */
-    public abstract void crearAltair(int x, int y, NIVEL MiNivel,CELDA[][] grilla,GUI gui);
+    public abstract void crearAltair(int x, int y, NIVEL MiNivel,CELDA[][] grilla,GUI gui,LinkedList<ENEMIGOS> Enemigos);
 
     /**
      * Crea un Sirius.
@@ -52,7 +52,7 @@ public abstract class CREADOR {
      * @param y Posicion en y dentro de la matriz.
      * @param MiNivel Nivel al que pertenece.
      */
-    public abstract void crearSirius(NIVEL MiNivel,CELDA[][] grilla,GUI gui);
+    public abstract void crearSirius(NIVEL MiNivel,CELDA[][] grilla,GUI gui,LinkedList<ENEMIGOS> Enemigos);
 
     /**
      * Crea el bomberman.

@@ -4,6 +4,7 @@ import java.util.*;
 
 import GUI.GUI;
 import mapa.CELDA;
+import personajes.ALTAIR;
 import personajes.ENEMIGOS;
 import personajes.RUGULOS;
 import powerups.BOMBALITY;
@@ -188,7 +189,25 @@ public class CREADORNIVEL extends CREADOR{
 		}
 		crearMasacrality(x,y,MiNivel,grilla,gui);
 							        
-				
+		 //creo 2 altair aleatoriamente. se puede hacer todo dentro de crearAltair.
+
+		for(int r=0;r<2;r++){
+			
+			is=false;
+					
+			x= 3+ px.nextInt(27);
+			y= 3+ py.nextInt(9);
+			
+			//vuelvo a randomizar en caso de que quede en ambos x e y pares.
+			while( ((x==1)&(y==1)) | ((x==2)&(y==1)) | ((x==1)&(y==2)) | (!is) ){
+				x= 3+ px.nextInt(27);
+				y= 3+ py.nextInt(9);
+				if(grilla[x][y].getPared()!=null)
+					if( (grilla[x][y].getPared().getDestructible())  )
+						is=true;
+			}
+			crearAltair(x,y,MiNivel,grilla,gui,Enemigos);
+		}		
 		
 		
     }
@@ -209,6 +228,7 @@ public class CREADORNIVEL extends CREADOR{
 		gui.agregarObjeto(Enemigos.getLast().getGrafico());
 		
 		grilla[x][y].agregarPersonaje(Enemigos.getLast());
+		
     }
 
     /**
@@ -217,8 +237,13 @@ public class CREADORNIVEL extends CREADOR{
      * @param y Posicion en y dentro de la matriz.
      * @param MiNivel Nivel al que pertenece.
      */
-    public void crearAltair(int x, int y, NIVEL MiNivel,CELDA[][] grilla,GUI gui) {
+    public void crearAltair(int x, int y, NIVEL MiNivel,CELDA[][] grilla,GUI gui,LinkedList<ENEMIGOS> Enemigos) {
        
+    	Enemigos.addLast(new ALTAIR(MiNivel,x,y));
+		gui.agregarObjeto(Enemigos.getLast().getGrafico());
+		
+		grilla[x][y].agregarPersonaje(Enemigos.getLast());
+    	
     }
 
     /**
@@ -227,7 +252,7 @@ public class CREADORNIVEL extends CREADOR{
      * @param y Posicion en y dentro de la matriz.
      * @param MiNivel Nivel al que pertenece.
      */
-    public void crearSirius(NIVEL MiNivel,CELDA[][] grilla,GUI gui) {
+    public void crearSirius(NIVEL MiNivel,CELDA[][] grilla,GUI gui,LinkedList<ENEMIGOS> Enemigos) {
         
     }
 
