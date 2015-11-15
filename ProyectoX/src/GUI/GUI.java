@@ -204,7 +204,7 @@ public class GUI extends JFrame {
 	public void pulse(){
 		String a="Puntaje: "+MiNivel.getPuntaje();
 		pos3.setText(a);
-		a="Tiempo: "+r.getHoras()+": "+r.getMinutos()+" : "+r.getSegundos();
+		a="Tiempo: "+r.getMinutos()+" : "+r.getSegundos();
 		pos4.setText(a);
 		a="Paredes restantes: "+MiNivel.getPDR();
 		pos2.setText(a);
