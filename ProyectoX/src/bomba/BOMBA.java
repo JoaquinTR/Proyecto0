@@ -73,9 +73,6 @@ public class BOMBA{
         T.start();
         T.iniciar();
         
-        
-       
-        
     }
 
     /**
@@ -147,7 +144,7 @@ public class BOMBA{
         }
         
         try {
-			T.sleep(1650);
+			T.sleep(1600);
 		} catch (InterruptedException e) {}
         
         for(CELDA C: celdasAfectadas){
