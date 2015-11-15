@@ -1,5 +1,6 @@
 package GUI;
 
+import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Image;
 
@@ -119,9 +120,30 @@ public class GUI extends JFrame {
 		//Creacion del nivel.
 		MiNivel=new NIVEL(this);
 		
+		
+				//AUXILIARES NO VAN A ESTAR EN EL PROYECTO FINAL. 
+				//AYUDAN A SEGUIR LAS ACTUALIZACIONES DEL NIVEL.
+				pos2=new JLabel();
+				pos2.setText("Posicion grafica");
+				pos2.setBounds(300, 25, 250, 50);
+				add(pos2);
+				pos2.setForeground(Color.WHITE);
+				
+				pos3=new JLabel();
+				pos3.setText("Posicion");
+				pos3.setBounds(575, 25, 250, 50);
+				add(pos3);
+				pos3.setForeground(Color.WHITE);
+				
+				pos4=new JLabel();
+				pos4.setText("Posicion grafica");
+				pos4.setBounds(800, 25, 250, 50);
+				add(pos4);
+				pos4.setForeground(Color.WHITE);
+		
 		//imagen de fondo.
 		JLabel fondo = new JLabel();
-		fondo.setBounds(0, 0, 1280, 1000);
+		fondo.setBounds(0, 0, 1400, 1000);
 		add(fondo);
 		ImageIcon a=new ImageIcon(this.getClass().getResource("/images/fondo/fondo.jpg"));
 		a = new ImageIcon(a.getImage().getScaledInstance(fondo.getWidth(), fondo.getHeight(), Image.SCALE_DEFAULT));
@@ -130,22 +152,7 @@ public class GUI extends JFrame {
 		//Creacion del reloj.
 		r=new RELOJ(MiNivel,this);
 		
-		//AUXILIARES NO VAN A ESTAR EN EL PROYECTO FINAL. 
-		//AYUDAN A SEGUIR LAS ACTUALIZACIONES DEL NIVEL.
-		pos2=new JLabel();
-		pos2.setText("Posicion grafica");
-		pos2.setBounds(300, 25, 250, 50);
-		add(pos2);
 		
-		pos3=new JLabel();
-		pos3.setText("Posicion");
-		pos3.setBounds(575, 25, 250, 50);
-		add(pos3);
-		
-		pos4=new JLabel();
-		pos4.setText("Posicion grafica");
-		pos4.setBounds(800, 25, 250, 50);
-		add(pos4);
 		
 		
 		
