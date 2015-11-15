@@ -21,7 +21,7 @@ public class RUGULOS extends ENEMIGOS {
 	/**
 	 * variable Thread que controla la transicion del rugulo.
 	 */
-	private rugulosThread T;
+	private enemigoThread T;
 
     /**
      * constructor.
@@ -32,8 +32,8 @@ public class RUGULOS extends ENEMIGOS {
     public RUGULOS(NIVEL MiNivel, int x, int y) {
         super(MiNivel,x,y,1);
         this.grafico = new ruguloGrafico(x,y);
-        T=new rugulosThread(this);
-        grafico.select(4);////
+        T=new enemigoThread(this);
+        grafico.select(4);
     }
 
     /**

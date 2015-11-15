@@ -177,8 +177,6 @@ public class GUI extends JFrame {
 					
 					GUI frame = new GUI();
 					frame.setVisible(true);
-					//menu Menu=new menu();
-					//Menu.setVisible(true);
 					
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -196,6 +194,8 @@ public class GUI extends JFrame {
 		pos3.setText(a);
 		a="Tiempo: "+r.getHoras()+":"+r.getMinutos()+":"+r.getSegundos();
 		pos4.setText(a);
+		a="Paredes restantes: "+MiNivel.getPDR();
+		pos2.setText(a);
 	}
 	
 	/**
@@ -220,8 +220,6 @@ public class GUI extends JFrame {
 					
 					String a="pos matriz: "+MiNivel.getBomberman().getX()+" "+MiNivel.getBomberman().getY();
 					pos.setText(a);
-					a="pos grafica: "+MiNivel.getBomberman().getGrafico().getX()+" "+MiNivel.getBomberman().getGrafico().getY();
-					pos2.setText(a);
 					
 					if(!start){
 						r.start();
@@ -238,8 +236,6 @@ public class GUI extends JFrame {
 
 					String a1="pos matriz: "+MiNivel.getBomberman().getX()+" "+MiNivel.getBomberman().getY();
 					pos.setText(a1);
-					a1="pos grafica: "+MiNivel.getBomberman().getGrafico().getX()+" "+MiNivel.getBomberman().getGrafico().getY();
-					pos2.setText(a1);
 					
 					if(!start){
 						r.start();
@@ -256,8 +252,6 @@ public class GUI extends JFrame {
 					
 					String a2="pos matriz: "+MiNivel.getBomberman().getX()+" "+MiNivel.getBomberman().getY();
 					pos.setText(a2);
-					a2="pos grafica: "+MiNivel.getBomberman().getGrafico().getX()+" "+MiNivel.getBomberman().getGrafico().getY();
-					pos2.setText(a2);
 					
 					if(!start){
 						r.start();
@@ -274,8 +268,6 @@ public class GUI extends JFrame {
 					
 					String a3="pos matriz: "+MiNivel.getBomberman().getX()+" "+MiNivel.getBomberman().getY();
 					pos.setText(a3);
-					a3="pos grafica: "+MiNivel.getBomberman().getGrafico().getX()+" "+MiNivel.getBomberman().getGrafico().getY();
-					pos2.setText(a3);
 					
 					if(!start){
 						r.start();

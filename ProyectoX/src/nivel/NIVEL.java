@@ -81,7 +81,7 @@ public class NIVEL {
     	
 		Creador.crearNivel(Grilla, this, gui,Enemigos);
 		
-		ParedesDestructiblesRestantes = 110;
+		ParedesDestructiblesRestantes = 109;
     }
     
 

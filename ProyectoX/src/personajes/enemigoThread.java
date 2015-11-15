@@ -9,11 +9,11 @@ package personajes;
  * @author Waigel, Micaela Anahí. LU: 99558
  * @author Tricerri, Joaquín. LU:100236
  */
-public class rugulosThread extends Thread{
+public class enemigoThread extends Thread{
 		/**
 		 * Logica del Thread.
 		 */
-		private RUGULOS mLogica;
+		private ENEMIGOS mLogica;
 		
 		/**
 		 * Bandera de deteccion de este Thread.
@@ -24,7 +24,7 @@ public class rugulosThread extends Thread{
 		 * Rugulo que implementa la logica del Thread.
 		 * @param logica logica utilizada.
 		 */
-		public rugulosThread(RUGULOS logica) {
+		public enemigoThread(ENEMIGOS logica) {
 			this.mLogica  = logica;
 			this.mDetener = false;
 			iniciar();
