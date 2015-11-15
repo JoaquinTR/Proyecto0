@@ -47,7 +47,8 @@ public class MASACRALITY extends POWERUP {
     /**
      * Revierte el efecto de este powerup.
      */
-    public void restaurar() {
+    @SuppressWarnings("deprecation")
+	public void restaurar() {
         MiNivel.getBomberman().setMasacre();
         m.stop();
     }

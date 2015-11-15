@@ -1,6 +1,5 @@
 package personajes;
 
-import java.util.Random;
 import java.util.Stack;
 
 import GUI.constantes;
@@ -24,11 +23,6 @@ public class SIRIUS extends ENEMIGOS {
 	 * variable Thread que controla la transicion del rugulo.
 	 */
 	private siriusThread T;
-
-    /**
-     * Movimientos restantes para atrapar al bomberman.
-     */
-    private Stack<Integer> Movimientos;
 
 
     /**
@@ -244,7 +238,8 @@ public class SIRIUS extends ENEMIGOS {
     /**
      * Destruccion del sirius.
      */
-    public void destruirme(){
+    @SuppressWarnings("deprecation")
+	public void destruirme(){
     	
     	T.destruir();
     	grafico.select(8);

@@ -86,7 +86,8 @@ public class RUGULOS extends ENEMIGOS {
     /**
      * metodo de destruccion de los Rugulos.
      */
-    public void destruirme(){
+    @SuppressWarnings("deprecation")
+	public void destruirme(){
     	T.destruir();
     	grafico.select(8);
     	MiNivel.setPuntaje(15);

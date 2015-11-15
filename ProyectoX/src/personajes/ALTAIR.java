@@ -86,7 +86,8 @@ public class ALTAIR extends ENEMIGOS {
     /**
      * destruccion del altair.
      */
-    public void destruirme(){
+    @SuppressWarnings("deprecation")
+	public void destruirme(){
     	
     	T.destruir();
     	grafico.select(8);

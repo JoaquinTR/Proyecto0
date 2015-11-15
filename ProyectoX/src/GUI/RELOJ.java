@@ -35,7 +35,8 @@ public class RELOJ extends Thread{
     /**
      * interfaz grafica de este reloj
      */
-    private GUI gui;
+    @SuppressWarnings("unused")
+	private GUI gui;
     
     /**
      * segundos graficos. Unidad.

@@ -1,6 +1,5 @@
 package GUI;
 
-import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Image;
 import javax.sound.sampled.AudioInputStream;
@@ -129,7 +128,7 @@ public class GUI extends JFrame {
 			AudioInputStream musicaFondo = AudioSystem.getAudioInputStream(this.getClass().getResource("/sounds/fondoJuego/avengers.MID"));
 			clip = AudioSystem.getClip();
 			clip.open(musicaFondo);
-			clip.loop(clip.LOOP_CONTINUOUSLY);
+			clip.loop(Clip.LOOP_CONTINUOUSLY);
 		} catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {}
 		
 
