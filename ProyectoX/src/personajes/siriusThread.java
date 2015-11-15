@@ -5,7 +5,7 @@ public class siriusThread extends Thread{
 	/**
 	 * Logica del Thread.
 	 */
-	private ENEMIGOS mLogica;
+	private SIRIUS mLogica;
 	
 	/**
 	 * Bandera de deteccion de este Thread.
@@ -15,18 +15,23 @@ public class siriusThread extends Thread{
 	/**
 	 * si es 1, indica que se esta esperando una explosion.
 	 */
-	public volatile int command;
+	public int command;
+	
+	/**
+	 * si es 1, indica que se esta esperando una explosion.
+	 */
+	public  int direccion;
 	
 	/**
 	 * Rugulo que implementa la logica del Thread.
 	 * @param logica logica utilizada.
 	 */
-	public siriusThread(ENEMIGOS logica) {
+	public siriusThread(SIRIUS logica) {
 		this.mLogica  = logica;
 		this.mDetener = false;
 		iniciar();
 		start();
-		command=0;
+		command=-5;
 	}
 	
 	/**
@@ -40,13 +45,34 @@ public class siriusThread extends Thread{
 			if(!this.mDetener){
 			
 				try {
+					
+					
+					
+					
+					if(command==-5){
 						//duermo el hilo 1 seg
 						Thread.sleep(1000);
 					
 						//indico a la logica que se mueva.
 						this.mLogica.avanzar();
+					}	
+					if(command==-10){
+						//duermo el hilo 3 seg esperando explosion.
+						Thread.sleep(3000);
+						
+					}	
+					if(command==-15){
+						//duermo el hilo 1 seg
+						Thread.sleep(1000);
+					
+						//indico a la logica que se mueva.
+						this.mLogica.mover(direccion);
+					}
+						
+						
 					
 				} catch (InterruptedException e) {}
+				detener();
 			}
 			
 		}
@@ -82,6 +108,15 @@ public class siriusThread extends Thread{
 	 */
 	public void setCommand(int i){
 		command=i;
+	}
+
+	/**
+	 * setea la direccion del movimiento.
+	 * @param nueva direccion.
+	 */
+	public void setDireccion(int direccion2) {
+		direccion=direccion2;
+		
 	}
 	
 }

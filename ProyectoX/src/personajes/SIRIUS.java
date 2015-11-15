@@ -66,7 +66,7 @@ public class SIRIUS extends ENEMIGOS {
      * Avance especifico de un sirius.
      */
     public void avanzar() {
-        
+        /*
     	Random rnd = new Random();
 		
 		//calculo la direccion en la que esta el bomberman.
@@ -100,8 +100,10 @@ public class SIRIUS extends ENEMIGOS {
 		
 	
 		if(puedo){
-			
-			mover(direccion);
+			T.setDireccion(direccion);
+			T.setCommand(-15);
+			T.iniciar();
+			//mover(direccion);
 		
 		}
 		else{
@@ -135,54 +137,15 @@ public class SIRIUS extends ENEMIGOS {
 		}
 		grafico.select(dir+4);
         
-    
-    }
-    
-    
-    /**
-     * pone una bomba en la posicion actual del bomberman.
-     */
-    private void ponerBomba() {
-    	
-    	BOMBA b=null;
-    	if((!MiNivel.getCelda(x,y,constantes.ACTUAL).hayBomba()) ){
-    		b=new BOMBA(MiNivel,this.x,this.y);
-    		MiNivel.getCelda(x, y, constantes.ACTUAL).setBomba(b);
-    		MiNivel.agregarObjeto(b.getGrafico());
-    	}
-    	
+		T.setCommand(-5);
+		T.iniciar();*/
     	
     }
     
-    /**
-     * mueve el sirius.
-     */
-    private void mover(int dir){
-    	
-    	CELDA actual = MiNivel.getCelda(x, y, -1);
-		CELDA next= MiNivel.getCelda(x, y, direccion);
-    	
-    	//avanzo de celda el personaje a nivel logica.
-		actual.quitarPersonaje(this);
-		next.agregarPersonaje(this);
-		this.x=next.getX();
-		this.y=next.getY();
-		
-		//avanzo de celda el personaje a nivel grafica.
-		this.grafico.mover(dir,this.velocidad);
-		
-		//controlo colision con bomberman.
-		boolean agarre=(next.getX()==MiNivel.getBomberman().getX())&&(next.getY()==MiNivel.getBomberman().getY());
-		if(agarre){
-			//afecto al bomberman
-			MiNivel.getBomberman().destruirme();
-		}
-    }
-
     /**
      * Escapar de una bomba recien puesta o encontrada en x e y.
      */
-    private void retroceder(int x, int y) {
+    protected void retroceder(int x, int y) {
         boolean encontre=false;
         
         CELDA next=null;
@@ -206,7 +169,9 @@ public class SIRIUS extends ENEMIGOS {
 				break;
         }
 	
-        mover(direccion);
+		T.setDireccion(direccion);
+		T.setCommand(-15);
+		T.iniciar();
         
         while( (!encontre) & (pasos > 0 ) & (direccion==direccionV) ){
         	
@@ -214,8 +179,14 @@ public class SIRIUS extends ENEMIGOS {
         	
         	if(next.getPared()==null){
         		
-        		mover(direccion);
+    			T.setDireccion(direccion);
+    			T.setCommand(-15);
+    			T.iniciar();
+        		
         		//esperar explosion.
+        		T.setCommand(-10);
+        		T.iniciar();
+        		
         		encontre=true;
         	}
         	else{
@@ -226,6 +197,49 @@ public class SIRIUS extends ENEMIGOS {
         }
     	
     }
+    
+    
+    /**
+     * pone una bomba en la posicion actual del bomberman.
+     */
+    private void ponerBomba() {
+    	
+    	BOMBA b=null;
+    	if((!MiNivel.getCelda(x,y,constantes.ACTUAL).hayBomba()) ){
+    		b=new BOMBA(MiNivel,this.x,this.y);
+    		MiNivel.getCelda(x, y, constantes.ACTUAL).setBomba(b);
+    		MiNivel.agregarObjeto(b.getGrafico());
+    	}
+    	
+    	
+    }
+    
+    /**
+     * mueve el sirius.
+     */
+    protected void mover(int dir){
+    	
+    	CELDA actual = MiNivel.getCelda(x, y, -1);
+		CELDA next= MiNivel.getCelda(x, y, direccion);
+    	
+    	//avanzo de celda el personaje a nivel logica.
+		actual.quitarPersonaje(this);
+		next.agregarPersonaje(this);
+		this.x=next.getX();
+		this.y=next.getY();
+		
+		//avanzo de celda el personaje a nivel grafica.
+		this.grafico.mover(dir,this.velocidad);
+		
+		//controlo colision con bomberman.
+		boolean agarre=(next.getX()==MiNivel.getBomberman().getX())&&(next.getY()==MiNivel.getBomberman().getY());
+		if(agarre){
+			//afecto al bomberman
+			MiNivel.getBomberman().destruirme();
+		}
+    }
+
+    
     
     /**
      * Destruccion del sirius.

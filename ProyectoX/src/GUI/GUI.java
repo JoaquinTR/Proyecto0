@@ -1,7 +1,9 @@
 package GUI;
 
 import java.awt.EventQueue;
+import java.awt.Image;
 
+import javax.imageio.ImageIO;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
@@ -111,8 +113,19 @@ public class GUI extends JFrame {
 		setIconImage(b.getImage());
 		contentPane.setVisible(true);
 		
+		
+		 
+		
 		//Creacion del nivel.
 		MiNivel=new NIVEL(this);
+		
+		//imagen de fondo.
+		JLabel fondo = new JLabel();
+		fondo.setBounds(0, 0, 1280, 1000);
+		add(fondo);
+		ImageIcon a=new ImageIcon(this.getClass().getResource("/images/fondo/fondo.jpg"));
+		a = new ImageIcon(a.getImage().getScaledInstance(fondo.getWidth(), fondo.getHeight(), Image.SCALE_DEFAULT));
+		fondo.setIcon(a);
 		
 		//Creacion del reloj.
 		r=new RELOJ(MiNivel,this);
