@@ -84,7 +84,15 @@ public class NIVEL {
 		ParedesDestructiblesRestantes = 109;
     }
     
-
+    /**
+     * inicia el juego.
+     */
+    public void start(){
+    	for(ENEMIGOS e: Enemigos){
+    		e.start();
+    	}
+    }
+    
     /**
      * Retorna el arreglo de enemigos.
      * @return los enemigos.

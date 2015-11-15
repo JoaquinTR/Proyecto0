@@ -38,16 +38,9 @@ public abstract class ENEMIGOS extends PERSONAJE {
     public abstract void avanzar();
     
     /**
-     * Traba el movimiento de este personaje.
+     * Inicia el hilo de este enemigo.
      */
-    public void lock(){
-    	lock=true;
-    }
-
-    /**
-     * Destraba el movimiento de este personaje.
-     */
-    public void unlock(){
-    	lock=false;
-    }
+    public abstract void start();
+    
+    
 }

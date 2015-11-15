@@ -35,6 +35,11 @@ public class RUGULOS extends ENEMIGOS {
         T=new enemigoThread(this);
         grafico.select(4);
     }
+    
+    /**
+     * Inicia el hilo de este enemigo.
+     */
+    public void start(){}
 
     /**
      * Avance propio de un Rugulo.

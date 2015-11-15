@@ -63,11 +63,17 @@ public class RELOJ extends Thread{
      * Aumenta los segundos y controla los topes (60).
      */
     public void aumentar() {
+    	
         segundos++;
-        if(segundos==60)
+        
+        if(segundos==60){
+        	segundos=0;
         	minutos++;
-        if(minutos==60)
+        }
+        if(minutos==60){
+        	minutos=0;
         	horas++;
+        }
     }
 
     /**

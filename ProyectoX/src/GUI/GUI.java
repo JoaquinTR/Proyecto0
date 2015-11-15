@@ -74,7 +74,6 @@ public class GUI extends JFrame {
 	// ****************
 	// ****************
 	//los 4 label siguientes son de testeo, no van a estar en el proyectoX final.
-	private JLabel pos;
 	
 	private JLabel pos2;
 	
@@ -119,12 +118,7 @@ public class GUI extends JFrame {
 		r=new RELOJ(MiNivel,this);
 		
 		//AUXILIARES NO VAN A ESTAR EN EL PROYECTO FINAL. 
-		//AYUDAN A SEGUIR LAS ACTUALIZACIONES DE MOVIMIENTO DEL BOMBERMAN.
-		pos=new JLabel();
-		pos.setText("Posicion");
-		pos.setBounds(25, 25, 250, 50);
-		add(pos);
-		
+		//AYUDAN A SEGUIR LAS ACTUALIZACIONES DEL NIVEL.
 		pos2=new JLabel();
 		pos2.setText("Posicion grafica");
 		pos2.setBounds(300, 25, 250, 50);
@@ -187,12 +181,10 @@ public class GUI extends JFrame {
 	
 	// ---METODO AUXILIAR---
 	// *********************
-	// usado desde el reloj, le indica que hubo un pulso y
-	// se debe actualizar los display de posicion del enemigo0 (el rugulo)
 	public void pulse(){
 		String a="Puntaje: "+MiNivel.getPuntaje();
 		pos3.setText(a);
-		a="Tiempo: "+r.getHoras()+":"+r.getMinutos()+":"+r.getSegundos();
+		a="Tiempo: "+r.getHoras()+": "+r.getMinutos()+" : "+r.getSegundos();
 		pos4.setText(a);
 		a="Paredes restantes: "+MiNivel.getPDR();
 		pos2.setText(a);
@@ -218,11 +210,8 @@ public class GUI extends JFrame {
 					
 					MiNivel.mover(constantes.ARRIBA);
 					
-					String a="pos matriz: "+MiNivel.getBomberman().getX()+" "+MiNivel.getBomberman().getY();
-					pos.setText(a);
-					
 					if(!start){
-						r.start();
+						start();
 						start=true;
 					}
 				
@@ -233,12 +222,9 @@ public class GUI extends JFrame {
 					lock=true;
 					
 					MiNivel.mover(constantes.ABAJO);	
-
-					String a1="pos matriz: "+MiNivel.getBomberman().getX()+" "+MiNivel.getBomberman().getY();
-					pos.setText(a1);
 					
 					if(!start){
-						r.start();
+						start();
 						start=true;
 					}
 					
@@ -250,11 +236,8 @@ public class GUI extends JFrame {
 					
 					MiNivel.mover(constantes.IZQUIERDA);
 					
-					String a2="pos matriz: "+MiNivel.getBomberman().getX()+" "+MiNivel.getBomberman().getY();
-					pos.setText(a2);
-					
 					if(!start){
-						r.start();
+						start();
 						start=true;
 					}
 					
@@ -266,11 +249,8 @@ public class GUI extends JFrame {
 					
 					MiNivel.mover(constantes.DERECHA);	
 					
-					String a3="pos matriz: "+MiNivel.getBomberman().getX()+" "+MiNivel.getBomberman().getY();
-					pos.setText(a3);
-					
 					if(!start){
-						r.start();
+						start();
 						start=true;
 					}
 					
@@ -311,6 +291,14 @@ public class GUI extends JFrame {
 	 	 */
 	 	public void lock(){
 	 		lock=true;
+	 	}
+	 	
+	 	/**
+	 	 * Inicia el juego.
+	 	 */
+	 	public void start(){
+	 		r.start();
+	 		MiNivel.start();
 	 	}
 	 	
 	

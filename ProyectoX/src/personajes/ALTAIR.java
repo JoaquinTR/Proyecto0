@@ -37,6 +37,11 @@ public class ALTAIR extends ENEMIGOS {
     }
 
     /**
+     * Inicia el hilo de este enemigo.
+     */
+    public void start(){}
+    
+    /**
      * avanzar propio del altair.
      */
     public void avanzar() {
