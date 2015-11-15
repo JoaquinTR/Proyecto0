@@ -3,8 +3,6 @@ package GUI;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Image;
-
-import javax.imageio.ImageIO;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
@@ -71,18 +69,7 @@ public class GUI extends JFrame {
 	 */
 	private Clip clip;
 
-	
-	
-	// -- ACLARACION -- 
-	// ****************
-	// ****************
-	//los 4 label siguientes son de testeo, no van a estar en el proyectoX final.
-	
-	private JLabel pos2;
-	
-	private JLabel pos3;
-	
-	private JLabel pos4;
+
 
 	
 	/**
@@ -119,27 +106,6 @@ public class GUI extends JFrame {
 		
 		//Creacion del nivel.
 		MiNivel=new NIVEL(this);
-		
-		
-				//AUXILIARES NO VAN A ESTAR EN EL PROYECTO FINAL. 
-				//AYUDAN A SEGUIR LAS ACTUALIZACIONES DEL NIVEL.
-				pos2=new JLabel();
-				pos2.setText("Posicion grafica");
-				pos2.setBounds(300, 25, 250, 50);
-				add(pos2);
-				pos2.setForeground(Color.WHITE);
-				
-				pos3=new JLabel();
-				pos3.setText("Posicion");
-				pos3.setBounds(575, 25, 250, 50);
-				add(pos3);
-				pos3.setForeground(Color.WHITE);
-				
-				pos4=new JLabel();
-				pos4.setText("Posicion grafica");
-				pos4.setBounds(800, 25, 250, 50);
-				add(pos4);
-				pos4.setForeground(Color.WHITE);
 		
 		//imagen de fondo.
 		JLabel fondo = new JLabel();
@@ -198,17 +164,6 @@ public class GUI extends JFrame {
 			}
 		});
 	 }
-	
-	// ---METODO AUXILIAR---
-	// *********************
-	public void pulse(){
-		String a="Puntaje: "+MiNivel.getPuntaje();
-		pos3.setText(a);
-		a="Tiempo: "+r.getMinutos()+" : "+r.getSegundos();
-		pos4.setText(a);
-		a="Paredes restantes: "+MiNivel.getPDR();
-		pos2.setText(a);
-	}
 	
 	/**
 	 * toma el teclado y manda el mensaje mover al nivel con la direccion

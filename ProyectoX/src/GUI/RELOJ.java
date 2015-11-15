@@ -71,6 +71,41 @@ public class RELOJ extends Thread{
      * imagenes disponibles.
      */
     private ImageIcon[] images;
+    
+    /**
+     * unidades del puntaje, grafico.
+     */
+    private JLabel puntajeU;
+    
+    /**
+     * decenas del puntaje, grafico.
+     */
+    private JLabel puntajeD;
+    
+    /**
+     * centenas del puntaje, grafico.
+     */
+    private JLabel puntajeC;
+    
+    /**
+     * milesimas del puntaje, grafico.
+     */
+    private JLabel puntajeM;
+    
+    /**
+     * unidades de paredes destructibles restantes, grafico.
+     */
+    private JLabel pdrU;
+    
+    /**
+     * decenas de paredes destructibles restantes, grafico.
+     */
+    private JLabel pdrD;
+    
+    /**
+     * centenas de paredes destructibles restantes, grafico.
+     */
+    private JLabel pdrC;
 
     /**
      * constructor.
@@ -120,8 +155,58 @@ public class RELOJ extends Thread{
 		a=new ImageIcon(this.getClass().getResource("/images/numerosReloj/Relojito.gif"));
 		this.images[11] = new ImageIcon(a.getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT));
     
-		int posx = 54;
 		
+		int posxPDR = 646;
+		
+		
+		pdrU=new JLabel();
+		pdrU.setBounds(posxPDR + 132, 10, 44, 44);
+		pdrU.setIcon(images[0]);
+    	gui.agregarObjeto(pdrU);
+    	pdrU.setVisible(true);
+    	
+    	pdrD=new JLabel();
+    	pdrD.setBounds(posxPDR + 88, 10, 44, 44);
+    	pdrD.setIcon(images[0]);
+    	gui.agregarObjeto(pdrD);
+    	pdrD.setVisible(true);
+    	
+    	pdrC=new JLabel();
+    	pdrC.setBounds(posxPDR + 44, 10, 44, 44);
+    	pdrC.setIcon(images[0]);
+    	gui.agregarObjeto(pdrC);
+    	pdrC.setVisible(true);
+		
+		
+		int posxP = 350;
+		
+		
+		puntajeU=new JLabel();
+		puntajeU.setBounds(posxP + 132, 10, 44, 44);
+		puntajeU.setIcon(images[0]);
+    	gui.agregarObjeto(puntajeU);
+    	puntajeU.setVisible(true);
+    	
+    	puntajeD=new JLabel();
+    	puntajeD.setBounds(posxP + 88, 10, 44, 44);
+    	puntajeD.setIcon(images[0]);
+    	gui.agregarObjeto(puntajeD);
+    	puntajeD.setVisible(true);
+    	
+    	puntajeC=new JLabel();
+    	puntajeC.setBounds(posxP + 44, 10, 44, 44);
+    	puntajeC.setIcon(images[0]);
+    	gui.agregarObjeto(puntajeC);
+    	puntajeC.setVisible(true);
+    	
+    	puntajeM=new JLabel();
+    	puntajeM.setBounds(posxP , 10, 44, 44);
+    	puntajeM.setIcon(images[0]);
+    	gui.agregarObjeto(puntajeM);
+    	puntajeM.setVisible(true);
+
+    	int posx = 54;
+    	
     	segundosU=new JLabel();
     	segundosU.setBounds(posx + 176, 10, 44, 44);
     	segundosU.setIcon(images[0]);
@@ -165,13 +250,33 @@ public class RELOJ extends Thread{
 		while(true){
 			try {
 				Thread.sleep(500);
-				dosPuntos.setVisible(false);				
+				dosPuntos.setVisible(false);
+				
+				//actualizacion de puntaje.
+				int puntaje = MiNivel.getPuntaje();
+				puntajeU.setIcon(images[puntaje % 10]);
+				puntaje = puntaje / 10;
+				puntajeD.setIcon(images[puntaje % 10]);
+				puntaje = puntaje / 10;
+				puntajeC.setIcon(images[puntaje % 10]);
+				puntaje = puntaje / 10;
+				puntajeM.setIcon(images[puntaje % 10]);
+				
+				//actualizacion de paredes destructibles restantes.
+				int pdr = MiNivel.getPDR();
+				pdrU.setIcon(images[pdr % 10]);
+				pdr = pdr / 10;
+				pdrD.setIcon(images[pdr % 10]);
+				pdr = pdr / 10;
+				pdrC.setIcon(images[pdr % 10]);
+				
 				Thread.sleep(500);
 				dosPuntos.setVisible(true);
 			} catch (InterruptedException e) {}
 			
+			//mando un clock al reloss.
 			aumentar();
-			gui.pulse();
+
 		
 		
 		}
