@@ -147,38 +147,38 @@ public class RELOJ extends Thread{
 		this.images[11] = new ImageIcon(a.getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT));
     
 		a=new ImageIcon(this.getClass().getResource("/images/numerosReloj/score.gif"));
-		this.images[12] = new ImageIcon(a.getImage().getScaledInstance(88, 44, Image.SCALE_DEFAULT));
+		this.images[12] = new ImageIcon(a.getImage().getScaledInstance(150, 44, Image.SCALE_DEFAULT));
 		
 		
 		int posxP = 350;
 		
 		
 		puntajeU=new JLabel();
-		puntajeU.setBounds(posxP + 132, 10, 44, 44);
+		puntajeU.setBounds(posxP + 132, 54, 44, 44);
 		puntajeU.setIcon(images[0]);
     	gui.agregarObjeto(puntajeU);
     	puntajeU.setVisible(true);
     	
     	puntajeD=new JLabel();
-    	puntajeD.setBounds(posxP + 88, 10, 44, 44);
+    	puntajeD.setBounds(posxP + 88, 54, 44, 44);
     	puntajeD.setIcon(images[0]);
     	gui.agregarObjeto(puntajeD);
     	puntajeD.setVisible(true);
     	
     	puntajeC=new JLabel();
-    	puntajeC.setBounds(posxP + 44, 10, 44, 44);
+    	puntajeC.setBounds(posxP + 44, 54, 44, 44);
     	puntajeC.setIcon(images[0]);
     	gui.agregarObjeto(puntajeC);
     	puntajeC.setVisible(true);
     	
     	puntajeM=new JLabel();
-    	puntajeM.setBounds(posxP , 10, 44, 44);
+    	puntajeM.setBounds(posxP , 54, 44, 44);
     	puntajeM.setIcon(images[0]);
     	gui.agregarObjeto(puntajeM);
     	puntajeM.setVisible(true);
     	
     	score=new JLabel();
-    	score.setBounds(posxP , 10, 44, 44);
+    	score.setBounds(posxP , 10, 150, 44);
     	score.setIcon(images[12]);
     	gui.agregarObjeto(score);
     	score.setVisible(true);
