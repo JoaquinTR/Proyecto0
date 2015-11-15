@@ -93,19 +93,10 @@ public class RELOJ extends Thread{
     private JLabel puntajeM;
     
     /**
-     * unidades de paredes destructibles restantes, grafico.
+     * cartel puntaje, grafico.
      */
-    private JLabel pdrU;
-    
-    /**
-     * decenas de paredes destructibles restantes, grafico.
-     */
-    private JLabel pdrD;
-    
-    /**
-     * centenas de paredes destructibles restantes, grafico.
-     */
-    private JLabel pdrC;
+    private JLabel score;
+   
 
     /**
      * constructor.
@@ -155,27 +146,8 @@ public class RELOJ extends Thread{
 		a=new ImageIcon(this.getClass().getResource("/images/numerosReloj/Relojito.gif"));
 		this.images[11] = new ImageIcon(a.getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT));
     
-		
-		int posxPDR = 646;
-		
-		
-		pdrU=new JLabel();
-		pdrU.setBounds(posxPDR + 132, 10, 44, 44);
-		pdrU.setIcon(images[0]);
-    	gui.agregarObjeto(pdrU);
-    	pdrU.setVisible(true);
-    	
-    	pdrD=new JLabel();
-    	pdrD.setBounds(posxPDR + 88, 10, 44, 44);
-    	pdrD.setIcon(images[0]);
-    	gui.agregarObjeto(pdrD);
-    	pdrD.setVisible(true);
-    	
-    	pdrC=new JLabel();
-    	pdrC.setBounds(posxPDR + 44, 10, 44, 44);
-    	pdrC.setIcon(images[0]);
-    	gui.agregarObjeto(pdrC);
-    	pdrC.setVisible(true);
+		a=new ImageIcon(this.getClass().getResource("/images/numerosReloj/score.gif"));
+		this.images[12] = new ImageIcon(a.getImage().getScaledInstance(88, 44, Image.SCALE_DEFAULT));
 		
 		
 		int posxP = 350;
@@ -204,6 +176,12 @@ public class RELOJ extends Thread{
     	puntajeM.setIcon(images[0]);
     	gui.agregarObjeto(puntajeM);
     	puntajeM.setVisible(true);
+    	
+    	score=new JLabel();
+    	score.setBounds(posxP , 10, 44, 44);
+    	score.setIcon(images[12]);
+    	gui.agregarObjeto(score);
+    	score.setVisible(true);
 
     	int posx = 54;
     	
@@ -261,14 +239,6 @@ public class RELOJ extends Thread{
 				puntajeC.setIcon(images[puntaje % 10]);
 				puntaje = puntaje / 10;
 				puntajeM.setIcon(images[puntaje % 10]);
-				
-				//actualizacion de paredes destructibles restantes.
-				int pdr = MiNivel.getPDR();
-				pdrU.setIcon(images[pdr % 10]);
-				pdr = pdr / 10;
-				pdrD.setIcon(images[pdr % 10]);
-				pdr = pdr / 10;
-				pdrC.setIcon(images[pdr % 10]);
 				
 				Thread.sleep(500);
 				dosPuntos.setVisible(true);
