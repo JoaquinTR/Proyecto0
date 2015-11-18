@@ -51,8 +51,6 @@ public class celdaGrafica extends Grafico {
 		a=new ImageIcon(this.getClass().getResource("/images/mapa/Indestructible1.gif"));
 		this.images[8] = new ImageIcon(a.getImage().getScaledInstance(this.width, this.height, Image.SCALE_DEFAULT));
 		
-		
-		
 		a=new ImageIcon(this.getClass().getResource("/images/explosiones/GranadaP.gif"));
 		this.images[9] = new ImageIcon(a.getImage().getScaledInstance(this.width, this.height, Image.SCALE_DEFAULT));
 	}

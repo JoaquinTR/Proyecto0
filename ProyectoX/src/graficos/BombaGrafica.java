@@ -30,28 +30,13 @@ public class BombaGrafica extends Grafico {
 		
 		a=new ImageIcon(this.getClass().getResource("/images/explosiones/Granada.gif"));
 		this.images[1] = new ImageIcon(a.getImage().getScaledInstance(this.width, this.height, Image.SCALE_DEFAULT));
-		/*
-		a=new ImageIcon(this.getClass().getResource("/images/mapa/GrietaCostado.gif"));
+		
+		a=new ImageIcon(this.getClass().getResource("/images/bombas/BombaSirius.gif"));
 		this.images[2] = new ImageIcon(a.getImage().getScaledInstance(this.width, this.height, Image.SCALE_DEFAULT));
 		
-		a=new ImageIcon(this.getClass().getResource("/images/mapa/GrietaCostado2.gif"));
+		a=new ImageIcon(this.getClass().getResource("/images/explosiones/expAzul.gif"));
 		this.images[3] = new ImageIcon(a.getImage().getScaledInstance(this.width, this.height, Image.SCALE_DEFAULT));
 		
-		a=new ImageIcon(this.getClass().getResource("/images/mapa/GrietaPunta.gif"));
-		this.images[4] = new ImageIcon(a.getImage().getScaledInstance(this.width, this.height, Image.SCALE_DEFAULT));
-		
-		a=new ImageIcon(this.getClass().getResource("/images/mapa/Indestructible0.gif"));
-		this.images[5] = new ImageIcon(a.getImage().getScaledInstance(this.width, this.height, Image.SCALE_DEFAULT));
-		
-		a=new ImageIcon(this.getClass().getResource("/images/mapa/Indestructible1.gif"));
-		this.images[6] = new ImageIcon(a.getImage().getScaledInstance(this.width, this.height, Image.SCALE_DEFAULT));
-		
-		a=new ImageIcon(this.getClass().getResource("/images/mapa/RotaAbajo.gif"));
-		this.images[7] = new ImageIcon(a.getImage().getScaledInstance(this.width, this.height, Image.SCALE_DEFAULT));
-		
-		a=new ImageIcon(this.getClass().getResource("/images/mapa/RotaAbajo2.gif"));
-		this.images[8] = new ImageIcon(a.getImage().getScaledInstance(this.width, this.height, Image.SCALE_DEFAULT));
-		*/
 	}
 
 }

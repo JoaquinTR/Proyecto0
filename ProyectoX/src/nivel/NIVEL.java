@@ -10,7 +10,7 @@ import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.JLabel;
 
-import bomba.BOMBA;
+import bomba.bombaBomberman;
 import GUI.GUI;
 import GUI.constantes;
 import mapa.CELDA;
@@ -220,7 +220,7 @@ public class NIVEL {
      * Indica al bomberman que ponga una bomba en su posicion.
      */
     public void ponerBomba(){
-    	BOMBA b= Bomberman.ponerBomba();
+    	bombaBomberman b= Bomberman.ponerBomba();
 		
 		if(b!=null){
 			//Reproduzco el sonido de la bomba.

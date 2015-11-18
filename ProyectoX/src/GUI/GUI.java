@@ -1,5 +1,6 @@
 package GUI;
 
+import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Image;
 import javax.sound.sampled.AudioInputStream;
@@ -68,8 +69,9 @@ public class GUI extends JFrame {
 	 */
 	private Clip clip;
 
+	private JLabel posM;
 
-
+	private JLabel posG;
 	
 	/**
 	 * Constructor de la gui. Inicializa todo lo necesario para que la gui funcione
@@ -100,7 +102,17 @@ public class GUI extends JFrame {
 		setIconImage(b.getImage());
 		contentPane.setVisible(true);
 		
+		posM=new JLabel();
+		posM.setBounds(800, 10, 150, 100);
+		posM.setText("POS");
+		posM.setForeground(Color.WHITE);
+		add(posM);
 		
+		posG=new JLabel();
+		posG.setBounds(1000, 10, 150, 100);
+		posG.setText("POS");
+		posG.setForeground(Color.WHITE);
+		add(posG);
 		 
 		
 		//Creacion del nivel.
@@ -163,6 +175,12 @@ public class GUI extends JFrame {
 			}
 		});
 	 }
+	
+	//puse pulse en reloj, sacar.
+	public void pulse(){
+		posM.setText("PosicionM: "+MiNivel.getEnemigos().getFirst().getX()+" "+MiNivel.getEnemigos().getFirst().getY());
+		posG.setText("PosicionG: "+MiNivel.getEnemigos().getFirst().getGrafico().getX()+" "+MiNivel.getEnemigos().getFirst().getGrafico().getY());
+	}
 	
 	/**
 	 * toma el teclado y manda el mensaje mover al nivel con la direccion

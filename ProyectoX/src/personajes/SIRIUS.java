@@ -1,9 +1,11 @@
 package personajes;
 
+import java.util.Random;
 import java.util.Stack;
 
 import GUI.constantes;
-import bomba.BOMBA;
+import bomba.bombaBomberman;
+import bomba.bombaSirius;
 import graficos.siriusGrafico;
 import mapa.CELDA;
 import nivel.NIVEL;
@@ -34,6 +36,16 @@ public class SIRIUS extends ENEMIGOS {
      * direccion en la que se va a mover.
      */
     private int direccion;
+    
+    /**
+     * ultimos 2 movimientos del sirius.
+     */
+    private Stack<Integer> movs;
+    
+    /**
+     * ultimos 2 movimientos del sirius.
+     */
+    private Stack<Integer> movsA;
 
     /**
      * constructor.
@@ -45,8 +57,9 @@ public class SIRIUS extends ENEMIGOS {
         super(MiNivel,x,y,3);
         Bomberman = MiNivel.getBomberman();
         this.grafico=new siriusGrafico(x,y);
-        //T=new enemigoThread(this);
         grafico.select(4);
+        movs=new Stack<Integer>();
+        movsA=new Stack<Integer>();
     }
     
     /**
@@ -60,7 +73,7 @@ public class SIRIUS extends ENEMIGOS {
      * Avance especifico de un sirius.
      */
     public void avanzar() {
-        /*
+        
     	Random rnd = new Random();
 		
 		//calculo la direccion en la que esta el bomberman.
@@ -74,8 +87,8 @@ public class SIRIUS extends ENEMIGOS {
         
         if( dx>0 ) dir1 = 2;
         if( dx<0 ) dir1 = 3;
-        if( dy>0 ) dir2 = 0;
-        if( dy<0 ) dir2 = 1;
+        if( dy>0 ) dir2 = 1;
+        if( dy<0 ) dir2 = 0;
 	
         dir=rnd.nextInt(2);
         
@@ -84,9 +97,13 @@ public class SIRIUS extends ENEMIGOS {
         else
         	dir=dir2;
         
+        if(dx==0)
+        	dir=dir2;
+        if(dy==0)
+        	dir=dir1;
 		direccion=dir;
 		
-		System.out.println("direccion: "+direccion);
+		System.out.println("direccion PPAL: "+direccion);
 		
 		CELDA next= MiNivel.getCelda(x, y, direccion);
 	
@@ -94,98 +111,156 @@ public class SIRIUS extends ENEMIGOS {
 		
 	
 		if(puedo){
-			T.setDireccion(direccion);
-			T.setCommand(-15);
-			T.iniciar();
-			//mover(direccion);
+			mover(direccion);
+			movs.push(direccion);
 		
 		}
 		else{
 			if(next.getPared()!=null){
 				if(next.getPared().getDestructible()){
+					
 					ponerBomba();
+					
+					/*
+					int dirA=0;
 					
 					switch(direccion){
 						case 0:
-							direccion=1;
+							dirA=1;
 							break;
 						case 1:
-							direccion=0;
+							dirA=0;
 							break;
 						case 2:
-							direccion=3;
+							dirA=3;
 							break;
 						case 3:
-							direccion=2;
+							dirA=2;
 							break;
 					}
 					
-					mover(direccion);
+					mover(dirA);
 					
-					retroceder(this.x,this.y);
+					movs.push(direccion);
+					
+					
+					retroceder();
+					
+					*/
+					
+					int p=2;
+					int aux=-1;
+					while(p!=0){
+						
+						if(!movs.isEmpty()){
+							
+						aux=movs.pop();
+						
+						
+						switch(aux){
+							case 0:
+								mover(1);
+								movsA.push(1);
+								break;
+							case 1:
+								mover(0);
+								movsA.push(0);
+								break;
+							case 2:
+								mover(3);
+								movsA.push(3);
+								break;
+							case 3:
+								mover(2);
+								movsA.push(2);
+								break;
+							}
+						
+						}
+						else
+							retroceder(aux);
+						
+						p--;
+					}
+					
+					try {
+						Thread.sleep(3000);
+					} catch (InterruptedException e) {}
+					
+					//vuelvo donde estaba la bomba.
+					while(!movsA.isEmpty()){
+						
+						int aux2=movsA.pop();
+						
+						switch(aux2){
+						case 0:
+							mover(1);
+							movs.push(1);
+							break;
+						case 1:
+							mover(0);
+							movs.push(0);
+							break;
+						case 2:
+							mover(3);
+							movs.push(3);
+							break;
+						case 3:
+							mover(2);
+							movs.push(2);
+							break;
+						}
+						
+					}
+					
 				}
 				else{
 					//pared Indestructible.
 				}
 			}
 		}
-		grafico.select(dir+4);
-        
-		T.setCommand(-5);
-		T.iniciar();*/
     	
     }
     
     /**
      * Escapar de una bomba recien puesta o encontrada en x e y.
      */
-    protected void retroceder(int x, int y) {
+    protected void retroceder(int d) {
         boolean encontre=false;
         
         CELDA next=null;
+ 
+        int dir = ( d + 1 ) % 4;
         
-        int pasos=4;
-        
-        int direccionV=direccion;
-        
-        switch(direccion){
-			case 0:
-				direccion=1;
-				break;
-			case 1:
-				direccion=0;
-				break;
-			case 2:
-				direccion=3;
-				break;
-			case 3:
-				direccion=2;
-				break;
-        }
-	
-		T.setDireccion(direccion);
-		T.setCommand(-15);
-		T.iniciar();
-        
-        while( (!encontre) & (pasos > 0 ) & (direccion==direccionV) ){
+        while( (!encontre)  ){
         	
-        	next=MiNivel.getCelda(this.x, this.y, direccion);
+        	next=MiNivel.getCelda(this.x, this.y, dir);
         	
-        	if(next.getPared()==null){
+        	if((next.getPared()==null) & (dir!=d)){
         		
-    			T.setDireccion(direccion);
-    			T.setCommand(-15);
-    			T.iniciar();
+        		//muevo en la direccion encontrada.
+        		mover(dir);
         		
-        		//esperar explosion.
-        		T.setCommand(-10);
-        		T.iniciar();
+        		//apilo la direccion contraria para moverme.
+        		switch(dir){
+					case 0:
+						movsA.push(1);
+						break;
+					case 1:
+						movsA.push(0);
+						break;
+					case 2:
+						movsA.push(3);
+						break;
+					case 3:
+						movsA.push(2);
+						break;
+        		}
         		
         		encontre=true;
         	}
         	else{
-        		pasos--;
-        		direccion = ( direccion + 1 ) %4; // intento otra direccion.
+        		dir = ( dir + 1 ) %4; // intento otra direccion.
         	}
         	
         }
@@ -198,13 +273,9 @@ public class SIRIUS extends ENEMIGOS {
      */
     private void ponerBomba() {
     	
-    	BOMBA b=null;
-    	if((!MiNivel.getCelda(x,y,constantes.ACTUAL).hayBomba()) ){
-    		b=new BOMBA(MiNivel,this.x,this.y);
-    		MiNivel.getCelda(x, y, constantes.ACTUAL).setBomba(b);
-    		MiNivel.agregarObjeto(b.getGrafico());
-    	}
-    	
+    	bombaSirius b=new bombaSirius(MiNivel,this.x,this.y);
+    	MiNivel.getCelda(x, y, constantes.ACTUAL).setBomba(b);
+    	MiNivel.agregarObjeto(b.getGrafico());
     	
     }
     
@@ -214,7 +285,7 @@ public class SIRIUS extends ENEMIGOS {
     protected void mover(int dir){
     	
     	CELDA actual = MiNivel.getCelda(x, y, -1);
-		CELDA next= MiNivel.getCelda(x, y, direccion);
+		CELDA next= MiNivel.getCelda(x, y, dir);
     	
     	//avanzo de celda el personaje a nivel logica.
 		actual.quitarPersonaje(this);
@@ -230,6 +301,8 @@ public class SIRIUS extends ENEMIGOS {
 		if(agarre){
 			//afecto al bomberman
 			MiNivel.getBomberman().destruirme();
+			T.detener();
+			T.stop();
 		}
     }
 

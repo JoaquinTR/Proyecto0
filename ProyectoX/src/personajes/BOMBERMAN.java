@@ -1,7 +1,7 @@
 package personajes;
 
 import GUI.constantes;
-import bomba.BOMBA;
+import bomba.bombaBomberman;
 import graficos.jugadorGrafico;
 import mapa.CELDA;
 import nivel.NIVEL;
@@ -70,12 +70,12 @@ public class BOMBERMAN extends PERSONAJE {
     /**
      * pone una bomba en la posicion actual del bomberman.
      */
-    public BOMBA ponerBomba() {
+    public bombaBomberman ponerBomba() {
     	
-    	BOMBA b=null;
+    	bombaBomberman b=null;
     	if( ( (CantBombas > 0) | ( Masacre ) ) & (!MiNivel.getCelda(x,y,constantes.ACTUAL).hayBomba()) ){//cant bombas se va a negativo en masacre.
     		decCantBombas();
-    		b=new BOMBA(MiNivel,this.x,this.y);
+    		b=new bombaBomberman(MiNivel,this.x,this.y);
     		MiNivel.getCelda(x, y, constantes.ACTUAL).setBomba(b);
     		
     	}

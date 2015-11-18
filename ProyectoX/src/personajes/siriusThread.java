@@ -46,33 +46,12 @@ public class siriusThread extends Thread{
 			
 				try {
 					
+					mLogica.avanzar();
 					
-					
-					
-					if(command==-5){
-						//duermo el hilo 1 seg
-						Thread.sleep(1000);
-					
-						//indico a la logica que se mueva.
-						this.mLogica.avanzar();
-					}	
-					if(command==-10){
-						//duermo el hilo 3 seg esperando explosion.
-						Thread.sleep(3000);
-						
-					}	
-					if(command==-15){
-						//duermo el hilo 1 seg
-						Thread.sleep(1000);
-					
-						//indico a la logica que se mueva.
-						this.mLogica.mover(direccion);
-					}
-						
-						
+					sleep(500);
 					
 				} catch (InterruptedException e) {}
-				detener();
+
 			}
 			
 		}

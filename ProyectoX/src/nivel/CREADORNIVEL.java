@@ -258,10 +258,10 @@ public class CREADORNIVEL extends CREADOR{
      */
     public void crearSirius(NIVEL MiNivel,CELDA[][] grilla,GUI gui,LinkedList<ENEMIGOS> Enemigos) {
     	
-    	Enemigos.addLast(new SIRIUS(MiNivel,28,11));
+    	Enemigos.addLast(new SIRIUS(MiNivel,29,11));
 		gui.agregarObjeto(Enemigos.getLast().getGrafico());
 		
-		grilla[28][11].agregarPersonaje(Enemigos.getLast());
+		grilla[29][11].agregarPersonaje(Enemigos.getLast());
     }
 
     /**

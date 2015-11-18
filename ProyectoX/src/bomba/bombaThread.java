@@ -17,10 +17,10 @@ public class bombaThread extends Thread{
 	
 	/**
 	 * Rugulo que implementa la logica del Thread.
-	 * @param logica logica utilizada.
+	 * @param bomba logica utilizada.
 	 */
-	public bombaThread(BOMBA logica) {
-		this.mLogica  = logica;
+	public bombaThread(BOMBA bomba) {
+		this.mLogica  = bomba;
 	}
 	
 	/**
