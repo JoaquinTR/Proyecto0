@@ -22,11 +22,8 @@ public class ruguloGrafico extends Grafico {
      * @param x posicion x en la matriz.
      * @param y posicion y en la matriz.
      */
-	public ruguloGrafico(int x, int y){
+	public ruguloGrafico(int x, int y, int seleccion){
 		super(x,y);
-		
-		Random rugulo=new Random();
-		int seleccion = rugulo.nextInt(4);
 		
 		ImageIcon a=null;
 		

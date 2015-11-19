@@ -1,10 +1,16 @@
 package personajes;
 
+import java.io.IOException;
 import java.util.Random;
 import java.util.Stack;
 
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
+
 import GUI.constantes;
-import bomba.bombaBomberman;
 import bomba.bombaSirius;
 import graficos.siriusGrafico;
 import mapa.CELDA;
@@ -56,7 +62,7 @@ public class SIRIUS extends ENEMIGOS {
     public SIRIUS(NIVEL MiNivel, int x, int y) {
         super(MiNivel,x,y,3);
         Bomberman = MiNivel.getBomberman();
-        this.grafico=new siriusGrafico(x,y);
+        this.grafico=new siriusGrafico(x,y,1);
         grafico.select(4);
         movs=new Stack<Integer>();
         movsA=new Stack<Integer>();
@@ -67,6 +73,14 @@ public class SIRIUS extends ENEMIGOS {
      */
     public void start(){
     	T=new siriusThread(this);
+    }
+    
+    /**
+     * Inicia el hilo de este enemigo.
+     */
+    public void stop(){
+    	T.stop();
+    	grafico.select(4);
     }
 
     /**
@@ -85,10 +99,10 @@ public class SIRIUS extends ENEMIGOS {
         
         int dir=0;
         
-        if( dx>0 ) dir1 = 2;
-        if( dx<0 ) dir1 = 3;
-        if( dy>0 ) dir2 = 1;
-        if( dy<0 ) dir2 = 0;
+        if( dx>0 ) dir1 = constantes.IZQUIERDA;
+        if( dx<0 ) dir1 = constantes.DERECHA;
+        if( dy>0 ) dir2 = constantes.ARRIBA;
+        if( dy<0 ) dir2 = constantes.ABAJO;
 	
         dir=rnd.nextInt(2);
         
@@ -96,14 +110,9 @@ public class SIRIUS extends ENEMIGOS {
         	dir=dir1;
         else
         	dir=dir2;
+
         
-        if(dx==0)
-        	dir=dir2;
-        if(dy==0)
-        	dir=dir1;
 		direccion=dir;
-		
-		System.out.println("direccion PPAL: "+direccion);
 		
 		CELDA next= MiNivel.getCelda(x, y, direccion);
 	
@@ -121,35 +130,11 @@ public class SIRIUS extends ENEMIGOS {
 					
 					ponerBomba();
 					
-					/*
-					int dirA=0;
-					
-					switch(direccion){
-						case 0:
-							dirA=1;
-							break;
-						case 1:
-							dirA=0;
-							break;
-						case 2:
-							dirA=3;
-							break;
-						case 3:
-							dirA=2;
-							break;
-					}
-					
-					mover(dirA);
-					
-					movs.push(direccion);
-					
-					
-					retroceder();
-					
-					*/
-					
+										
 					int p=2;
+					
 					int aux=-1;
+					
 					while(p!=0){
 						
 						if(!movs.isEmpty()){
@@ -158,21 +143,21 @@ public class SIRIUS extends ENEMIGOS {
 						
 						
 						switch(aux){
-							case 0:
-								mover(1);
-								movsA.push(1);
+							case constantes.ABAJO:
+								mover(constantes.ARRIBA);
+								movsA.push(constantes.ARRIBA);
 								break;
-							case 1:
-								mover(0);
-								movsA.push(0);
+							case constantes.ARRIBA:
+								mover(constantes.ABAJO);
+								movsA.push(constantes.ABAJO);
 								break;
-							case 2:
-								mover(3);
-								movsA.push(3);
+							case constantes.IZQUIERDA:
+								mover(constantes.DERECHA);
+								movsA.push(constantes.DERECHA);
 								break;
-							case 3:
-								mover(2);
-								movsA.push(2);
+							case constantes.DERECHA:
+								mover(constantes.IZQUIERDA);
+								movsA.push(constantes.IZQUIERDA);
 								break;
 							}
 						
@@ -193,21 +178,21 @@ public class SIRIUS extends ENEMIGOS {
 						int aux2=movsA.pop();
 						
 						switch(aux2){
-						case 0:
-							mover(1);
-							movs.push(1);
+						case constantes.ABAJO:
+							mover(constantes.ARRIBA);
+							movs.push(constantes.ARRIBA);
 							break;
-						case 1:
-							mover(0);
-							movs.push(0);
+						case constantes.ARRIBA:
+							mover(constantes.ABAJO);
+							movs.push(constantes.ABAJO);
 							break;
-						case 2:
-							mover(3);
-							movs.push(3);
+						case constantes.IZQUIERDA:
+							mover(constantes.DERECHA);
+							movs.push(constantes.DERECHA);
 							break;
-						case 3:
-							mover(2);
-							movs.push(2);
+						case constantes.DERECHA:
+							mover(constantes.IZQUIERDA);
+							movs.push(constantes.IZQUIERDA);
 							break;
 						}
 						
@@ -226,6 +211,7 @@ public class SIRIUS extends ENEMIGOS {
      * Escapar de una bomba recien puesta o encontrada en x e y.
      */
     protected void retroceder(int d) {
+    	
         boolean encontre=false;
         
         CELDA next=null;
@@ -243,17 +229,17 @@ public class SIRIUS extends ENEMIGOS {
         		
         		//apilo la direccion contraria para moverme.
         		switch(dir){
-					case 0:
-						movsA.push(1);
+					case constantes.ABAJO:
+						movsA.push(constantes.ARRIBA);
 						break;
-					case 1:
-						movsA.push(0);
+					case constantes.ARRIBA:
+						movsA.push(constantes.ABAJO);
 						break;
-					case 2:
-						movsA.push(3);
+					case constantes.IZQUIERDA:
+						movsA.push(constantes.DERECHA);
 						break;
-					case 3:
-						movsA.push(2);
+					case constantes.DERECHA:
+						movsA.push(constantes.IZQUIERDA);
 						break;
         		}
         		
@@ -276,6 +262,16 @@ public class SIRIUS extends ENEMIGOS {
     	bombaSirius b=new bombaSirius(MiNivel,this.x,this.y);
     	MiNivel.getCelda(x, y, constantes.ACTUAL).setBomba(b);
     	MiNivel.agregarObjeto(b.getGrafico());
+    	
+    	//sonido de la bomba.
+        try {
+	        AudioInputStream stream;
+			stream = AudioSystem.getAudioInputStream(this.getClass().getResource("/sounds/explosiones/bomb.wav"));
+			Clip explosion = AudioSystem.getClip();
+			explosion.open(stream);
+			explosion.start();
+		} catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {}
+        
     	
     }
     
@@ -319,7 +315,7 @@ public class SIRIUS extends ENEMIGOS {
     	MiNivel.setPuntaje(50);    	
     	MiNivel.getCelda(x, y, constantes.ACTUAL).quitarPersonaje(this);
     	T.stop();// si no hago esto se me consume el cpu.
-    	
+    	MiNivel.quitarMalo(this);
     }
 
 }

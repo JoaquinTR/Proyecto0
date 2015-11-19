@@ -48,7 +48,7 @@ public class siriusThread extends Thread{
 					
 					mLogica.avanzar();
 					
-					sleep(500);
+					sleep(250);
 					
 				} catch (InterruptedException e) {}
 

@@ -84,8 +84,9 @@ public class CREADORNIVEL extends CREADOR{
         
         int x=0;
 		int y=0;
+		int creadas=0;
 		
-        for(i=0;i<=110;i++){
+        for(i=0;i<127;i++){
         	x= 1+ px.nextInt(29);
 			y= 1+ py.nextInt(11);
         	while( ((x==28)&(y==11)) | ((x==29)&(y==11)) | ((x==29)&(y==10)) | ((x==1)&(y==1)) | ((x==2)&(y==1)) | ((x==1)&(y==2)) | (grilla[x][y].getPared()!=null)){
@@ -93,8 +94,8 @@ public class CREADORNIVEL extends CREADOR{
 				y= 1+ py.nextInt(11);
 			}
         	crearCeldaPD(x,y,MiNivel,grilla);
+        	creadas++;
         }
-        
         //creo bomberman.
         crearBomberman(MiNivel,grilla,gui);
         
@@ -102,7 +103,6 @@ public class CREADORNIVEL extends CREADOR{
         crearSirius(MiNivel,grilla,gui,Enemigos);
 		
         //creo 3 rugulos aleatoriamente. se puede hacer todo dentro de crearRugulos. idem para los otros.
-        /*
 		for(int r=0;r<3;r++){
 			
 			x= 3+ px.nextInt(27);
@@ -114,7 +114,7 @@ public class CREADORNIVEL extends CREADOR{
 				y= 3+ py.nextInt(9);
 			}
 			crearRugulos(x,y,MiNivel,grilla,gui,Enemigos);
-		}*/
+		}
 		
 		
 		// ---CREACION POWER-UPS---
@@ -194,7 +194,6 @@ public class CREADORNIVEL extends CREADOR{
 		crearMasacrality(x,y,MiNivel,grilla,gui);
 							        
 		 //creo 2 altair aleatoriamente. se puede hacer todo dentro de crearAltair.
-		/*
 		for(int r=0;r<2;r++){
 			
 			is=false;
@@ -211,15 +210,12 @@ public class CREADORNIVEL extends CREADOR{
 						is=true;
 			}
 			crearAltair(x,y,MiNivel,grilla,gui,Enemigos);
-		}*/	
+		}
 		
 		
     }
     
     
-    
-    
-
     /**
      * Crea un rugulo.
      * @param x Posicion en x dentro de la matriz.

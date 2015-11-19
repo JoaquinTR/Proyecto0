@@ -41,6 +41,8 @@ public abstract class ENEMIGOS extends PERSONAJE {
      * Inicia el hilo de este enemigo.
      */
     public abstract void start();
+
+	public abstract void stop();
     
     
 }

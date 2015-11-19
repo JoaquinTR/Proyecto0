@@ -203,7 +203,14 @@ public class BOMBERMAN extends PERSONAJE {
     		b.setDir(constantes.DESTRUCCION);
     		MiNivel.lock();
     		grafico.select(12);
+    		MiNivel.perder();
     	}
     }
+
+
+	public void stop() {
+		b.detener();
+		
+	}
 }
 

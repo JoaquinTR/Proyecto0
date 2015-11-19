@@ -3,11 +3,7 @@ package bomba;
 
 import java.util.LinkedList;
 
-import javax.swing.JLabel;
-
 import GUI.constantes;
-import graficos.BombaGrafica;
-import graficos.Grafico;
 import mapa.CELDA;
 import nivel.NIVEL;
 
@@ -32,6 +28,7 @@ public class bombaBomberman extends BOMBA{
     public bombaBomberman(NIVEL MiNivel,int x, int y ) {
     	super(MiNivel,x,y);
         grafico.select(0); 
+        this.RadioExplosion=MiNivel.getBomberman().getRadioBombas();
         
     }
 
@@ -45,7 +42,7 @@ public class bombaBomberman extends BOMBA{
         grafico.select(1);
         MiNivel.getCelda(x, y, constantes.ACTUAL).quitarBomba();
         
-        int radio = MiNivel.getBomberman().getRadioBombas();
+        int radio = RadioExplosion;
         
         int offset = 0;
         
@@ -95,7 +92,7 @@ public class bombaBomberman extends BOMBA{
         }while(radio!=0);
         
         for(CELDA C: celdasAfectadas){
-        	C.afectar();
+        	MiNivel.setPuntaje(C.afectar());
         }
         
         try {
@@ -107,6 +104,8 @@ public class bombaBomberman extends BOMBA{
             	C.restaurar();
         }
         	
+        if(MiNivel.getPDR()==0)
+        	MiNivel.ganar();
     }
     
    

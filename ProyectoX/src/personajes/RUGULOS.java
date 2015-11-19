@@ -31,16 +31,27 @@ public class RUGULOS extends ENEMIGOS {
      */
     public RUGULOS(NIVEL MiNivel, int x, int y) {
         super(MiNivel,x,y,1);
-        this.grafico = new ruguloGrafico(x,y);
-        T=new enemigoThread(this);
+        this.grafico = new ruguloGrafico(x,y, MiNivel.getSR());
+        //T=new enemigoThread(this);
         grafico.select(4);
     }
     
     /**
      * Inicia el hilo de este enemigo.
      */
-    public void start(){}
-
+    public void start(){
+    	T=new enemigoThread(this);
+    }
+    
+    /**
+     * Inicia el hilo de este enemigo.
+     */
+    public void stop(){
+    	T.interrupt();
+    	T.detener();
+    	T.stop();
+    	grafico.select(4);
+    }
     /**
      * Avance propio de un Rugulo.
      */
@@ -93,5 +104,6 @@ public class RUGULOS extends ENEMIGOS {
     	MiNivel.setPuntaje(15);
     	MiNivel.getCelda(x, y, constantes.ACTUAL).quitarPersonaje(this);
     	T.stop();// si no hago esto se me consume el cpu.
+    	MiNivel.quitarMalo(this);
     }
 }

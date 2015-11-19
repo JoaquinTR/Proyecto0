@@ -31,15 +31,25 @@ public class ALTAIR extends ENEMIGOS {
      */
     public ALTAIR(NIVEL MiNivel, int x, int y) {
         super(MiNivel,x,y,1);
-        this.grafico = new altairGrafico(x,y);
-        T=new enemigoThread(this);
+        this.grafico = new altairGrafico(x,y, MiNivel.getSA());
+        //T=new enemigoThread(this);
         grafico.select(4);
     }
 
     /**
      * Inicia el hilo de este enemigo.
      */
-    public void start(){}
+    public void start(){
+    	T=new enemigoThread(this);
+    }
+    
+    /**
+     * Inicia el hilo de este enemigo.
+     */
+    public void stop(){
+    	T.stop();
+    	grafico.select(4);
+    }
     
     /**
      * avanzar propio del altair.
@@ -94,7 +104,7 @@ public class ALTAIR extends ENEMIGOS {
     	MiNivel.setPuntaje(20);
     	MiNivel.getCelda(x, y, constantes.ACTUAL).quitarPersonaje(this);
     	T.stop();// si no hago esto se me consume el cpu.
-    	
+    	MiNivel.quitarMalo(this);
     }
     
 

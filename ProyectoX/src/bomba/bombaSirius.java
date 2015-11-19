@@ -25,19 +25,15 @@ public class bombaSirius extends BOMBA{
      * Inicia el conteo de la explosion de esta bomba.
      */
     public void explotar() {
-        grafico.select(3);
+        grafico.select(1);
         MiNivel.getCelda(x, y, constantes.ACTUAL).quitarBomba();
-     
         
         CELDA actual=null;
         CELDA abajo=null;
         CELDA arriba=null;
         CELDA izquierda=null;
         CELDA derecha=null;
-        
-        
 
-                	
         
         //obtiene las celdas adyacentes.
         actual=MiNivel.getCelda(x, y, constantes.ACTUAL);
@@ -65,7 +61,10 @@ public class bombaSirius extends BOMBA{
         if(arriba.getPared()==null)arriba.restaurar();
         if(izquierda.getPared()==null)izquierda.restaurar();
         if(derecha.getPared()==null)derecha.restaurar();
-        	
+     
+        if(MiNivel.getPDR()==0)
+        	MiNivel.ganar();
+        
     }
 
     

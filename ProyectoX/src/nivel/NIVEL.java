@@ -62,7 +62,16 @@ public class NIVEL {
      * interfaz grafica que se encarga de las interacciones usuario-logica.
      */
     private GUI gui;
-
+    
+    /**
+     * Indica que set de Rugulos se utiliza.
+     */
+    private int seleccionRugulos;
+    
+    /**
+     * Indica que set de Altaires se utilizan.
+     */
+    private int seleccionAltair;
     
     
     
@@ -74,14 +83,36 @@ public class NIVEL {
     	this.gui=gui;
     	
     	Grilla = new CELDA[31][13];
-    	//Enemigos= new ENEMIGOS[10];
-    	Enemigos =new LinkedList<ENEMIGOS>();
 
+    	Enemigos =new LinkedList<ENEMIGOS>();
+    	
+    	Random rnd=new Random();
+    	
+    	seleccionRugulos= rnd.nextInt(4);
+
+    	seleccionAltair= rnd.nextInt(4);
+    	
     	Creador=new CREADORNIVEL();
     	
 		Creador.crearNivel(Grilla, this, gui,Enemigos);
 		
-		ParedesDestructiblesRestantes = 109;
+		ParedesDestructiblesRestantes = 127;
+    }
+    
+    /**
+     * Devuelve la seleccion de rugulos.
+     * @return el conjunto de imagenes a usar en los rugulos.
+     */
+    public int getSR(){
+    	return seleccionRugulos;
+    }
+    
+    /**
+     * Devuelve la seleccion de rugulos.
+     * @return el conjunto de imagenes a usar en los rugulos.
+     */
+    public int getSA(){
+    	return seleccionAltair;
     }
     
     /**
@@ -151,13 +182,11 @@ public class NIVEL {
     }
     
     /**
-     * mover a todos los enemigos ( en funcion del reloj)
+     * quita un enemigo del nivel.
      */
-    public void moverM(){
+    public void quitarMalo(ENEMIGOS e){
     	
-    	for(ENEMIGOS e:Enemigos){
-    			e.avanzar();
-    	}
+    	Enemigos.remove(e);
     	
     }
     
@@ -245,4 +274,26 @@ public class NIVEL {
     	gui.agregarObjeto(j);
     }
     
+    /**
+	 * Se activa cuando se gana el juego, lo indica a la gui.
+	 */
+	public void ganar(){
+		gui.ganar();
+		Bomberman.stop();
+		for(ENEMIGOS e:Enemigos){
+			e.stop();
+		}
+		
+	}
+	
+	/**
+	 * Se activa cuando se muere el bomberman, lo indica a la gui.
+	 */
+	public void perder(){
+		gui.perder();
+		Bomberman.stop();
+		for(ENEMIGOS e:Enemigos){
+			e.stop();
+		}
+	}
 }

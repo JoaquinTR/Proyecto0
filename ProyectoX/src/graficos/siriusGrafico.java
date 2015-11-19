@@ -13,15 +13,10 @@ public class siriusGrafico extends Grafico{
      * @param x posicion x en la matriz.
      * @param y posicion y en la matriz.
      */
-	public siriusGrafico(int x, int y){
+	public siriusGrafico(int x, int y, int seleccion){
 		super(x,y);
 		
-		Random rugulo=new Random();
-		int seleccion = rugulo.nextInt(3);
-		
 		ImageIcon a=null;
-		
-		seleccion=1; //sacar
 		
 		switch(seleccion){
 		

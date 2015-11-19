@@ -229,7 +229,6 @@ public class RELOJ extends Thread{
 		while(true){
 			try {
 				Thread.sleep(500);
-				gui.pulse();
 				dosPuntos.setVisible(false);
 				
 				//actualizacion de puntaje.
@@ -243,7 +242,6 @@ public class RELOJ extends Thread{
 				puntajeM.setIcon(images[puntaje % 10]);
 				
 				Thread.sleep(500);
-				gui.pulse();
 				dosPuntos.setVisible(true);
 			} catch (InterruptedException e) {}
 			

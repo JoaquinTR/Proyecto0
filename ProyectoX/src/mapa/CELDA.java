@@ -176,7 +176,7 @@ public class CELDA {
     /**
      * Destruye la pared contenida en esta celda.
      */
-    public void destruirPared() {
+    public int destruirPared() {
     	//hago aparecer el powerup.
     	if( (MiPared!=null) & (Powerup!=null) ){
     		Powerup.getGrafico().setVisible(true);
@@ -185,7 +185,7 @@ public class CELDA {
     	
     	this.MiPared=null;
     	MiNivel.decPDR();
-    	MiNivel.setPuntaje(10);
+    	return 10;
     }
 
     /**
@@ -246,7 +246,9 @@ public class CELDA {
 	/**
 	 * Afecta a todos los personajes dentro de esta celda.
 	 */
-    public void afectar(){
+    public int afectar(){
+    	
+    	int ret=0;
     	
     	if(MiPared==null){
     		grafico.select(9);
@@ -257,11 +259,13 @@ public class CELDA {
     	else 
     		if(MiPared.getDestructible()){
     			grafico.select(9);
-    			destruirPared();
+    			ret = destruirPared();
     			for(PERSONAJE p: Presentes){
         			p.destruirme();
         		}
     		}
+    	
+    	return ret;
     	
     }
     
