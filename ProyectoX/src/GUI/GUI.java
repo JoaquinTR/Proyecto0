@@ -122,7 +122,7 @@ public class GUI extends JFrame {
 				
 				JLabel PressEnter = new JLabel();
 				PressEnter.setBounds(20, 375, 550, 125);
-				ImageIcon IPE=new ImageIcon(this.getClass().getResource("/images/menu/PressEnter3.gif"));
+				ImageIcon IPE=new ImageIcon(this.getClass().getResource("/images/menu/PressEnter.gif"));
 				IPE = new ImageIcon(IPE.getImage().getScaledInstance(PressEnter.getWidth(), PressEnter.getHeight(), Image.SCALE_DEFAULT));
 				PressEnter.setIcon(IPE);
 				add(PressEnter);
