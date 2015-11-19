@@ -64,23 +64,28 @@ public class NIVEL {
     private GUI gui;
     
     /**
-     * Indica que set de Rugulos se utiliza.
+     * Indica que conjunto de imagenes de Rugulos se utiliza.
      */
     private int seleccionRugulos;
     
     /**
-     * Indica que set de Altaires se utilizan.
+     * Indica que conjunto de imagenes de Altaires se utilizan.
      */
     private int seleccionAltair;
     
-    
+    /**
+     * Indica que conjunto de imagenes de personaje se utilizan.
+     */
+    private int seleccionPersonaje;
     
     /**
      * Constructor del nivel.
      * @param gui la interfaz grafica del nivel.
      */
-    public NIVEL(GUI gui) {
+    public NIVEL(GUI gui,int seleccion) {
     	this.gui=gui;
+    	
+    	seleccionPersonaje = seleccion;
     	
     	Grilla = new CELDA[31][13];
 
@@ -108,11 +113,19 @@ public class NIVEL {
     }
     
     /**
-     * Devuelve la seleccion de rugulos.
-     * @return el conjunto de imagenes a usar en los rugulos.
+     * Devuelve la seleccion de Altair.
+     * @return el conjunto de imagenes a usar en los Altair.
      */
     public int getSA(){
     	return seleccionAltair;
+    }
+    
+    /**
+     * Devuelve la seleccion de personaje.
+     * @return el conjunto de imagenes a usar en los personaje.
+     */
+    public int getSJ(){
+    	return seleccionPersonaje;
     }
     
     /**

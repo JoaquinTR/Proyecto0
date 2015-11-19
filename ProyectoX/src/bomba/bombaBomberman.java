@@ -27,7 +27,19 @@ public class bombaBomberman extends BOMBA{
      */
     public bombaBomberman(NIVEL MiNivel,int x, int y ) {
     	super(MiNivel,x,y);
-        grafico.select(0); 
+    	
+        switch(MiNivel.getSJ()){
+        case 0:
+        	grafico.select(0);
+        	break;
+        case 1: case 2:
+        	grafico.select(3);
+        	break;
+        case 3:
+        	grafico.select(4);
+        	break;
+        }
+        
         this.RadioExplosion=MiNivel.getBomberman().getRadioBombas();
         
     }

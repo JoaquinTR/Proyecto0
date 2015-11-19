@@ -34,8 +34,11 @@ public class BombaGrafica extends Grafico {
 		a=new ImageIcon(this.getClass().getResource("/images/bombas/BombaSirius.gif"));
 		this.images[2] = new ImageIcon(a.getImage().getScaledInstance(this.width, this.height, Image.SCALE_DEFAULT));
 		
-		a=new ImageIcon(this.getClass().getResource("/images/explosiones/expAzul.gif"));
+		a=new ImageIcon(this.getClass().getResource("/images/bombas/Bomba2.gif"));
 		this.images[3] = new ImageIcon(a.getImage().getScaledInstance(this.width, this.height, Image.SCALE_DEFAULT));
+		
+		a=new ImageIcon(this.getClass().getResource("/images/bombas/Bomba3.gif"));
+		this.images[4] = new ImageIcon(a.getImage().getScaledInstance(this.width, this.height, Image.SCALE_DEFAULT));
 		
 	}
 

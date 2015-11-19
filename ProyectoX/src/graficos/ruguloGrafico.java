@@ -55,7 +55,7 @@ public class ruguloGrafico extends Grafico {
 			a=new ImageIcon(this.getClass().getResource("/images/enemigos/Rugulos/EncapuchadoOscuro/EncOscuroIzq.gif"));
 			this.images[2] = new ImageIcon(a.getImage().getScaledInstance(this.width, this.height, Image.SCALE_DEFAULT));
 			
-			a=new ImageIcon(this.getClass().getResource("/images/enemigos/Rugulos/MuerteMalo.gif"));
+			a=new ImageIcon(this.getClass().getResource("/images/muertes/MuerteMalo.gif"));
 			this.images[8] = new ImageIcon(a.getImage().getScaledInstance(this.width, this.height, Image.SCALE_DEFAULT));
 			
 			break;
@@ -86,7 +86,7 @@ public class ruguloGrafico extends Grafico {
 			a=new ImageIcon(this.getClass().getResource("/images/enemigos/Rugulos/CaballeritoMalo/CaballeritoMaloIzq.gif"));
 			this.images[2] = new ImageIcon(a.getImage().getScaledInstance(this.width, this.height, Image.SCALE_DEFAULT));
 			
-			a=new ImageIcon(this.getClass().getResource("/images/enemigos/Rugulos/MuerteMalo.gif"));
+			a=new ImageIcon(this.getClass().getResource("/images/muertes/MuerteMalo.gif"));
 			this.images[8] = new ImageIcon(a.getImage().getScaledInstance(this.width, this.height, Image.SCALE_DEFAULT));
 			
 			break;
@@ -117,7 +117,7 @@ public class ruguloGrafico extends Grafico {
 			a=new ImageIcon(this.getClass().getResource("/images/enemigos/Rugulos/EncapuchadoClaro/EncapuchadoClaroIzq.gif"));
 			this.images[2] = new ImageIcon(a.getImage().getScaledInstance(this.width, this.height, Image.SCALE_DEFAULT));
 			
-			a=new ImageIcon(this.getClass().getResource("/images/enemigos/Rugulos/MuerteMalo.gif"));
+			a=new ImageIcon(this.getClass().getResource("/images/muertes/MuerteMalo.gif"));
 			this.images[8] = new ImageIcon(a.getImage().getScaledInstance(this.width, this.height, Image.SCALE_DEFAULT));
 			
 			break;
@@ -148,7 +148,7 @@ public class ruguloGrafico extends Grafico {
 			a=new ImageIcon(this.getClass().getResource("/images/enemigos/Rugulos/MediaCara/MediaCaraIzq.gif"));
 			this.images[2] = new ImageIcon(a.getImage().getScaledInstance(this.width, this.height, Image.SCALE_DEFAULT));
 			
-			a=new ImageIcon(this.getClass().getResource("/images/enemigos/Rugulos/MuerteMalo.gif"));
+			a=new ImageIcon(this.getClass().getResource("/images/muertes/MuerteMalo.gif"));
 			this.images[8] = new ImageIcon(a.getImage().getScaledInstance(this.width, this.height, Image.SCALE_DEFAULT));
 			
 			break;

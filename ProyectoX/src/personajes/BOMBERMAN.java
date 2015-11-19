@@ -47,10 +47,10 @@ public class BOMBERMAN extends PERSONAJE {
      */
     public BOMBERMAN(NIVEL MiNivel, int x, int y) {
         super(MiNivel,x,y,2);
-        this.grafico = new jugadorGrafico(x,y);
+        this.grafico = new jugadorGrafico(x,y, MiNivel.getSJ());
         b=new bombermanThread(this);
         CantBombas=1;
-        radioBombas=1; //test
+        radioBombas=1;
         Masacre=false;
         grafico.select(4);
         b.start();

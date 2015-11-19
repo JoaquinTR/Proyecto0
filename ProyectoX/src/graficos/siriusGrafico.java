@@ -46,7 +46,7 @@ public class siriusGrafico extends Grafico{
 			a=new ImageIcon(this.getClass().getResource("/images/enemigos/Sirius/deathlok/deathlokIzq.gif"));
 			this.images[2] = new ImageIcon(a.getImage().getScaledInstance(this.width, this.height, Image.SCALE_DEFAULT));
 			
-			a=new ImageIcon(this.getClass().getResource("/images/enemigos/Rugulos/MuerteMalo.gif"));
+			a=new ImageIcon(this.getClass().getResource("/images/muertes/muerteSirius.gif"));
 			this.images[8] = new ImageIcon(a.getImage().getScaledInstance(this.width, this.height, Image.SCALE_DEFAULT));
 			
 			break;
@@ -77,7 +77,7 @@ public class siriusGrafico extends Grafico{
 			a=new ImageIcon(this.getClass().getResource("/images/enemigos/Sirius/joker/jokerIzq.gif"));
 			this.images[2] = new ImageIcon(a.getImage().getScaledInstance(this.width, this.height, Image.SCALE_DEFAULT));
 			
-			a=new ImageIcon(this.getClass().getResource("/images/enemigos/Rugulos/MuerteMalo.gif"));
+			a=new ImageIcon(this.getClass().getResource("/images/muertes/muerteSirius.gif"));
 			this.images[8] = new ImageIcon(a.getImage().getScaledInstance(this.width, this.height, Image.SCALE_DEFAULT));
 			
 			break;
@@ -108,7 +108,7 @@ public class siriusGrafico extends Grafico{
 			a=new ImageIcon(this.getClass().getResource("/images/enemigos/Sirius/venom/venomIzq.gif"));
 			this.images[2] = new ImageIcon(a.getImage().getScaledInstance(this.width, this.height, Image.SCALE_DEFAULT));
 			
-			a=new ImageIcon(this.getClass().getResource("/images/enemigos/Rugulos/MuerteMalo.gif"));
+			a=new ImageIcon(this.getClass().getResource("/images/muertes/muerteSirius.gif"));
 			this.images[8] = new ImageIcon(a.getImage().getScaledInstance(this.width, this.height, Image.SCALE_DEFAULT));
 			
 			break;
