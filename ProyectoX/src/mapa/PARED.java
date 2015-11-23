@@ -20,7 +20,8 @@ public class PARED {
     /**
      * Celda a la que pertenece esta pared.
      */
-    private CELDA celda;
+    @SuppressWarnings("unused")
+	private CELDA celda;
 
  
 

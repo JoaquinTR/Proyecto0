@@ -46,7 +46,8 @@ public class ALTAIR extends ENEMIGOS {
     /**
      * Inicia el hilo de este enemigo.
      */
-    public void stop(){
+    @SuppressWarnings("deprecation")
+	public void stop(){
     	T.stop();
     	grafico.select(4);
     }

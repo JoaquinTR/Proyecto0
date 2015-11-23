@@ -99,7 +99,7 @@ public class NIVEL {
     	
     	Creador=new CREADORNIVEL();
     	
-		Creador.crearNivel(Grilla, this, gui,Enemigos);
+		Creador.crearNivel(Grilla, this,Enemigos);
 		
 		ParedesDestructiblesRestantes = 127;
     }

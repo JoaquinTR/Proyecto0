@@ -1,8 +1,6 @@
 package nivel;
 
 import java.util.*;
-
-import GUI.GUI;
 import mapa.CELDA;
 import personajes.ALTAIR;
 import personajes.ENEMIGOS;
@@ -35,7 +33,7 @@ public class CREADORNIVEL extends CREADOR{
      * @param grilla 
      * @param MiNivel
      */
-    public void crearNivel(CELDA[][] grilla, NIVEL MiNivel,GUI gui, LinkedList<ENEMIGOS> Enemigos) {
+    public void crearNivel(CELDA[][] grilla, NIVEL MiNivel, LinkedList<ENEMIGOS> Enemigos) {
         int i =0;
         int j=1;
         int outer= 31;
@@ -47,20 +45,20 @@ public class CREADORNIVEL extends CREADOR{
 		//paredes indestructibles superiores e inferiores.
         for(i=0;i<outer;i++){
         	crearCeldaPI(i, 0, MiNivel,grilla);
-        	gui.add(grilla[i][0].getGrafico());
+        	MiNivel.agregarObjeto(grilla[i][0].getGrafico());
         	
         	crearCeldaPI(i, 12, MiNivel,grilla);
-        	gui.add(grilla[i][12].getGrafico());
+        	MiNivel.agregarObjeto(grilla[i][12].getGrafico());
         	
         }
         
         //paredes indestructibles laterales.
         for(i=1;i<outer2;i++){
         	crearCeldaPI(0, i, MiNivel,grilla);
-        	gui.add(grilla[0][i].getGrafico());
+        	MiNivel.agregarObjeto(grilla[0][i].getGrafico());
         	
         	crearCeldaPI(30, i, MiNivel,grilla);
-        	gui.add(grilla[30][i].getGrafico());
+        	MiNivel.agregarObjeto(grilla[30][i].getGrafico());
         }
         
         //creo paredes indestructibles centrales y celdas transitables.
@@ -68,11 +66,11 @@ public class CREADORNIVEL extends CREADOR{
         	for(j=1;j<12;j++){
         		if((i%2==0)&&(j%2==0)){
         			crearCeldaPI(i, j, MiNivel,grilla);
-        			gui.add(grilla[i][j].getGrafico());
+        			MiNivel.agregarObjeto(grilla[i][j].getGrafico());
         		}
         		else{
         			crearCelda(i, j, MiNivel,grilla);
-        			gui.add(grilla[i][j].getGrafico());
+        			MiNivel.agregarObjeto(grilla[i][j].getGrafico());
         		}
         	
         	}	
@@ -84,7 +82,6 @@ public class CREADORNIVEL extends CREADOR{
         
         int x=0;
 		int y=0;
-		int creadas=0;
 		
         for(i=0;i<127;i++){
         	x= 1+ px.nextInt(29);
@@ -94,13 +91,12 @@ public class CREADORNIVEL extends CREADOR{
 				y= 1+ py.nextInt(11);
 			}
         	crearCeldaPD(x,y,MiNivel,grilla);
-        	creadas++;
         }
         //creo bomberman.
-        crearBomberman(MiNivel,grilla,gui);
+        crearBomberman(MiNivel,grilla);
         
         //creo el sirius.
-        crearSirius(MiNivel,grilla,gui,Enemigos);
+        crearSirius(MiNivel,grilla,Enemigos);
 		
         //creo 3 rugulos aleatoriamente. se puede hacer todo dentro de crearRugulos. idem para los otros.
 		for(int r=0;r<3;r++){
@@ -113,7 +109,7 @@ public class CREADORNIVEL extends CREADOR{
 				x= 3+ px.nextInt(27);
 				y= 3+ py.nextInt(9);
 			}
-			crearRugulos(x,y,MiNivel,grilla,gui,Enemigos);
+			crearRugulos(x,y,MiNivel,grilla,Enemigos);
 		}
 		
 		
@@ -134,7 +130,7 @@ public class CREADORNIVEL extends CREADOR{
 						if( (grilla[x][y].getPared().getDestructible()) & (grilla[x][y].getPowerup()==null) )
 							is=true;
 				}
-			crearSpeedup(x,y,MiNivel,grilla,gui);
+			crearSpeedup(x,y,MiNivel,grilla);
 	        
 		}
 		
@@ -153,7 +149,7 @@ public class CREADORNIVEL extends CREADOR{
 					if( (grilla[x][y].getPared().getDestructible()) & (grilla[x][y].getPowerup()==null) )
 						is=true;
 			}
-			crearFatality(x,y,MiNivel,grilla,gui);
+			crearFatality(x,y,MiNivel,grilla);
 			        
 		}
 		
@@ -172,7 +168,7 @@ public class CREADORNIVEL extends CREADOR{
 					if( (grilla[x][y].getPared().getDestructible()) & (grilla[x][y].getPowerup()==null) )
 						is=true;
 			}
-			crearBombality(x,y,MiNivel,grilla,gui);
+			crearBombality(x,y,MiNivel,grilla);
 					        
 		}
 		
@@ -191,7 +187,7 @@ public class CREADORNIVEL extends CREADOR{
 				if( (grilla[x][y].getPared().getDestructible()) & (grilla[x][y].getPowerup()==null) )
 					is=true;
 		}
-		crearMasacrality(x,y,MiNivel,grilla,gui);
+		crearMasacrality(x,y,MiNivel,grilla);
 							        
 		 //creo 2 altair aleatoriamente. se puede hacer todo dentro de crearAltair.
 		for(int r=0;r<2;r++){
@@ -209,7 +205,7 @@ public class CREADORNIVEL extends CREADOR{
 					if( (grilla[x][y].getPared().getDestructible())  )
 						is=true;
 			}
-			crearAltair(x,y,MiNivel,grilla,gui,Enemigos);
+			crearAltair(x,y,MiNivel,grilla,Enemigos);
 		}
 		
 		
@@ -222,10 +218,10 @@ public class CREADORNIVEL extends CREADOR{
      * @param y Posicion en y dentro de la matriz.
      * @param MiNivel Nivel al que pertenece.
      */
-    public void crearRugulos(int x, int y, NIVEL MiNivel,CELDA[][] grilla,GUI gui, LinkedList<ENEMIGOS> Enemigos) {
+    public void crearRugulos(int x, int y, NIVEL MiNivel,CELDA[][] grilla, LinkedList<ENEMIGOS> Enemigos) {
     	
     	Enemigos.addLast(new RUGULOS(MiNivel,x,y));
-		gui.agregarObjeto(Enemigos.getLast().getGrafico());
+		MiNivel.agregarObjeto(Enemigos.getLast().getGrafico());
 		
 		grilla[x][y].agregarPersonaje(Enemigos.getLast());
 		
@@ -237,10 +233,10 @@ public class CREADORNIVEL extends CREADOR{
      * @param y Posicion en y dentro de la matriz.
      * @param MiNivel Nivel al que pertenece.
      */
-    public void crearAltair(int x, int y, NIVEL MiNivel,CELDA[][] grilla,GUI gui,LinkedList<ENEMIGOS> Enemigos) {
+    public void crearAltair(int x, int y, NIVEL MiNivel,CELDA[][] grilla,LinkedList<ENEMIGOS> Enemigos) {
        
     	Enemigos.addLast(new ALTAIR(MiNivel,x,y));
-		gui.agregarObjeto(Enemigos.getLast().getGrafico());
+		MiNivel.agregarObjeto(Enemigos.getLast().getGrafico());
 		
 		grilla[x][y].agregarPersonaje(Enemigos.getLast());
     	
@@ -252,10 +248,10 @@ public class CREADORNIVEL extends CREADOR{
      * @param y Posicion en y dentro de la matriz.
      * @param MiNivel Nivel al que pertenece.
      */
-    public void crearSirius(NIVEL MiNivel,CELDA[][] grilla,GUI gui,LinkedList<ENEMIGOS> Enemigos) {
+    public void crearSirius(NIVEL MiNivel,CELDA[][] grilla,LinkedList<ENEMIGOS> Enemigos) {
     	
     	Enemigos.addLast(new SIRIUS(MiNivel,29,11));
-		gui.agregarObjeto(Enemigos.getLast().getGrafico());
+		MiNivel.agregarObjeto(Enemigos.getLast().getGrafico());
 		
 		grilla[29][11].agregarPersonaje(Enemigos.getLast());
     }
@@ -266,8 +262,8 @@ public class CREADORNIVEL extends CREADOR{
      * @param y Posicion en y dentro de la matriz.
      * @param MiNivel Nivel al que pertenece.
      */
-    public void crearBomberman(NIVEL MiNivel,CELDA[][] grilla,GUI gui) {
-    	gui.agregarObjeto(MiNivel.getBomberman().getGrafico());
+    public void crearBomberman(NIVEL MiNivel,CELDA[][] grilla) {
+    	MiNivel.agregarObjeto(MiNivel.getBomberman().getGrafico());
 		grilla[1][1].agregarPersonaje(MiNivel.getBomberman());
     }
 
@@ -277,10 +273,10 @@ public class CREADORNIVEL extends CREADOR{
      * @param y Posicion en y dentro de la matriz.
      * @param MiNivel Nivel al que pertenece.
      */
-    public void crearSpeedup(int x, int y, NIVEL MiNivel,CELDA[][] grilla,GUI gui) {
+    public void crearSpeedup(int x, int y, NIVEL MiNivel,CELDA[][] grilla) {
     	SPEEDUP pu=new SPEEDUP(x,y,MiNivel);
         grilla[x][y].setPowerup(pu);
-        gui.agregarObjeto(pu.getGrafico());
+        MiNivel.agregarObjeto(pu.getGrafico());
         pu.getGrafico().setVisible(false);
     }
 
@@ -290,10 +286,10 @@ public class CREADORNIVEL extends CREADOR{
      * @param y Posicion en y dentro de la matriz.
      * @param MiNivel Nivel al que pertenece.
      */
-    public void crearFatality(int x, int y, NIVEL MiNivel,CELDA[][] grilla,GUI gui) {
+    public void crearFatality(int x, int y, NIVEL MiNivel,CELDA[][] grilla) {
     	FATALITY pu=new FATALITY(x,y,MiNivel);
         grilla[x][y].setPowerup(pu);
-        gui.agregarObjeto(pu.getGrafico());
+        MiNivel.agregarObjeto(pu.getGrafico());
         pu.getGrafico().setVisible(false);
     }
 
@@ -303,10 +299,10 @@ public class CREADORNIVEL extends CREADOR{
      * @param y Posicion en y dentro de la matriz.
      * @param MiNivel Nivel al que pertenece.
      */
-    public void crearBombality(int x, int y, NIVEL MiNivel,CELDA[][] grilla,GUI gui) {
+    public void crearBombality(int x, int y, NIVEL MiNivel,CELDA[][] grilla) {
     	BOMBALITY pu=new BOMBALITY(x,y,MiNivel);
         grilla[x][y].setPowerup(pu);
-        gui.agregarObjeto(pu.getGrafico());
+        MiNivel.agregarObjeto(pu.getGrafico());
         pu.getGrafico().setVisible(false);
     }
 
@@ -316,10 +312,10 @@ public class CREADORNIVEL extends CREADOR{
      * @param y Posicion en y dentro de la matriz.
      * @param MiNivel Nivel al que pertenece.
      */
-    public void crearMasacrality(int x, int y, NIVEL MiNivel,CELDA[][] grilla,GUI gui) {
+    public void crearMasacrality(int x, int y, NIVEL MiNivel,CELDA[][] grilla) {
     	MASACRALITY pu=new MASACRALITY(x,y,MiNivel);
         grilla[x][y].setPowerup(pu);
-        gui.agregarObjeto(pu.getGrafico());
+        MiNivel.agregarObjeto(pu.getGrafico());
         pu.getGrafico().setVisible(false); 
     }
 

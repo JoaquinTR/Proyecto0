@@ -78,7 +78,8 @@ public class SIRIUS extends ENEMIGOS {
     /**
      * Inicia el hilo de este enemigo.
      */
-    public void stop(){
+    @SuppressWarnings("deprecation")
+	public void stop(){
     	T.stop();
     	grafico.select(4);
     }
@@ -278,7 +279,8 @@ public class SIRIUS extends ENEMIGOS {
     /**
      * mueve el sirius.
      */
-    protected void mover(int dir){
+    @SuppressWarnings("deprecation")
+	protected void mover(int dir){
     	
     	CELDA actual = MiNivel.getCelda(x, y, -1);
 		CELDA next= MiNivel.getCelda(x, y, dir);

@@ -1,8 +1,6 @@
 package nivel;
 
 import java.util.LinkedList;
-
-import GUI.GUI;
 import mapa.CELDA;
 import personajes.ENEMIGOS;
 
@@ -28,7 +26,7 @@ public abstract class CREADOR {
      * @param MiNivel nivel al que pertenece
      * @param y posicion y en la matriz.
      */
-    public abstract void crearNivel(CELDA[][] grilla, NIVEL MiNivel,GUI gui, LinkedList<ENEMIGOS> Enemigos);
+    public abstract void crearNivel(CELDA[][] grilla, NIVEL MiNivel, LinkedList<ENEMIGOS> Enemigos);
 
     /**
      * Crea un rugulo.
@@ -36,7 +34,7 @@ public abstract class CREADOR {
      * @param y Posicion en y dentro de la matriz.
      * @param MiNivel Nivel al que pertenece.
      */
-    public abstract void crearRugulos(int x, int y, NIVEL MiNivel,CELDA[][] grilla,GUI gui, LinkedList<ENEMIGOS> Enemigos);
+    public abstract void crearRugulos(int x, int y, NIVEL MiNivel,CELDA[][] grilla, LinkedList<ENEMIGOS> Enemigos);
 
     /**
      * Crea un Altair.
@@ -44,7 +42,7 @@ public abstract class CREADOR {
      * @param y Posicion en y dentro de la matriz.
      * @param MiNivel Nivel al que pertenece.
      */
-    public abstract void crearAltair(int x, int y, NIVEL MiNivel,CELDA[][] grilla,GUI gui,LinkedList<ENEMIGOS> Enemigos);
+    public abstract void crearAltair(int x, int y, NIVEL MiNivel,CELDA[][] grilla,LinkedList<ENEMIGOS> Enemigos);
 
     /**
      * Crea un Sirius.
@@ -52,7 +50,7 @@ public abstract class CREADOR {
      * @param y Posicion en y dentro de la matriz.
      * @param MiNivel Nivel al que pertenece.
      */
-    public abstract void crearSirius(NIVEL MiNivel,CELDA[][] grilla,GUI gui,LinkedList<ENEMIGOS> Enemigos);
+    public abstract void crearSirius(NIVEL MiNivel,CELDA[][] grilla,LinkedList<ENEMIGOS> Enemigos);
 
     /**
      * Crea el bomberman.
@@ -60,7 +58,7 @@ public abstract class CREADOR {
      * @param y Posicion en y dentro de la matriz.
      * @param MiNivel Nivel al que pertenece.
      */
-    public abstract void crearBomberman(NIVEL MiNivel,CELDA[][] grilla,GUI gui);
+    public abstract void crearBomberman(NIVEL MiNivel,CELDA[][] grilla);
 
     /**
      * Crea un Speedup.
@@ -68,7 +66,7 @@ public abstract class CREADOR {
      * @param y Posicion en y dentro de la matriz.
      * @param MiNivel Nivel al que pertenece.
      */
-    public abstract void crearSpeedup(int x, int y, NIVEL MiNivel,CELDA[][] grilla,GUI gui);
+    public abstract void crearSpeedup(int x, int y, NIVEL MiNivel,CELDA[][] grilla);
 
     /**
      * Crea un Fatality.
@@ -76,7 +74,7 @@ public abstract class CREADOR {
      * @param y Posicion en y dentro de la matriz.
      * @param MiNivel Nivel al que pertenece.
      */
-    public abstract void crearFatality(int x, int y, NIVEL MiNivel,CELDA[][] grilla,GUI gui);
+    public abstract void crearFatality(int x, int y, NIVEL MiNivel,CELDA[][] grilla);
 
     /**
      * Crea un Bombality.
@@ -84,7 +82,7 @@ public abstract class CREADOR {
      * @param y Posicion en y dentro de la matriz.
      * @param MiNivel Nivel al que pertenece.
      */
-    public abstract void crearBombality(int x, int y, NIVEL MiNivel,CELDA[][] grilla,GUI gui);
+    public abstract void crearBombality(int x, int y, NIVEL MiNivel,CELDA[][] grilla);
 
     /**
      * Crea un Masacrality.
@@ -92,7 +90,7 @@ public abstract class CREADOR {
      * @param y Posicion en y dentro de la matriz.
      * @param MiNivel Nivel al que pertenece.
      */
-    public abstract void crearMasacrality(int x, int y, NIVEL MiNivel,CELDA[][] grilla,GUI gui);
+    public abstract void crearMasacrality(int x, int y, NIVEL MiNivel,CELDA[][] grilla);
 
     /**
      * Crea una Celda transitable.

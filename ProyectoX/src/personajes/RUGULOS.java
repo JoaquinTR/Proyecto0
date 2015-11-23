@@ -46,7 +46,8 @@ public class RUGULOS extends ENEMIGOS {
     /**
      * Inicia el hilo de este enemigo.
      */
-    public void stop(){
+    @SuppressWarnings("deprecation")
+	public void stop(){
     	T.interrupt();
     	T.detener();
     	T.stop();

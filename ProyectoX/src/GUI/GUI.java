@@ -111,7 +111,6 @@ public class GUI extends JFrame {
 	
 	
 	
-	
 	/**
 	 * Constructor de la gui. Inicializa todo lo necesario para que la gui funcione
 	 * y crea un nivel con sus elementos.
@@ -130,10 +129,11 @@ public class GUI extends JFrame {
 		setSize(698,500);
 		
 		//seteo inicial
-		inicializarMenu();
 		character=false;
-		pointer = 0;
+		inicializarMenu();
 		
+		
+		pointer = 0;
 		//adicionales a la gui.
 		setVisible(true);
 		setExtendedState(getExtendedState() | JFrame.MAXIMIZED_BOTH);
@@ -171,7 +171,14 @@ public class GUI extends JFrame {
 				fondo.setIcon(IF);
 				add(fondo);
 				
-				
+				try {
+					
+					AudioInputStream musicaFondo = AudioSystem.getAudioInputStream(this.getClass().getResource("/sounds/fondoJuego/avengers.MID"));
+					
+					clip = AudioSystem.getClip();
+					clip.open(musicaFondo);
+					clip.loop(Clip.LOOP_CONTINUOUSLY);
+				} catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {}
 		
 	}
 
@@ -266,27 +273,18 @@ public class GUI extends JFrame {
 		
 		add(fondo);
 		
-		fondo.repaint();
-		personajes[0].repaint();
-		personajes[1].repaint();
-		personajes[2].repaint();
-		personajes[3].repaint();
-		select.repaint();
-		contentPaneChar.updateUI();;
-		
-		
 	}
+	
 	
 	/**
 	 * inicializa en nivel principal.
 	 */
 	private void initGUI(){
+		
 		//creacion y seteo del panel.
 				contentPane = new JPanel();
 				contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-				setContentPane(contentPane);
 				contentPane.setLayout(null);
-				getContentPane().setLayout(null);
 				 
 				//el juego no termino cuando recien empezo.
 				end=false;
@@ -298,7 +296,7 @@ public class GUI extends JFrame {
 				//imagen de fondo.
 				JLabel fondo = new JLabel();
 				fondo.setBounds(0, 0, 1400, 1000);
-				add(fondo);
+				contentPane.add(fondo);
 				ImageIcon a=new ImageIcon(this.getClass().getResource("/images/fondo/fondo.jpg"));
 				a = new ImageIcon(a.getImage().getScaledInstance(fondo.getWidth(), fondo.getHeight(), Image.SCALE_DEFAULT));
 				fondo.setIcon(a);
@@ -309,15 +307,31 @@ public class GUI extends JFrame {
 				//sonidos
 				
 				try {
-					AudioInputStream musicaFondo = AudioSystem.getAudioInputStream(this.getClass().getResource("/sounds/fondoJuego/avengers.MID"));
+					AudioInputStream musicaFondo=null;
+					
+					switch(MiNivel.getSJ()){
+						case 0:
+							musicaFondo = AudioSystem.getAudioInputStream(this.getClass().getResource("/sounds/fondoJuego/CaptainAmerica.MID"));
+							break;
+						case 1:
+							musicaFondo = AudioSystem.getAudioInputStream(this.getClass().getResource("/sounds/fondoJuego/Spiderman.MID"));
+							break;
+						case 2:
+							musicaFondo = AudioSystem.getAudioInputStream(this.getClass().getResource("/sounds/fondoJuego/Superman.MID"));
+							break;
+						case 3:
+							musicaFondo = AudioSystem.getAudioInputStream(this.getClass().getResource("/sounds/fondoJuego/Batman.MID"));
+							break;
+					}
+					
 					clip = AudioSystem.getClip();
 					clip.open(musicaFondo);
 					clip.loop(Clip.LOOP_CONTINUOUSLY);
 				} catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {}
 				
 				//arranca los Threads de los malos.
+				setContentPane(contentPane);
 				start();
-				
 				//se muestra el contentPane ya cargado mas arriba.
 				contentPane.setVisible(true);
 	}
@@ -335,6 +349,7 @@ public class GUI extends JFrame {
 					GUI frame = new GUI();
 					frame.setVisible(true);
 					
+					
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -346,8 +361,20 @@ public class GUI extends JFrame {
 	/**
 	 * Se activa cuando se gana el juego, lo muestra graficamente.
 	 */
+	@SuppressWarnings("deprecation")
 	public void ganar(){
 		if(!end){
+			clip.stop();
+			r.stop();
+			try {
+				
+				AudioInputStream musicaFondo = AudioSystem.getAudioInputStream(this.getClass().getResource("/sounds/fondoJuego/Win.MID"));
+				
+				clip = AudioSystem.getClip();
+				clip.open(musicaFondo);
+				clip.loop(Clip.LOOP_CONTINUOUSLY);
+			} catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {}
+			
 			JLabel g =new JLabel();
 			g.setBounds(388, 350, 600, 128);
 			ImageIcon i=new ImageIcon(this.getClass().getResource("/images/menu/Congrats.gif"));
@@ -363,7 +390,19 @@ public class GUI extends JFrame {
 	/**
 	 * Se activa cuando se muere el bomberman, lo muestra graficamente.
 	 */
+	@SuppressWarnings("deprecation")
 	public void perder(){
+		clip.stop();
+		r.stop();
+		try {
+			
+			AudioInputStream musicaFondo = AudioSystem.getAudioInputStream(this.getClass().getResource("/sounds/fondoJuego/GameOver.MID"));
+			
+			clip = AudioSystem.getClip();
+			clip.open(musicaFondo);
+			clip.loop(Clip.LOOP_CONTINUOUSLY);
+		} catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {}
+		
 		JLabel g =new JLabel();
 		g.setBounds(510, 375, 338, 100);
 		ImageIcon i=new ImageIcon(this.getClass().getResource("/images/menu/GameOver.gif"));
@@ -414,6 +453,11 @@ public class GUI extends JFrame {
 
 	 		
 	 			}
+	 			if(dir== KeyEvent.VK_ENTER){
+	 				if(end) {
+	 					System.exit(0);;
+					}
+	 			}
 	 		}else{
 	 		
 	 			//selecciones del usuario, pasaje entre gui's.
@@ -422,12 +466,15 @@ public class GUI extends JFrame {
 	 				if(menu){
 	 					initCharSelect();
 	 					menu=false;
+	 					contentPaneChar.updateUI();
 	 				}
 	 				else 
 	 					if(character){
 	 						character=false;
+	 						clip.stop();
 	 						initGUI();
 	 					}
+	 						
  				}
 	 			
 	 			if(character){
@@ -460,7 +507,7 @@ public class GUI extends JFrame {
 	  * @param j JLabel a agregar.
 	  */
 	 public void agregarObjeto(JLabel j){
-		 add(j);
+		 contentPane.add(j);
 		 contentPane.setComponentZOrder(j, 0);
 	 }
 	 	
@@ -482,7 +529,6 @@ public class GUI extends JFrame {
 	 	 * Inicia el juego.
 	 	 */
 	 	public void start(){
-	 		
 	 		r.start();
 	 		MiNivel.start();
 	 		start=true;

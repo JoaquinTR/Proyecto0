@@ -9,6 +9,7 @@ public class masacralityThread extends Thread {
 	/**
 	 * Bandera de deteccion de este Thread.
 	 */
+	@SuppressWarnings("unused")
 	private volatile boolean mDetener;
 	
 	/**
