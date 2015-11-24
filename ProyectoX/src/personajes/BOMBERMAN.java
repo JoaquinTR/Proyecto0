@@ -210,7 +210,6 @@ public class BOMBERMAN extends PERSONAJE {
 
 	public void stop() {
 		b.detener();
-		
 	}
 }
 

@@ -42,6 +42,9 @@ public abstract class ENEMIGOS extends PERSONAJE {
      */
     public abstract void start();
 
+    /**
+     * frena el hilo de los enemigos.
+     */
 	public abstract void stop();
     
     
