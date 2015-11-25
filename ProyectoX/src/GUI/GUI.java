@@ -1,6 +1,8 @@
 package GUI;
 
+import java.awt.Color;
 import java.awt.EventQueue;
+import java.awt.Font;
 import java.awt.Image;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
@@ -292,14 +294,37 @@ public class GUI extends JFrame {
 				//Creacion del nivel con su respectivo personaje y esta gui.
 				MiNivel=new NIVEL(this, pointer);
 				
+				//Controles.
+				JLabel D = new JLabel();
+				D.setBounds(this.getWidth()-100, 10, 75, 75);
+				contentPane.add(D);
+				ImageIcon a=new ImageIcon(this.getClass().getResource("/images/controles/D.gif"));
+				a = new ImageIcon(a.getImage().getScaledInstance(D.getWidth(), D.getHeight(), Image.SCALE_DEFAULT));
+				D.setIcon(a);
+				
+				JLabel controles = new JLabel("CONTROLES: ");
+				controles.setBounds(this.getWidth()-450, 10, 250, 75);
+				controles.setForeground(Color.WHITE);
+				controles.setFont(new Font(controles.getFont().getName(),Font.PLAIN,35));
+				controles.setOpaque(false);
+				contentPane.add(controles);
+				
+				JLabel flechas = new JLabel();
+				flechas.setBounds(this.getWidth()-210, 10, 100, 75);
+				contentPane.add(flechas);
+				a=new ImageIcon(this.getClass().getResource("/images/controles/flechas.gif"));
+				a = new ImageIcon(a.getImage().getScaledInstance(flechas.getWidth(), flechas.getHeight(), Image.SCALE_DEFAULT));
+				flechas.setIcon(a);
 				
 				//imagen de fondo.
 				JLabel fondo = new JLabel();
 				fondo.setBounds(0, 0, 1400, 1000);
 				contentPane.add(fondo);
-				ImageIcon a=new ImageIcon(this.getClass().getResource("/images/fondo/fondo.jpg"));
+				a=new ImageIcon(this.getClass().getResource("/images/fondo/fondo.jpg"));
 				a = new ImageIcon(a.getImage().getScaledInstance(fondo.getWidth(), fondo.getHeight(), Image.SCALE_DEFAULT));
 				fondo.setIcon(a);
+				
+				
 				
 				//Creacion del reloj.
 				r=new RELOJ(MiNivel,this);

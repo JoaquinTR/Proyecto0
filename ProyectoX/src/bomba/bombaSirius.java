@@ -44,11 +44,11 @@ public class bombaSirius extends BOMBA{
         
         
    		//afecto las celdas adyacentes.       
-        actual.afectar();
-        abajo.afectar();
-        arriba.afectar();
-        izquierda.afectar();
-        derecha.afectar();
+        actual.afectarS();
+        abajo.afectarS();
+        arriba.afectarS();
+        izquierda.afectarS();
+        derecha.afectarS();
 
         
         try {

@@ -79,6 +79,11 @@ public class NIVEL {
     private int seleccionPersonaje;
     
     /**
+     * Indica que conjunto de imagenes de sirius se utilizan.
+     */
+    private int seleccionSirius;
+    
+    /**
      * Constructor del nivel.
      * @param gui la interfaz grafica del nivel.
      */
@@ -96,6 +101,8 @@ public class NIVEL {
     	seleccionRugulos= rnd.nextInt(4);
 
     	seleccionAltair= rnd.nextInt(4);
+    	
+    	seleccionSirius= rnd.nextInt(3);
     	
     	Creador=new CREADORNIVEL();
     	
@@ -118,6 +125,14 @@ public class NIVEL {
      */
     public int getSA(){
     	return seleccionAltair;
+    }
+    
+    /**
+     * Devuelve la seleccion de Sirius.
+     * @return el conjunto de imagenes a usar en el Sirius.
+     */
+    public int getSS(){
+    	return seleccionSirius;
     }
     
     /**

@@ -10,6 +10,7 @@ import bomba.BOMBA;
 import graficos.Grafico;
 import graficos.celdaGrafica;
 import nivel.NIVEL;
+import personajes.BOMBERMAN;
 import personajes.PERSONAJE;
 import powerups.POWERUP;
 
@@ -266,6 +267,29 @@ public class CELDA {
     		}
     	
     	return ret;
+    	
+    }
+    
+    /**
+     * afectado por la bomba del sirius.
+     * @return
+     */
+    public void afectarS(){
+    	BOMBERMAN b = MiNivel.getBomberman();
+    	int ret=0;
+    	
+    	if(MiPared==null){
+    		grafico.select(9);
+    		if( (this.x==b.getX()) & (this.y==b.getY()) )
+    			b.destruirme();
+    	}
+    	else 
+    		if(MiPared.getDestructible()){
+    			grafico.select(9);
+    			destruirPared();
+    			if( (this.x==b.getX()) & (this.y==b.getY()) )
+        			b.destruirme();
+    		}
     	
     }
     

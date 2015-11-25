@@ -1,6 +1,7 @@
 package personajes;
 
 import java.io.IOException;
+import java.util.LinkedList;
 import java.util.Random;
 import java.util.Stack;
 
@@ -46,12 +47,12 @@ public class SIRIUS extends ENEMIGOS {
     /**
      * ultimos 2 movimientos del sirius.
      */
-    private Stack<Integer> movs;
+    private static Stack<Integer> movs;
     
     /**
      * ultimos 2 movimientos del sirius.
      */
-    private Stack<Integer> movsA;
+    private static Stack<Integer> movsA;
 
     /**
      * constructor.
@@ -62,7 +63,7 @@ public class SIRIUS extends ENEMIGOS {
     public SIRIUS(NIVEL MiNivel, int x, int y) {
         super(MiNivel,x,y,3);
         Bomberman = MiNivel.getBomberman();
-        this.grafico=new siriusGrafico(x,y,1);
+        this.grafico=new siriusGrafico(x,y,MiNivel.getSS());
         grafico.select(4);
         movs=new Stack<Integer>();
         movsA=new Stack<Integer>();
@@ -87,7 +88,7 @@ public class SIRIUS extends ENEMIGOS {
     /**
      * Avance especifico de un sirius.
      */
-    public void avanzar() {
+ public void avanzar() {
         
     	Random rnd = new Random();
 		
@@ -123,7 +124,6 @@ public class SIRIUS extends ENEMIGOS {
 		if(puedo){
 			mover(direccion);
 			movs.push(direccion);
-		
 		}
 		else{
 			if(next.getPared()!=null){
@@ -253,7 +253,6 @@ public class SIRIUS extends ENEMIGOS {
         }
     	
     }
-    
     
     /**
      * pone una bomba en la posicion actual del bomberman.
