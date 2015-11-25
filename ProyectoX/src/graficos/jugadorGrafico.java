@@ -94,28 +94,28 @@ public class jugadorGrafico extends Grafico {
 			
 		case 2:
 			
-			a=new ImageIcon(this.getClass().getResource("/images/bomberman/superman/supermanAbajoQ.gif"));
+			a=new ImageIcon(this.getClass().getResource("/images/bomberman/superman/SupermanAbajoQ.gif"));
 			this.images[4] = new ImageIcon(a.getImage().getScaledInstance(this.width, this.height, Image.SCALE_DEFAULT));
 			
-			a=new ImageIcon(this.getClass().getResource("/images/bomberman/superman/supermanAbajo.gif"));
+			a=new ImageIcon(this.getClass().getResource("/images/bomberman/superman/SupermanAbajo.gif"));
 			this.images[0] = new ImageIcon(a.getImage().getScaledInstance(this.width, this.height, Image.SCALE_DEFAULT));
 			
-			a=new ImageIcon(this.getClass().getResource("/images/bomberman/superman/supermanArribaQ.gif"));
+			a=new ImageIcon(this.getClass().getResource("/images/bomberman/superman/SupermanArribaQ.gif"));
 			this.images[5] = new ImageIcon(a.getImage().getScaledInstance(this.width, this.height, Image.SCALE_DEFAULT));
 			
-			a=new ImageIcon(this.getClass().getResource("/images/bomberman/superman/supermanArriba.gif"));
+			a=new ImageIcon(this.getClass().getResource("/images/bomberman/superman/SupermanArriba.gif"));
 			this.images[1] = new ImageIcon(a.getImage().getScaledInstance(this.width, this.height, Image.SCALE_DEFAULT));
 			
-			a=new ImageIcon(this.getClass().getResource("/images/bomberman/superman/supermanIzqQ.gif"));
+			a=new ImageIcon(this.getClass().getResource("/images/bomberman/superman/SupermanIzqQ.gif"));
 			this.images[6] = new ImageIcon(a.getImage().getScaledInstance(this.width, this.height, Image.SCALE_DEFAULT));
 			
-			a=new ImageIcon(this.getClass().getResource("/images/bomberman/superman/supermanIzq.gif"));
+			a=new ImageIcon(this.getClass().getResource("/images/bomberman/superman/SupermanIzq.gif"));
 			this.images[2] = new ImageIcon(a.getImage().getScaledInstance(this.width, this.height, Image.SCALE_DEFAULT));
 			
-			a=new ImageIcon(this.getClass().getResource("/images/bomberman/superman/supermanDerQ.gif"));
+			a=new ImageIcon(this.getClass().getResource("/images/bomberman/superman/SupermanDerQ.gif"));
 			this.images[7] = new ImageIcon(a.getImage().getScaledInstance(this.width, this.height, Image.SCALE_DEFAULT));
 			
-			a=new ImageIcon(this.getClass().getResource("/images/bomberman/superman/supermanDer.gif"));
+			a=new ImageIcon(this.getClass().getResource("/images/bomberman/superman/SupermanDer.gif"));
 			this.images[3] = new ImageIcon(a.getImage().getScaledInstance(this.width, this.height, Image.SCALE_DEFAULT));
 			
 			a=new ImageIcon(this.getClass().getResource("/images/muertes/muerteS.gif"));
