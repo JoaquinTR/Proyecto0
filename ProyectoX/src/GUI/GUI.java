@@ -175,7 +175,7 @@ public class GUI extends JFrame {
 				
 				try {
 					
-					AudioInputStream musicaFondo = AudioSystem.getAudioInputStream(this.getClass().getResource("/sounds/fondoJuego/avengers.MID"));
+					AudioInputStream musicaFondo = AudioSystem.getAudioInputStream(this.getClass().getResource("/sounds/fondoJuego/avengers.mid"));
 					
 					clip = AudioSystem.getClip();
 					clip.open(musicaFondo);
@@ -345,7 +345,7 @@ public class GUI extends JFrame {
 							musicaFondo = AudioSystem.getAudioInputStream(this.getClass().getResource("/sounds/fondoJuego/Superman.MID"));
 							break;
 						case 3:
-							musicaFondo = AudioSystem.getAudioInputStream(this.getClass().getResource("/sounds/fondoJuego/Batman.MID"));
+							musicaFondo = AudioSystem.getAudioInputStream(this.getClass().getResource("/sounds/fondoJuego/Batman.mid"));
 							break;
 					}
 					
@@ -393,7 +393,7 @@ public class GUI extends JFrame {
 			r.stop();
 			try {
 				
-				AudioInputStream musicaFondo = AudioSystem.getAudioInputStream(this.getClass().getResource("/sounds/fondoJuego/Win.MID"));
+				AudioInputStream musicaFondo = AudioSystem.getAudioInputStream(this.getClass().getResource("/sounds/fondoJuego/Win.mid"));
 				
 				clip = AudioSystem.getClip();
 				clip.open(musicaFondo);
@@ -421,7 +421,7 @@ public class GUI extends JFrame {
 		r.stop();
 		try {
 			
-			AudioInputStream musicaFondo = AudioSystem.getAudioInputStream(this.getClass().getResource("/sounds/fondoJuego/GameOver.MID"));
+			AudioInputStream musicaFondo = AudioSystem.getAudioInputStream(this.getClass().getResource("/sounds/fondoJuego/GameOver.mid"));
 			
 			clip = AudioSystem.getClip();
 			clip.open(musicaFondo);
