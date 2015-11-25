@@ -37,6 +37,7 @@ public class MASACRALITY extends POWERUP {
      * atravezar paredes destructibles.
      */
     public void ejecutar() {
+    	MiNivel.prenderMasacrality();
     	MiNivel.setPuntaje(50);
         MiNivel.getBomberman().setMasacre();
         grafico.getGrafico().setVisible(false);
@@ -49,6 +50,7 @@ public class MASACRALITY extends POWERUP {
      */
     @SuppressWarnings("deprecation")
 	public void restaurar() {
+    	MiNivel.apagarMasacrality();
         MiNivel.getBomberman().setMasacre();
         m.stop();
     }

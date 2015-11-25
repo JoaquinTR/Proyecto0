@@ -324,4 +324,40 @@ public class NIVEL {
 			e.stop();
 		}
 	}
+	
+	/**
+ 	 * aumenta la cantidad de speedups agarrados.
+ 	 */
+ 	public void aumentarSpeedup(){
+ 		gui.aumentarSpeedup();
+ 		
+ 	}
+ 	
+ 	/**
+ 	 * aumenta la cantidad de speedups agarrados.
+ 	 */
+ 	public void aumentarBombality(){
+ 		gui.aumentarBombality();
+ 	}
+ 	
+ 	/**
+ 	 * aumenta la cantidad de speedups agarrados.
+ 	 */
+ 	public void aumentarFatality(){
+ 		gui.aumentarFatality();
+ 	}
+ 	
+ 	/**
+ 	 * activa masacrality.
+ 	 */
+ 	public void prenderMasacrality(){
+ 		gui.prenderMasacrality();
+ 	}
+ 	
+ 	/**
+ 	 * apaga masacrality.
+ 	 */
+ 	public void apagarMasacrality(){
+ 		gui.apagarMasacrality();
+ 	}
 }

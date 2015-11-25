@@ -86,6 +86,7 @@ public class BOMBERMAN extends PERSONAJE {
      * Aumenta el radio de explosion de las bombas.
      */
     public void aumentarRadioBombas(){
+    	MiNivel.aumentarFatality();
     	radioBombas++;
     }
     
@@ -108,16 +109,8 @@ public class BOMBERMAN extends PERSONAJE {
      * Aumenta la velocidad del bomberman.
      */
     public void aumentarVelocidad() {
-        //velocidad*=2;
+        MiNivel.aumentarSpeedup();
     	velocidad++;
-    }
-    
-    /**
-     * Decrementa la velocidad del bomberman.
-     */
-    public void decrementarVelocidad(){
-    	//velocidad/=2;
-    	velocidad--;
     }
 
     /**

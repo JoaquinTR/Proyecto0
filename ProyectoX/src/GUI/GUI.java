@@ -21,11 +21,6 @@ import java.io.IOException;
 import GUI.constantes;
 import nivel.NIVEL;
 
-/*------ANOTACIONES------
-*	consultar un metodo para iniciar los thread de los enemigos,
-*	cuando se mueva el bomberman se llama a un iniciar en esta gui.
-*/
-
 
 
 /**
@@ -110,8 +105,40 @@ public class GUI extends JFrame {
 	 */
 	private JLabel[] personajes;
 	
+	/**
+	 * Label de estado del power-up masacrality.
+	 */
+	private JLabel masacrality;
 	
+	/**
+	 * Label de estado del power-up speedup.
+	 */
+	private JLabel speedup;
 	
+	/**
+	 * Label contador del power-up speedup.
+	 */
+	private JLabel Cspeedup;
+	
+	/**
+	 * Label de estado del power-up bombality.
+	 */
+	private JLabel bombality;
+	
+	/**
+	 * Label contador del power-up bombality.
+	 */
+	private JLabel Cbombality;
+	
+	/**
+	 * Label de estado del power-up fatality.
+	 */
+	private JLabel fatality;
+	
+	/**
+	 * Label contador del power-up fatality.
+	 */
+	private JLabel Cfatality;
 	
 	/**
 	 * Constructor de la gui. Inicializa todo lo necesario para que la gui funcione
@@ -315,6 +342,68 @@ public class GUI extends JFrame {
 				a=new ImageIcon(this.getClass().getResource("/images/controles/flechas.gif"));
 				a = new ImageIcon(a.getImage().getScaledInstance(flechas.getWidth(), flechas.getHeight(), Image.SCALE_DEFAULT));
 				flechas.setIcon(a);
+				
+				int offset = 75;
+				
+				int posY = 50;
+				
+				Cspeedup = new JLabel();
+				Cspeedup.setBounds(5, posY, 75, 75);
+				contentPane.add(Cspeedup);
+				Cspeedup.setText("0");
+				Cspeedup.setFont(new Font(controles.getFont().getName(),Font.PLAIN,45));
+				Cspeedup.setForeground(Color.YELLOW);
+				Cspeedup.setVisible(false);
+				
+				speedup = new JLabel();
+				speedup.setBounds(5, posY, 75, 75);
+				contentPane.add(speedup);
+				a=new ImageIcon(this.getClass().getResource("/images/powerups/SpeedUpQ.gif"));
+				a = new ImageIcon(a.getImage().getScaledInstance(speedup.getWidth(), speedup.getHeight(), Image.SCALE_DEFAULT));
+				speedup.setIcon(a);
+				speedup.setEnabled(false);
+				
+				Cbombality = new JLabel();
+				Cbombality.setBounds(5 + offset, posY, 75, 75);
+				contentPane.add(Cbombality);
+				Cbombality.setText("0");
+				Cbombality.setFont(new Font(controles.getFont().getName(),Font.PLAIN,45));
+				Cbombality.setForeground(Color.YELLOW);
+				Cbombality.setVisible(false);
+				
+				bombality = new JLabel();
+				bombality.setBounds(5 + offset, posY, 75, 75);
+				contentPane.add(bombality);
+				a=new ImageIcon(this.getClass().getResource("/images/powerups/BombalityQ.gif"));
+				a = new ImageIcon(a.getImage().getScaledInstance(bombality.getWidth(), bombality.getHeight(), Image.SCALE_DEFAULT));
+				bombality.setIcon(a);
+				bombality.setEnabled(false);
+				
+				Cfatality = new JLabel();
+				Cfatality.setBounds(5 + offset*2, posY, 75, 75);
+				contentPane.add(Cfatality);
+				Cfatality.setText("0");
+				Cfatality.setFont(new Font(controles.getFont().getName(),Font.PLAIN,45));
+				Cfatality.setForeground(Color.YELLOW);
+				Cfatality.setVisible(false);
+				
+				fatality = new JLabel();
+				fatality.setBounds(5 + offset*2, posY, 75, 75);
+				contentPane.add(fatality);
+				a=new ImageIcon(this.getClass().getResource("/images/powerups/FatalityQ.gif"));
+				a = new ImageIcon(a.getImage().getScaledInstance(fatality.getWidth(), fatality.getHeight(), Image.SCALE_DEFAULT));
+				fatality.setIcon(a);
+				fatality.setEnabled(false);
+				
+				masacrality = new JLabel();
+				masacrality.setBounds(5 + offset*3, posY, 75, 75);
+				contentPane.add(masacrality);
+				a=new ImageIcon(this.getClass().getResource("/images/powerups/MasacralityQ.gif"));
+				a = new ImageIcon(a.getImage().getScaledInstance(masacrality.getWidth(), masacrality.getHeight(), Image.SCALE_DEFAULT));
+				masacrality.setIcon(a);
+				masacrality.setEnabled(false);
+				
+				
 				
 				//imagen de fondo.
 				JLabel fondo = new JLabel();
@@ -559,6 +648,52 @@ public class GUI extends JFrame {
 	 		start=true;
 	 		
 	 	}
+	 	
+	 	/**
+	 	 * aumenta la cantidad de speedups agarrados.
+	 	 */
+	 	public void aumentarSpeedup(){
+	 		speedup.setEnabled(true);
+	 		Cspeedup.setVisible(true);
+	 		String S = Cspeedup.getText();
+	 		Cspeedup.setText(""+(Integer.parseInt(S)+1));
+	 		
+	 	}
+	 	
+	 	/**
+	 	 * aumenta la cantidad de speedups agarrados.
+	 	 */
+	 	public void aumentarBombality(){
+	 		bombality.setEnabled(true);
+	 		Cbombality.setVisible(true);
+	 		String S = Cbombality.getText();
+	 		Cbombality.setText(""+(Integer.parseInt(S)+1));
+	 	}
+	 	
+	 	/**
+	 	 * aumenta la cantidad de speedups agarrados.
+	 	 */
+	 	public void aumentarFatality(){
+	 		fatality.setEnabled(true);
+	 		Cfatality.setVisible(true);
+	 		String S = Cfatality.getText();
+	 		Cfatality.setText(""+(Integer.parseInt(S)+1));
+	 	}
+	 	
+	 	/**
+	 	 * activa masacrality.
+	 	 */
+	 	public void prenderMasacrality(){
+	 		masacrality.setEnabled(true);
+	 	}
+	 	
+	 	/**
+	 	 * activa masacrality.
+	 	 */
+	 	public void apagarMasacrality(){
+	 		masacrality.setEnabled(true);
+	 	}
+	 	
 	 	
 	
 }
