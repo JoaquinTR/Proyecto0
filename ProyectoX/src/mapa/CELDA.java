@@ -276,7 +276,6 @@ public class CELDA {
      */
     public void afectarS(){
     	BOMBERMAN b = MiNivel.getBomberman();
-    	int ret=0;
     	
     	if(MiPared==null){
     		grafico.select(9);
